@@ -1,0 +1,22 @@
+{
+  "n_total": 10200,
+  "n_ok": 10200,
+  "status_counts": {
+    "ok": 10200
+  },
+  "exif_corrected": 0,
+  "converted_to_rgb": 24,
+  "modes_orig": {
+    "RGB": 10176,
+    "L": 24
+  },
+  "dark_images": 796,
+  "exact_duplicates": [],
+  "near_duplicates_eval_vs_others": [],
+  "near_dup_threshold_hamming": 4,
+  "by_split": {
+    "kb": 10000,
+    "test": 100,
+    "val": 100
+  }
+}

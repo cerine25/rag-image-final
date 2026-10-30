@@ -1,0 +1,103 @@
+{
+  "clip-b32": {
+    "type": "clip",
+    "model": "openai/clip-vit-base-patch32",
+    "normalization": "L2 (float32)",
+    "device": "cpu",
+    "kb_shape": [
+      10000,
+      512
+    ],
+    "val_shape": [
+      100,
+      512
+    ],
+    "test_shape": [
+      100,
+      512
+    ],
+    "embed_images_seconds": 0.42,
+    "image_embeddings_reused_from_cache": [
+      "kb:10000",
+      "val:100",
+      "test:100"
+    ],
+    "dim": 512,
+    "flat_index_build_seconds": 0.0081,
+    "hnsw_index_build_seconds": 4.006,
+    "hnsw_recall@10_vs_exact": 1.0,
+    "latency_ms_per_query": {
+      "flat": 1.2502,
+      "hnsw": 0.1664
+    },
+    "index": {
+      "type": "IndexFlatIP",
+      "metric": "inner product on L2-normalised = cosine",
+      "n_vectors": 10000,
+      "size_mb": 20.48,
+      "hnsw": {
+        "M": 32,
+        "efConstruction": 200,
+        "efSearch": 64,
+        "size_mb": 23.198
+      }
+    },
+    "text_embed_seconds": 1.12,
+    "text_shape": [
+      50000,
+      512
+    ]
+  },
+  "dinov2-s": {
+    "type": "dinov2",
+    "model": "facebook/dinov2-small",
+    "normalization": "L2 (float32)",
+    "device": "cpu",
+    "kb_shape": [
+      10000,
+      384
+    ],
+    "val_shape": [
+      100,
+      384
+    ],
+    "test_shape": [
+      100,
+      384
+    ],
+    "embed_images_seconds": 0.83,
+    "image_embeddings_reused_from_cache": [
+      "kb:10000",
+      "val:100",
+      "test:100"
+    ],
+    "dim": 384,
+    "flat_index_build_seconds": 0.0497,
+    "hnsw_index_build_seconds": 6.8016,
+    "hnsw_recall@10_vs_exact": 0.9969999999999999,
+    "latency_ms_per_query": {
+      "flat": 1.2185,
+      "hnsw": 0.1898
+    },
+    "index": {
+      "type": "IndexFlatIP",
+      "metric": "inner product on L2-normalised = cosine",
+      "n_vectors": 10000,
+      "size_mb": 15.36,
+      "hnsw": {
+        "M": 32,
+        "efConstruction": 200,
+        "efSearch": 64,
+        "size_mb": 18.078
+      }
+    }
+  },
+  "sbert": {
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "dim": 384,
+    "shape": [
+      50000,
+      384
+    ]
+  }
+}

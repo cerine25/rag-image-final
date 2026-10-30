@@ -1,0 +1,964 @@
+{
+  "n_images": {
+    "kb": 10000,
+    "val": 100,
+    "test": 100
+  },
+  "n_captions": {
+    "kb": 50000,
+    "val": 500,
+    "test": 500
+  },
+  "top50_classes_kb": [
+    {
+      "class": "person",
+      "instances": 23286,
+      "images": 5599
+    },
+    {
+      "class": "car",
+      "instances": 3972,
+      "images": 1070
+    },
+    {
+      "class": "chair",
+      "instances": 3602,
+      "images": 1206
+    },
+    {
+      "class": "book",
+      "instances": 2407,
+      "images": 520
+    },
+    {
+      "class": "bottle",
+      "instances": 2396,
+      "images": 843
+    },
+    {
+      "class": "cup",
+      "instances": 2103,
+      "images": 885
+    },
+    {
+      "class": "bowl",
+      "instances": 1465,
+      "images": 681
+    },
+    {
+      "class": "dining table",
+      "instances": 1393,
+      "images": 1076
+    },
+    {
+      "class": "traffic light",
+      "instances": 1179,
+      "images": 372
+    },
+    {
+      "class": "sheep",
+      "instances": 1154,
+      "images": 178
+    },
+    {
+      "class": "handbag",
+      "instances": 1115,
+      "images": 619
+    },
+    {
+      "class": "bird",
+      "instances": 1007,
+      "images": 304
+    },
+    {
+      "class": "umbrella",
+      "instances": 954,
+      "images": 375
+    },
+    {
+      "class": "boat",
+      "instances": 952,
+      "images": 271
+    },
+    {
+      "class": "truck",
+      "instances": 927,
+      "images": 548
+    },
+    {
+      "class": "backpack",
+      "instances": 894,
+      "images": 561
+    },
+    {
+      "class": "bench",
+      "instances": 858,
+      "images": 527
+    },
+    {
+      "class": "potted plant",
+      "instances": 833,
+      "images": 425
+    },
+    {
+      "class": "cow",
+      "instances": 831,
+      "images": 209
+    },
+    {
+      "class": "carrot",
+      "instances": 812,
+      "images": 183
+    },
+    {
+      "class": "knife",
+      "instances": 797,
+      "images": 400
+    },
+    {
+      "class": "donut",
+      "instances": 788,
+      "images": 175
+    },
+    {
+      "class": "banana",
+      "instances": 745,
+      "images": 214
+    },
+    {
+      "class": "wine glass",
+      "instances": 740,
+      "images": 237
+    },
+    {
+      "class": "motorcycle",
+      "instances": 738,
+      "images": 303
+    },
+    {
+      "class": "kite",
+      "instances": 730,
+      "images": 215
+    },
+    {
+      "class": "skis",
+      "instances": 703,
+      "images": 294
+    },
+    {
+      "class": "sports ball",
+      "instances": 694,
+      "images": 434
+    },
+    {
+      "class": "orange",
+      "instances": 686,
+      "images": 185
+    },
+    {
+      "class": "cake",
+      "instances": 660,
+      "images": 282
+    },
+    {
+      "class": "bicycle",
+      "instances": 654,
+      "images": 328
+    },
+    {
+      "class": "apple",
+      "instances": 614,
+      "images": 179
+    },
+    {
+      "class": "surfboard",
+      "instances": 611,
+      "images": 328
+    },
+    {
+      "class": "broccoli",
+      "instances": 602,
+      "images": 173
+    },
+    {
+      "class": "tie",
+      "instances": 598,
+      "images": 351
+    },
+    {
+      "class": "tv",
+      "instances": 591,
+      "images": 454
+    },
+    {
+      "class": "sink",
+      "instances": 591,
+      "images": 486
+    },
+    {
+      "class": "horse",
+      "instances": 586,
+      "images": 291
+    },
+    {
+      "class": "spoon",
+      "instances": 582,
+      "images": 336
+    },
+    {
+      "class": "elephant",
+      "instances": 566,
+      "images": 212
+    },
+    {
+      "class": "zebra",
+      "instances": 550,
+      "images": 196
+    },
+    {
+      "class": "dog",
+      "instances": 547,
+      "images": 427
+    },
+    {
+      "class": "clock",
+      "instances": 546,
+      "images": 411
+    },
+    {
+      "class": "remote",
+      "instances": 544,
+      "images": 296
+    },
+    {
+      "class": "vase",
+      "instances": 541,
+      "images": 314
+    },
+    {
+      "class": "suitcase",
+      "instances": 537,
+      "images": 242
+    },
+    {
+      "class": "fork",
+      "instances": 537,
+      "images": 340
+    },
+    {
+      "class": "cell phone",
+      "instances": 533,
+      "images": 427
+    },
+    {
+      "class": "couch",
+      "instances": 530,
+      "images": 414
+    },
+    {
+      "class": "skateboard",
+      "instances": 518,
+      "images": 326
+    }
+  ],
+  "n_classes_present": {
+    "kb": 80,
+    "val": 80,
+    "test": 80
+  },
+  "objects_per_image": {
+    "kb": {
+      "mean": 8.0498,
+      "median": 5.0,
+      "std": 7.768958743615517,
+      "p90": 19.0,
+      "max": 67
+    },
+    "val": {
+      "mean": 7.74,
+      "median": 5.0,
+      "std": 9.638070346288202,
+      "p90": 18.0,
+      "max": 65
+    },
+    "test": {
+      "mean": 6.77,
+      "median": 4.0,
+      "std": 7.843283751082834,
+      "p90": 15.0,
+      "max": 62
+    }
+  },
+  "categories_per_image_mean": {
+    "kb": 3.2485,
+    "val": 3.41,
+    "test": 3.3
+  },
+  "complexity_distribution": {
+    "kb": {
+      "simple": 0.2647,
+      "medium": 0.2561,
+      "complex": 0.1715,
+      "crowded": 0.3077
+    },
+    "val": {
+      "simple": 0.25,
+      "medium": 0.3,
+      "complex": 0.3,
+      "crowded": 0.15
+    },
+    "test": {
+      "simple": 0.25,
+      "medium": 0.3,
+      "complex": 0.3,
+      "crowded": 0.15
+    }
+  },
+  "chi2_complexity_kb_vs_test": {
+    "chi2": 18.330396816513044,
+    "p": 0.00037595255193910627,
+    "note": "écart attendu : le test est volontairement ÉQUILIBRÉ (stratifié), la KB reste naturelle"
+  },
+  "spatial_relations": {
+    "kb": {
+      "left_of": 0.28668038926524436,
+      "right_of": 0.28668038926524436,
+      "above": 0.10412183799810892,
+      "below": 0.10412183799810892,
+      "overlapping": 0.10350704482931708,
+      "inside": 0.04758032194928345,
+      "contains": 0.04758032194928345,
+      "on_top_of": 0.01972785674540948
+    },
+    "val": {
+      "left_of": 0.2807239057239057,
+      "right_of": 0.2807239057239057,
+      "above": 0.10563973063973064,
+      "below": 0.10563973063973064,
+      "overlapping": 0.09848484848484848,
+      "inside": 0.055134680134680134,
+      "contains": 0.055134680134680134,
+      "on_top_of": 0.018518518518518517
+    },
+    "test": {
+      "left_of": 0.26252771618625276,
+      "right_of": 0.26252771618625276,
+      "above": 0.11485587583148558,
+      "below": 0.11485587583148558,
+      "overlapping": 0.09090909090909091,
+      "inside": 0.06784922394678493,
+      "contains": 0.06784922394678493,
+      "on_top_of": 0.01862527716186253
+    }
+  },
+  "caption_length_tokens": {
+    "kb": {
+      "mean": 10.48298,
+      "median": 10.0,
+      "std": 2.3908137358648416,
+      "min": 6,
+      "max": 45
+    },
+    "val": {
+      "mean": 10.488,
+      "median": 10.0,
+      "std": 2.248967763219384,
+      "min": 7,
+      "max": 22
+    },
+    "test": {
+      "mean": 10.472,
+      "median": 10.0,
+      "std": 2.5723949929977707,
+      "min": 7,
+      "max": 39
+    }
+  },
+  "vocabulary": {
+    "kb": {
+      "size": 9697,
+      "hapax": 3936,
+      "type_token_ratio": 0.018500464562557592,
+      "n_tokens": 524149
+    },
+    "val": {
+      "size": 967,
+      "hapax": 499,
+      "type_token_ratio": 0.18440122044241036,
+      "n_tokens": 5244
+    },
+    "test": {
+      "size": 924,
+      "hapax": 458,
+      "type_token_ratio": 0.17647058823529413,
+      "n_tokens": 5236
+    }
+  },
+  "oov_rate_test_vs_kb": 0.007448433919022154,
+  "oov_rate_val_vs_kb": 0.010869565217391304,
+  "ks_caption_length_kb_vs_test": {
+    "stat": 0.024839999999999973,
+    "p": 0.9125144565536549
+  },
+  "top30_words_kb": [
+    [
+      "a",
+      83156
+    ],
+    [
+      "on",
+      18066
+    ],
+    [
+      "of",
+      17115
+    ],
+    [
+      "the",
+      16744
+    ],
+    [
+      "in",
+      15672
+    ],
+    [
+      "with",
+      13251
+    ],
+    [
+      "and",
+      12381
+    ],
+    [
+      "is",
+      8039
+    ],
+    [
+      "man",
+      6452
+    ],
+    [
+      "to",
+      5835
+    ],
+    [
+      "sitting",
+      4369
+    ],
+    [
+      "an",
+      4156
+    ],
+    [
+      "two",
+      4132
+    ],
+    [
+      "standing",
+      3759
+    ],
+    [
+      "people",
+      3757
+    ],
+    [
+      "at",
+      3740
+    ],
+    [
+      "are",
+      3555
+    ],
+    [
+      "next",
+      3106
+    ],
+    [
+      "white",
+      2973
+    ],
+    [
+      "woman",
+      2904
+    ],
+    [
+      "table",
+      2707
+    ],
+    [
+      "holding",
+      2420
+    ],
+    [
+      "street",
+      2354
+    ],
+    [
+      "that",
+      2285
+    ],
+    [
+      "large",
+      2058
+    ],
+    [
+      "person",
+      2050
+    ],
+    [
+      "it",
+      2032
+    ],
+    [
+      "some",
+      2015
+    ],
+    [
+      "down",
+      1873
+    ],
+    [
+      "top",
+      1854
+    ]
+  ],
+  "pos_distribution_kb": {
+    "DET": 44638,
+    "ADJ": 16710,
+    "NOUN": 74604,
+    "ADP": 33596,
+    "PRT": 3772,
+    "VERB": 24269,
+    "PRON": 2807,
+    "CONJ": 5087,
+    "NUM": 2524,
+    "ADV": 1446,
+    "X": 6
+  },
+  "top_cooccurring_pairs_kb": [
+    {
+      "a": "person",
+      "b": "car",
+      "frac_images": 0.079
+    },
+    {
+      "a": "person",
+      "b": "chair",
+      "frac_images": 0.0767
+    },
+    {
+      "a": "person",
+      "b": "handbag",
+      "frac_images": 0.0565
+    },
+    {
+      "a": "person",
+      "b": "backpack",
+      "frac_images": 0.0523
+    },
+    {
+      "a": "person",
+      "b": "dining table",
+      "frac_images": 0.0515
+    },
+    {
+      "a": "chair",
+      "b": "dining table",
+      "frac_images": 0.0481
+    },
+    {
+      "a": "person",
+      "b": "cup",
+      "frac_images": 0.045
+    },
+    {
+      "a": "dining table",
+      "b": "cup",
+      "frac_images": 0.044
+    },
+    {
+      "a": "person",
+      "b": "bottle",
+      "frac_images": 0.0425
+    },
+    {
+      "a": "person",
+      "b": "sports ball",
+      "frac_images": 0.0401
+    },
+    {
+      "a": "person",
+      "b": "bench",
+      "frac_images": 0.0399
+    },
+    {
+      "a": "person",
+      "b": "truck",
+      "frac_images": 0.039
+    },
+    {
+      "a": "car",
+      "b": "truck",
+      "frac_images": 0.0346
+    },
+    {
+      "a": "dining table",
+      "b": "bowl",
+      "frac_images": 0.034
+    },
+    {
+      "a": "person",
+      "b": "tie",
+      "frac_images": 0.0333
+    }
+  ],
+  "spearman_nobjects_vs_caption_length_kb": {
+    "rho": 0.1385817453067277,
+    "p": 4.54920016602337e-44
+  },
+  "context": {
+    "kb": {
+      "indoor": 0.3741,
+      "outdoor": 0.3773,
+      "mixed": 0.2486
+    },
+    "val": {
+      "outdoor": 0.35,
+      "indoor": 0.35,
+      "mixed": 0.3
+    },
+    "test": {
+      "mixed": 0.3,
+      "outdoor": 0.33,
+      "indoor": 0.37
+    }
+  },
+  "day_night": {
+    "kb": {
+      "day_or_bright": 0.9216,
+      "night_or_dark": 0.0784
+    },
+    "val": {
+      "day_or_bright": 0.97,
+      "night_or_dark": 0.03
+    },
+    "test": {
+      "day_or_bright": 0.91,
+      "night_or_dark": 0.09
+    }
+  },
+  "dominant_color_top1": {
+    "kb": {
+      "gray": 0.5935,
+      "brown": 0.0913,
+      "black": 0.0768,
+      "blue": 0.0637,
+      "green": 0.0498,
+      "orange": 0.0401,
+      "yellow": 0.035,
+      "white": 0.0273,
+      "red": 0.0212,
+      "pink": 0.0012,
+      "purple": 0.0001
+    },
+    "val": {
+      "gray": 0.63,
+      "blue": 0.08,
+      "brown": 0.07,
+      "orange": 0.05,
+      "green": 0.04,
+      "white": 0.04,
+      "yellow": 0.03,
+      "black": 0.03,
+      "red": 0.02,
+      "purple": 0.01
+    },
+    "test": {
+      "gray": 0.58,
+      "black": 0.1,
+      "brown": 0.08,
+      "blue": 0.07,
+      "orange": 0.05,
+      "green": 0.04,
+      "white": 0.03,
+      "yellow": 0.02,
+      "red": 0.02,
+      "pink": 0.01
+    }
+  },
+  "object_size_distribution": {
+    "kb": {
+      "medium": 0.2641556311958061,
+      "large": 0.12636338791025864,
+      "small": 0.6094809808939352
+    },
+    "val": {
+      "large": 0.1343669250645995,
+      "medium": 0.24935400516795866,
+      "small": 0.6162790697674418
+    },
+    "test": {
+      "medium": 0.2673559822747415,
+      "small": 0.5805022156573116,
+      "large": 0.15214180206794684
+    }
+  },
+  "caption_attributes_kb": {
+    "by_type": {
+      "color": 10586,
+      "size": 5604,
+      "state": 2532,
+      "material": 1766,
+      "shape": 239
+    },
+    "top20": [
+      {
+        "type": "color",
+        "attr": "white",
+        "count": 2943
+      },
+      {
+        "type": "size",
+        "attr": "large",
+        "count": 2054
+      },
+      {
+        "type": "size",
+        "attr": "small",
+        "count": 1693
+      },
+      {
+        "type": "color",
+        "attr": "black",
+        "count": 1521
+      },
+      {
+        "type": "color",
+        "attr": "red",
+        "count": 1290
+      },
+      {
+        "type": "color",
+        "attr": "blue",
+        "count": 1105
+      },
+      {
+        "type": "color",
+        "attr": "green",
+        "count": 1016
+      },
+      {
+        "type": "color",
+        "attr": "brown",
+        "count": 704
+      },
+      {
+        "type": "color",
+        "attr": "yellow",
+        "count": 698
+      },
+      {
+        "type": "material",
+        "attr": "wooden",
+        "count": 688
+      },
+      {
+        "type": "size",
+        "attr": "little",
+        "count": 555
+      },
+      {
+        "type": "state",
+        "attr": "old",
+        "count": 531
+      },
+      {
+        "type": "state",
+        "attr": "open",
+        "count": 497
+      },
+      {
+        "type": "size",
+        "attr": "big",
+        "count": 448
+      },
+      {
+        "type": "material",
+        "attr": "glass",
+        "count": 378
+      },
+      {
+        "type": "color",
+        "attr": "orange",
+        "count": 370
+      },
+      {
+        "type": "size",
+        "attr": "tall",
+        "count": 363
+      },
+      {
+        "type": "state",
+        "attr": "full",
+        "count": 325
+      },
+      {
+        "type": "size",
+        "attr": "long",
+        "count": 289
+      },
+      {
+        "type": "state",
+        "attr": "snowy",
+        "count": 283
+      }
+    ]
+  },
+  "js_divergence_class_distribution": {
+    "kb_vs_val": 0.031134595430339,
+    "kb_vs_test": 0.031274083674364864,
+    "note": "0 = identique ; test volontairement stratifié donc un peu plus loin de la KB"
+  },
+  "class_coverage": {
+    "classes_in_kb": 80,
+    "classes_in_val": 80,
+    "classes_in_test": 80,
+    "min_images_per_class_kb": 66,
+    "missing_in_test": []
+  },
+  "image_stats": {
+    "kb": {
+      "width_mean": 578.1779,
+      "height_mean": 483.2115,
+      "brightness_mean": 0.44212286000000006,
+      "colorfulness_mean": 38.2894447
+    },
+    "val": {
+      "width_mean": 583.12,
+      "height_mean": 479.21,
+      "brightness_mean": 0.47246299999999997,
+      "colorfulness_mean": 37.708749999999995
+    },
+    "test": {
+      "width_mean": 584.03,
+      "height_mean": 488.37,
+      "brightness_mean": 0.4352769999999999,
+      "colorfulness_mean": 40.077600000000004
+    }
+  },
+  "attributs_couleur_forme_kb": {
+    "couleur": {
+      "white": {
+        "occurrences": 2973,
+        "images": 1997
+      },
+      "black": {
+        "occurrences": 1525,
+        "images": 1014
+      },
+      "red": {
+        "occurrences": 1308,
+        "images": 802
+      },
+      "blue": {
+        "occurrences": 1113,
+        "images": 730
+      },
+      "green": {
+        "occurrences": 1031,
+        "images": 711
+      },
+      "brown": {
+        "occurrences": 708,
+        "images": 532
+      },
+      "yellow": {
+        "occurrences": 707,
+        "images": 438
+      },
+      "orange": {
+        "occurrences": 384,
+        "images": 258
+      },
+      "pink": {
+        "occurrences": 239,
+        "images": 148
+      },
+      "gray": {
+        "occurrences": 152,
+        "images": 134
+      },
+      "silver": {
+        "occurrences": 146,
+        "images": 114
+      },
+      "grey": {
+        "occurrences": 142,
+        "images": 124
+      },
+      "purple": {
+        "occurrences": 130,
+        "images": 85
+      },
+      "gold": {
+        "occurrences": 49,
+        "images": 34
+      },
+      "tan": {
+        "occurrences": 45,
+        "images": 44
+      },
+      "beige": {
+        "occurrences": 25,
+        "images": 25
+      },
+      "golden": {
+        "occurrences": 23,
+        "images": 22
+      }
+    },
+    "forme": {
+      "flat": {
+        "occurrences": 73,
+        "images": 63
+      },
+      "round": {
+        "occurrences": 57,
+        "images": 47
+      },
+      "square": {
+        "occurrences": 53,
+        "images": 43
+      },
+      "circular": {
+        "occurrences": 14,
+        "images": 14
+      },
+      "rectangular": {
+        "occurrences": 12,
+        "images": 11
+      },
+      "oval": {
+        "occurrences": 9,
+        "images": 9
+      },
+      "curved": {
+        "occurrences": 9,
+        "images": 9
+      },
+      "pointed": {
+        "occurrences": 9,
+        "images": 9
+      },
+      "cylindrical": {
+        "occurrences": 2,
+        "images": 2
+      },
+      "triangular": {
+        "occurrences": 1,
+        "images": 1
+      }
+    },
+    "source": "captions de la KB (lexique de mots)"
+  }
+}

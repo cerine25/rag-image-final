@@ -1,0 +1,10 @@
+{
+  "model": "facebook/detr-resnet-50",
+  "conf_threshold": 0.7,
+  "n_images": 200,
+  "splits": [
+    "val",
+    "test"
+  ],
+  "note": "DETR COCO : ses 91 ids/80 classes sont les mêmes classes que COCO -> comparables aux annotations GT"
+}

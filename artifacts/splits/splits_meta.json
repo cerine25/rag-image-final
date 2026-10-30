@@ -1,0 +1,103 @@
+{
+  "version": "g1-v1.0",
+  "seed": 42,
+  "sizes": {
+    "kb": 10000,
+    "val": 100,
+    "test": 100
+  },
+  "env": {
+    "python": "3.14.2",
+    "platform": "Windows-10-10.0.19045-SP0",
+    "numpy": "2.4.1",
+    "PIL": "12.1.0",
+    "sklearn": "1.8.0",
+    "scipy": "1.17.0",
+    "pandas": "3.0.0",
+    "matplotlib": "3.10.8"
+  },
+  "exclusion_reasons": {
+    "train2017": {
+      "aucune annotation d'objet": 1021,
+      "image trop petite": 225
+    },
+    "val2017": {
+      "aucune annotation d'objet": 48,
+      "image trop petite": 12
+    }
+  },
+  "id_hash_sha256": {
+    "kb": "d181521a2d733ab45adfaed63a5e3bd0e4eb26f9f88b0cb5f40cb28a43cada6d",
+    "val": "8c9487885ca36cad18ccd189c99f60c74afe48c6e4df7f00e9a5446e232b00d2",
+    "test": "4b7682064003c0925b62f4d9f345f50ac297da6f79e43d3f6865c620cd1754f2"
+  },
+  "summary": {
+    "kb": {
+      "n": 10000,
+      "complexity": {
+        "simple": 2647,
+        "crowded": 3077,
+        "complex": 1715,
+        "medium": 2561
+      },
+      "context": {
+        "indoor": 3741,
+        "outdoor": 3773,
+        "mixed": 2486
+      },
+      "interaction_frac": 0.615,
+      "classes_covered": 80,
+      "min_images_per_class": 66,
+      "classes_missing": []
+    },
+    "val": {
+      "n": 100,
+      "complexity": {
+        "simple": 25,
+        "medium": 30,
+        "complex": 30,
+        "crowded": 15
+      },
+      "context": {
+        "outdoor": 35,
+        "indoor": 35,
+        "mixed": 30
+      },
+      "interaction_frac": 0.69,
+      "classes_covered": 80,
+      "min_images_per_class": 1,
+      "classes_missing": []
+    },
+    "test": {
+      "n": 100,
+      "complexity": {
+        "simple": 25,
+        "complex": 30,
+        "crowded": 15,
+        "medium": 30
+      },
+      "context": {
+        "mixed": 30,
+        "outdoor": 33,
+        "indoor": 37
+      },
+      "interaction_frac": 0.61,
+      "classes_covered": 80,
+      "min_images_per_class": 1,
+      "classes_missing": []
+    }
+  },
+  "invalid_excluded": [],
+  "dedup_repairs": [
+    {
+      "dropped_kb_ids": [
+        186275,
+        463132
+      ],
+      "added_kb_ids": [
+        149053,
+        474404
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+﻿# environments and caches
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+
+# heavy data (shared separately, not through Git)
+data/raw/
+data/images/
+*.jpg
+*.jpeg
+*.png
+!reports/figures/*.png
+*.npy
+*.faiss
+*.index
+*.zip
