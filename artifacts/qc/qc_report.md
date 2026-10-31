@@ -1,5 +1,5 @@
-# QC — g1-v1.0
-**PASS** — 36 contrôles, 0 échec(s), 0 avertissement(s)
+# QC — g1-v1.1
+**PASS** — 40 contrôles, 0 échec(s), 0 avertissement(s)
 
 | contrôle | statut | détail |
 |---|---|---|
@@ -29,6 +29,10 @@
 | embeddings clip-b32/val | PASS | shape=(100, 512) |
 | embeddings clip-b32/test | PASS | shape=(100, 512) |
 | index clip-b32 : ntotal=KB et auto-retrouvabilité | PASS |  |
+| embeddings siglip-b16/kb | PASS | shape=(10000, 768) |
+| embeddings siglip-b16/val | PASS | shape=(100, 768) |
+| embeddings siglip-b16/test | PASS | shape=(100, 768) |
+| index siglip-b16 : ntotal=KB et auto-retrouvabilité | PASS |  |
 | embeddings dinov2-s/kb | PASS | shape=(10000, 384) |
 | embeddings dinov2-s/val | PASS | shape=(100, 384) |
 | embeddings dinov2-s/test | PASS | shape=(100, 384) |
@@ -37,5 +41,5 @@
 | info : val avec near-duplicate dans la KB | PASS | cos>=0.97: 0/100 | dHash<=4: 0 |
 | ANTI-FUITE : test jamais retrouvé pour lui-même (k=10) | PASS |  |
 | info : test avec near-duplicate dans la KB | PASS | cos>=0.97: 0/100 | dHash<=4: 0 |
-| fumée val : NN-caption CIDEr > aléatoire | PASS | NN=0.529 random=0.024 | Jaccard classes@1=0.538 |
-| fumée test : NN-caption CIDEr > aléatoire | PASS | NN=0.612 random=0.033 | Jaccard classes@1=0.464 |
+| fumée val : NN-caption CIDEr > aléatoire | PASS | NN=0.674 random=0.024 | Jaccard classes@1=0.546 |
+| fumée test : NN-caption CIDEr > aléatoire | PASS | NN=0.622 random=0.033 | Jaccard classes@1=0.506 |

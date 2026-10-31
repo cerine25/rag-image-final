@@ -1,5 +1,5 @@
 {
-  "version": "g1-v1.0",
+  "version": "g1-v1.1",
   "passed": true,
   "n_fail": 0,
   "n_warn": 0,
@@ -135,6 +135,26 @@
       "detail": ""
     },
     {
+      "check": "embeddings siglip-b16/kb",
+      "status": "PASS",
+      "detail": "shape=(10000, 768)"
+    },
+    {
+      "check": "embeddings siglip-b16/val",
+      "status": "PASS",
+      "detail": "shape=(100, 768)"
+    },
+    {
+      "check": "embeddings siglip-b16/test",
+      "status": "PASS",
+      "detail": "shape=(100, 768)"
+    },
+    {
+      "check": "index siglip-b16 : ntotal=KB et auto-retrouvabilité",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
       "check": "embeddings dinov2-s/kb",
       "status": "PASS",
       "detail": "shape=(10000, 384)"
@@ -177,21 +197,21 @@
     {
       "check": "fumée val : NN-caption CIDEr > aléatoire",
       "status": "PASS",
-      "detail": "NN=0.529 random=0.024 | Jaccard classes@1=0.538",
+      "detail": "NN=0.674 random=0.024 | Jaccard classes@1=0.546",
       "metrics": {
-        "cider_nn": 0.5285707244987701,
+        "cider_nn": 0.6735370593982103,
         "cider_random": 0.02375858959256384,
-        "jaccard_cls_top1": 0.538174497071556
+        "jaccard_cls_top1": 0.5455438596491229
       }
     },
     {
       "check": "fumée test : NN-caption CIDEr > aléatoire",
       "status": "PASS",
-      "detail": "NN=0.612 random=0.033 | Jaccard classes@1=0.464",
+      "detail": "NN=0.622 random=0.033 | Jaccard classes@1=0.506",
       "metrics": {
-        "cider_nn": 0.6118103558519262,
+        "cider_nn": 0.6215852804385507,
         "cider_random": 0.03313560997424678,
-        "jaccard_cls_top1": 0.46418697968697975
+        "jaccard_cls_top1": 0.5057160894660896
       }
     }
   ]

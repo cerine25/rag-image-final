@@ -1,0 +1,58 @@
+{
+  "selected": "clip-b32|img2txt",
+  "recommended": "clip-b32|img2txt",
+  "recommendation_rule": "meilleur CIDEr sur val ; si l'encodeur principal n'est pas significativement moins bon (Wilcoxon p>0.05), on le garde",
+  "criterion": "CIDEr moyen sur val (NN-caption), départage Jaccard classes@1",
+  "n_val_images": 100,
+  "candidates": [
+    {
+      "config": "clip-b32|img2txt",
+      "encoder": "clip-b32",
+      "mode": "img2txt",
+      "cider_mean": 0.5584101764891685,
+      "ci95": [
+        0.46598870116063085,
+        0.6574720393005672
+      ],
+      "jaccard_top1": 0.5348633179685811,
+      "cider_boot_mean": 0.5569058321886168,
+      "cider_boot_std": 0.0493846954092785
+    },
+    {
+      "config": "dinov2-s|img2img",
+      "encoder": "dinov2-s",
+      "mode": "img2img",
+      "cider_mean": 0.5541039139825013,
+      "ci95": [
+        0.4634055053777265,
+        0.6519657309082576
+      ],
+      "jaccard_top1": 0.5208663498337411,
+      "vs_best": {
+        "mean_diff": 0.0043062625066672515,
+        "wilcoxon_p": 0.7283878786577169
+      },
+      "cider_boot_mean": 0.5544435961686159,
+      "cider_boot_std": 0.04820004233836477
+    },
+    {
+      "config": "clip-b32|img2img",
+      "encoder": "clip-b32",
+      "mode": "img2img",
+      "cider_mean": 0.5285707244987701,
+      "ci95": [
+        0.4405226978510101,
+        0.6321361950039085
+      ],
+      "jaccard_top1": 0.538174497071556,
+      "vs_best": {
+        "mean_diff": 0.02983945199039836,
+        "wilcoxon_p": 0.7140066154728504
+      },
+      "cider_boot_mean": 0.5307952985919246,
+      "cider_boot_std": 0.0485636020122355
+    }
+  ],
+  "warning": "Avec 100 images, des écarts < ~0.05 CIDEr ne sont pas significatifs : voir wilcoxon_p. Si p>0.05 contre le 2e, conserver l'encodeur le plus standard (CLIP ViT-B/32) et le documenter.",
+  "method_note": "IC95 par bootstrap (2000 rééchantillonnages) sur les 100 images val ; pas de validation croisée car rien n'est entraîné."
+}

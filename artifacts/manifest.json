@@ -1,32 +1,32 @@
 {
-  "release_version": "g1-v1.0",
+  "release_version": "g1-v1.1",
   "seed": 42,
   "sizes": {
     "kb": 10000,
     "val": 100,
     "test": 100
   },
-  "primary_encoder": "clip-b32",
+  "primary_encoder": "siglip-b16",
   "encoders": [
     "clip-b32",
     "siglip-b16",
     "dinov2-s"
   ],
   "env": {
-    "python": "3.11.9",
-    "platform": "Windows-10-10.0.19045-SP0",
-    "numpy": "2.4.6",
-    "PIL": "12.2.0",
+    "python": "3.13.7",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "numpy": "2.5.4",
+    "PIL": "13.0.0",
     "faiss": "1.15.1",
-    "torch": "2.12.0+cpu",
-    "transformers": "4.57.6",
-    "sentence_transformers": "5.5.1",
-    "sklearn": "1.9.0",
-    "scipy": "1.17.1",
-    "pandas": "3.0.3",
-    "matplotlib": "3.10.9"
+    "torch": "2.15.0+cpu",
+    "transformers": "5.22.1",
+    "sentence_transformers": "6.2.0",
+    "sklearn": "1.9.1",
+    "scipy": "1.18.1",
+    "pandas": "3.1.0",
+    "matplotlib": "3.11.2"
   },
-  "n_files": 10254,
+  "n_files": 10270,
   "files": {
     "audit\\dedup_repair.json": {
       "sha256": "c8dea38330a2b64d181e3f75c92208f25e1f9bd55469fba100a61bb0840fd341",
@@ -49,6 +49,10 @@
       "bytes": 784
     },
     "audit\\preproc_config_selection.json": {
+      "sha256": "a7511b243cec7b60b7d6e58bef04bd65e6839d45a58e9f7016fe104d7ec190d5",
+      "bytes": 2861
+    },
+    "audit\\preproc_config_selection_v1.0_backup.json": {
       "sha256": "9dda6cb57105a5bd5c9c51fc00e75901b2368eeed599c78da73875b312f18d2b",
       "bytes": 2032
     },
@@ -171,6 +175,42 @@
     "embeddings\\sbert_kb_txt_caption_ids.npy": {
       "sha256": "4432acec556c15fa277ba08ae46cfde9ea0e67be47a16a295845d370e7a085bd",
       "bytes": 400128
+    },
+    "embeddings\\siglip-b16\\ids_kb.npy": {
+      "sha256": "0a4f70589016ce1570ed881ffefd1db97469cd26be34f93afaee6c31d9e0fdd1",
+      "bytes": 80128
+    },
+    "embeddings\\siglip-b16\\ids_test.npy": {
+      "sha256": "a4964abab30f664bd86a1ea1f0b4b7b389218110f1d5acff73874d60776a7c87",
+      "bytes": 928
+    },
+    "embeddings\\siglip-b16\\ids_val.npy": {
+      "sha256": "e0510e55846ab9414e5420b0b80afc2f8d42e675377dd41f1e465fde204c4411",
+      "bytes": 928
+    },
+    "embeddings\\siglip-b16\\kb_img.npy": {
+      "sha256": "4e6056a5007644d8317b9f9fa3cccd8b20251a166c7190eddd82d820943d4628",
+      "bytes": 30720128
+    },
+    "embeddings\\siglip-b16\\kb_txt.npy": {
+      "sha256": "1e373d7c9cc8064145c53a382f47d8018b76622bfe5e2b4ce08652c9715703b7",
+      "bytes": 153600128
+    },
+    "embeddings\\siglip-b16\\kb_txt_caption_ids.npy": {
+      "sha256": "4432acec556c15fa277ba08ae46cfde9ea0e67be47a16a295845d370e7a085bd",
+      "bytes": 400128
+    },
+    "embeddings\\siglip-b16\\kb_txt_image_ids.npy": {
+      "sha256": "9ad488077c244aaa6bed6bc09dfb58c34b49418ca2c802d9f41d18bec57e2643",
+      "bytes": 400128
+    },
+    "embeddings\\siglip-b16\\test_img.npy": {
+      "sha256": "4f0f3713fb2c457c174e5e6e00c389d292adb3d240d283c9062591b75c9a54fd",
+      "bytes": 307328
+    },
+    "embeddings\\siglip-b16\\val_img.npy": {
+      "sha256": "f12867724505b6df935ec7c205252fe06a95ae7c8ba648d06f5da65d758872b8",
+      "bytes": 307328
     },
     "images_rgb\\kb\\000000000078.jpg": {
       "sha256": "80be02f8319c2eafda5688960f52923dbe7628169b456cdd23de50e175fbb8c1",
@@ -40993,14 +41033,38 @@
       "bytes": 18077858
     },
     "index\\index_report.json": {
-      "sha256": "08a66c4d2dc393b23dd017cc6660b7cb82dfb085860452974e09142f64290ee7",
-      "bytes": 2162
+      "sha256": "1bb04b439f2e6a75e0d5c302147ea7c4d872b42567e6ef1e546fb7f915a38e19",
+      "bytes": 3228
+    },
+    "index\\siglip-b16_flatip.faiss": {
+      "sha256": "69753c7f67959593fc766f66c76dea33be9bd9b4fe3dbf5ad7bdb2625f95147b",
+      "bytes": 30720045
+    },
+    "index\\siglip-b16_hnsw.faiss": {
+      "sha256": "551dbdfb1fb3e0a63aed496b2745e5621d2fc413b6541022f8a292c339507a3d",
+      "bytes": 33437858
+    },
+    "index\\siglip-b16_txt_flatip.faiss": {
+      "sha256": "d47a356a8eb1ed76b79c003222c9adea029419d481c38c3a9f317228ca1a0371",
+      "bytes": 153600045
+    },
+    "manifest_v1.0_backup.json": {
+      "sha256": "aa7299949e789f62e73346d16fbac07583f33157783e69173574012f40d90453",
+      "bytes": 1629105
     },
     "qc\\qc_report.json": {
+      "sha256": "95ee9380789ed8c147523705f25b413dde2252a1021c62adb5e9cad127292ecd",
+      "bytes": 5521
+    },
+    "qc\\qc_report.md": {
+      "sha256": "b03fb5cca835e39c56ab8558b8180d377ab506c818fbfa2ec3c1bc7cd6c5a493",
+      "bytes": 2660
+    },
+    "qc\\qc_report_v1.0_backup.json": {
       "sha256": "b18d70cf7f6756c5f2e0f51ed99f2ca57781793d2f3ae1e210ebb8137776686e",
       "bytes": 5024
     },
-    "qc\\qc_report.md": {
+    "qc\\qc_report_v1.0_backup.md": {
       "sha256": "519c61f48bc9bda0033c4352aed6f2044a9ef6d821e4eb1cf3e03fc25f837038",
       "bytes": 2419
     },
@@ -41047,7 +41111,7 @@
   },
   "config": {
     "seed": 42,
-    "release_version": "g1-v1.0",
+    "release_version": "g1-v1.1",
     "paths": {
       "raw": "data/raw",
       "artifacts": "artifacts"
@@ -41099,7 +41163,7 @@
         "batch": 64
       }
     },
-    "primary_encoder": "clip-b32",
+    "primary_encoder": "siglip-b16",
     "sbert_model": "sentence-transformers/all-MiniLM-L6-v2",
     "index": {
       "type": "flat_ip",
