@@ -1,17 +1,30 @@
-numpy>=1.26
-pandas>=2.0
-scipy>=1.11
-pyyaml>=6.0
-pillow>=10.0
-matplotlib>=3.8
-faiss-cpu>=1.8          # ou faiss-gpu
-tqdm
-pycocoevalcap>=1.2      # CIDEr (scorer pur Python, pas besoin de Java pour CIDEr seul)
-nltk>=3.8               # POS tagging (EDA) ; alternative : spacy + en_core_web_sm
-# --- encodeurs (GPU recommandé) ---
-torch>=2.2
-transformers>=4.40
-sentence-transformers>=2.7
-sentencepiece>=0.2   # tokenizer SigLIP
-ipykernel>=6.29  # noyau Jupyter reproductible
-jupyterlab>=4.2  # interface notebooks
+# SigLIP release provenance from artifacts/manifest.json (env.python): Python 3.13.7 / torch 2.15.0+cpu / transformers 5.22.1.
+# Python 3.13.7 is the verified runtime for the frozen g1-v1.1 release.
+# v1.0 CLIP and DINOv2 provenance from artifacts/manifest_v1.0_backup.json:
+# Python 3.11.9 / torch 2.12.0+cpu / transformers 4.57.6.
+# Pins below use exact versions installed in the current .venv (Python 3.13.7).
+
+numpy==2.5.4
+pandas==3.1.0
+scipy==1.18.1
+PyYAML==6.0.3
+Pillow==13.0.0
+matplotlib==3.11.2
+faiss-cpu==1.15.1
+pycocoevalcap==1.2
+pycocotools==2.0.11
+nltk==3.10.4
+torch==2.15.0+cpu
+transformers==5.22.1
+sentence-transformers==6.2.0
+sentencepiece==0.2.2
+protobuf==7.36.2
+ImageHash==4.3.2
+ipykernel==7.4.0
+jupyterlab==4.6.5
+ipython==9.18.0
+nbclient==0.11.0
+nbformat==5.11.1
+
+# 05_eda has an optional spaCy fallback; spaCy is not installed in the current .venv,
+# so no exact installed version can be pinned here. The NLTK path is available.

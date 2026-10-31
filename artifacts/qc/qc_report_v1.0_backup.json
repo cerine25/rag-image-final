@@ -1,0 +1,198 @@
+{
+  "version": "g1-v1.0",
+  "passed": true,
+  "n_fail": 0,
+  "n_warn": 0,
+  "checks": [
+    {
+      "check": "taille split kb",
+      "status": "PASS",
+      "detail": "10000 vs 10000"
+    },
+    {
+      "check": "hash des IDs kb = splits_meta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "taille split val",
+      "status": "PASS",
+      "detail": "100 vs 100"
+    },
+    {
+      "check": "hash des IDs val = splits_meta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "taille split test",
+      "status": "PASS",
+      "detail": "100 vs 100"
+    },
+    {
+      "check": "hash des IDs test = splits_meta",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "splits deux à deux disjoints",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "images invalides (corrompues/absentes)",
+      "status": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "IDs uniques dans images.csv",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "doublons exacts (sha256) inter/intra splits",
+      "status": "PASS",
+      "detail": "0 images"
+    },
+    {
+      "check": "pas de NaN dans les stats pixel",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "KB : 5 captions / image",
+      "status": "PASS",
+      "detail": "min=5 max=5"
+    },
+    {
+      "check": "val : 5 références / image",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "test : 5 références / image",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "caption_id uniques (KB)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "ANTI-FUITE : aucune image val/test dans kb_captions",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "ANTI-FUITE : aucun caption_id d'éval dans la KB",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "captions brutes inchangées (raw != clean autorisé, raw non vide)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "info : refs val identiques à une caption KB (texte)",
+      "status": "PASS",
+      "detail": "1.0% — normal pour des captions génériques; pas une fuite d'image"
+    },
+    {
+      "check": "info : refs test identiques à une caption KB (texte)",
+      "status": "PASS",
+      "detail": "1.4% — normal pour des captions génériques; pas une fuite d'image"
+    },
+    {
+      "check": "métadonnées pour toutes les images",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "attributs texte uniquement pour la KB",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "embeddings clip-b32/kb",
+      "status": "PASS",
+      "detail": "shape=(10000, 512)"
+    },
+    {
+      "check": "embeddings clip-b32/val",
+      "status": "PASS",
+      "detail": "shape=(100, 512)"
+    },
+    {
+      "check": "embeddings clip-b32/test",
+      "status": "PASS",
+      "detail": "shape=(100, 512)"
+    },
+    {
+      "check": "index clip-b32 : ntotal=KB et auto-retrouvabilité",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "embeddings dinov2-s/kb",
+      "status": "PASS",
+      "detail": "shape=(10000, 384)"
+    },
+    {
+      "check": "embeddings dinov2-s/val",
+      "status": "PASS",
+      "detail": "shape=(100, 384)"
+    },
+    {
+      "check": "embeddings dinov2-s/test",
+      "status": "PASS",
+      "detail": "shape=(100, 384)"
+    },
+    {
+      "check": "index dinov2-s : ntotal=KB et auto-retrouvabilité",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "ANTI-FUITE : val jamais retrouvé pour lui-même (k=10)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "info : val avec near-duplicate dans la KB",
+      "status": "PASS",
+      "detail": "cos>=0.97: 0/100 | dHash<=4: 0"
+    },
+    {
+      "check": "ANTI-FUITE : test jamais retrouvé pour lui-même (k=10)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "info : test avec near-duplicate dans la KB",
+      "status": "PASS",
+      "detail": "cos>=0.97: 0/100 | dHash<=4: 0"
+    },
+    {
+      "check": "fumée val : NN-caption CIDEr > aléatoire",
+      "status": "PASS",
+      "detail": "NN=0.529 random=0.024 | Jaccard classes@1=0.538",
+      "metrics": {
+        "cider_nn": 0.5285707244987701,
+        "cider_random": 0.02375858959256384,
+        "jaccard_cls_top1": 0.538174497071556
+      }
+    },
+    {
+      "check": "fumée test : NN-caption CIDEr > aléatoire",
+      "status": "PASS",
+      "detail": "NN=0.612 random=0.033 | Jaccard classes@1=0.464",
+      "metrics": {
+        "cider_nn": 0.6118103558519262,
+        "cider_random": 0.03313560997424678,
+        "jaccard_cls_top1": 0.46418697968697975
+      }
+    }
+  ]
+}

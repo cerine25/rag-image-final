@@ -99,5 +99,54 @@
       50000,
       384
     ]
+  },
+  "siglip-b16": {
+    "type": "siglip",
+    "model": "google/siglip-base-patch16-224",
+    "normalization": "L2 (float32)",
+    "device": "cpu",
+    "kb_shape": [
+      10000,
+      768
+    ],
+    "val_shape": [
+      100,
+      768
+    ],
+    "test_shape": [
+      100,
+      768
+    ],
+    "embed_images_seconds": 3020.26,
+    "image_embeddings_reused_from_cache": [
+      "kb:0",
+      "val:0",
+      "test:0"
+    ],
+    "dim": 768,
+    "flat_index_build_seconds": 0.0225,
+    "hnsw_index_build_seconds": 1.439,
+    "hnsw_recall@10_vs_exact": 0.9990000000000001,
+    "latency_ms_per_query": {
+      "flat": 0.7372,
+      "hnsw": 0.0822
+    },
+    "index": {
+      "type": "IndexFlatIP",
+      "metric": "inner product on L2-normalised = cosine",
+      "n_vectors": 10000,
+      "size_mb": 30.72,
+      "hnsw": {
+        "M": 32,
+        "efConstruction": 200,
+        "efSearch": 64,
+        "size_mb": 33.438
+      }
+    },
+    "text_embed_seconds": 3773.76,
+    "text_shape": [
+      50000,
+      768
+    ]
   }
 }

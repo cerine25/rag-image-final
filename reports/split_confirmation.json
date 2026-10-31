@@ -1,0 +1,12 @@
+{
+  "dataset": "MS COCO 2017",
+  "knowledge_base_size": 10000,
+  "validation_size": 100,
+  "test_size": 100,
+  "test_size_confirmed": true,
+  "confirmed_by": "course professor",
+  "confirmation_date": "2026-10-28",
+  "note": "Spec section 4.1 states 100 test images, section 4.4.2 states 1,000; 100 was confirmed.",
+  "release_version": "g1-v1.1",
+  "random_seed": 42
+}

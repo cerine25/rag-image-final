@@ -1,7 +1,7 @@
 """API de lecture de la release figée — c'est ce que les autres groupes importent.
 
     from rag_data import Release
-    R = Release("artifacts", encoder="clip-b32")
+    R = Release("artifacts")
     Q = R.image_embeddings("test")                    # (100, d) float32 normalisé, lignes alignées sur R.ids("test")
     scores, kb_img_ids = R.search_images(Q, k=5, query_ids=R.ids("test"))   # garde-fou anti-fuite intégré
     caps = R.kb_captions_of(kb_img_ids[0, 0])         # captions (brutes) de l'image retrouvée
@@ -23,8 +23,12 @@ def _jsonl(p):
 
 
 class Release:
-    def __init__(self, root="artifacts", encoder="clip-b32"):
-        self.root, self.encoder = Path(root), encoder
+    def __init__(self, root="artifacts", encoder=None):
+        self.root = Path(root)
+        if encoder is None:
+            from common import load_config
+            encoder = load_config()["primary_encoder"]
+        self.encoder = encoder
         self.tables, self.emb, self.idx = self.root / "tables", self.root / "embeddings" / encoder, self.root / "index"
         self._kbc = None; self._meta = None; self._faiss = {}
         self.splits = {s: json.load(open(self.root / "splits" / f"{s}.json"))["images"] for s in ("kb", "val", "test")}

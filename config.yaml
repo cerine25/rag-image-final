@@ -1,6 +1,6 @@
 # Configuration unique du pipeline G1 (tout est piloté d'ici, rien en dur dans les scripts)
 seed: 42
-release_version: "g1-v1.0"
+release_version: "g1-v1.1"
 
 paths:
   raw: data/raw                 # annotations + images COCO brutes
@@ -37,7 +37,7 @@ encoders:
   clip-b32:    {type: clip,   model: openai/clip-vit-base-patch32, batch: 64}
   siglip-b16:  {type: siglip, model: google/siglip-base-patch16-224, batch: 64}
   dinov2-s:    {type: dinov2, model: facebook/dinov2-small, batch: 64}
-primary_encoder: clip-b32
+primary_encoder: siglip-b16
 sbert_model: sentence-transformers/all-MiniLM-L6-v2
 
 index:
