@@ -15,3 +15,5 @@ data/images/
 *.tar.gz
 *.png
 !artifacts/eda/*.png
+
+logs/
