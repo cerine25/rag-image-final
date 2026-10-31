@@ -1,16 +1,38 @@
-# G1 — Exploration des données & prétraitement commun (RAG captioning, MS COCO)
+# G1 — Shared preprocessing release `g1-v1.1` (RAG captioning, MS COCO)
 
 Pipeline reproductible qui produit la **release figée** (splits, images normalisées, captions, métadonnées, embeddings,
 index FAISS, EDA, QC) que tous les groupes peuvent charger avec une seule classe (`rag_data.Release`).
 
-## Démarrage rapide (tout est en notebooks)
+## Release g1-v1.1
+
+The frozen release uses **SigLIP (`siglip-b16`) as its primary encoder**, with
+CLIP ViT-B/32 and DINOv2-small also available. It contains 10,000 KB images,
+100 validation images, and 100 test images. The 100-image test size is
+documented in [`reports/split_confirmation.json`](reports/split_confirmation.json).
+Other-group schema, loading, index, and limitation details are in
+[`docs/DATASET_CARD.md`](docs/DATASET_CARD.md); preprocessing details are in
+[`docs/preprocessing.md`](docs/preprocessing.md).
+
+## Reproduce the pipeline
 
 ```bash
-pip install -r requirements.txt jupyter nbformat nbclient
-jupyter lab                       # ouvrir et exécuter les notebooks dans l'ordre 00 -> 01 -> 01b -> 02 -> ... -> 09
-# ou, sans interface, tout d'un coup (sauvegarde les copies exécutées dans executed_notebooks/) :
-python tools/run_notebooks.py
+pip install -r requirements.txt
+jupyter lab
 ```
+
+For a new dataset build, run notebook stages in this order:
+`00_download_annotations` → `01_make_splits` → `01b_download_images` →
+`02_preprocess_images` → `02b_dedup_repair` (when it reports changes, repeat
+download/preprocess/repair until no further repair is needed) →
+`03_captions_metadata` → `04_embeddings_index` → `05_eda` →
+`06_select_config` → `07_qc_leakage` → `08_freeze` → `09_demo_retrieval`.
+`03b_detect_objects` is optional and supplies predicted object detections for
+realistic query metadata. `06_select_config` selects using validation data;
+the test split is report-only and must not be used for selection.
+
+The complete pipeline can also be run with `python tools/run_notebooks.py`.
+For the already frozen `g1-v1.1` release, do not rerun artifact-producing
+notebooks in place.
 
 Test sans réseau ni GPU (mini-COCO synthétique + encodeur factice) :
 ```bash
@@ -29,14 +51,35 @@ Les notebooks livrés contiennent les **sorties de la dernière exécution** ; l
 | `02b_dedup_repair` | retire de la KB toute image identique / quasi identique à une image val/test (fuite) et la remplace ; si elle répare, relancer `01b` -> `02` -> `02b` jusqu'à « rien à réparer » |
 | `03_captions_metadata` | captions brutes + nettoyées, objets, tailles, couleurs d'objets, relations spatiales, contexte |
 | `03b_detect_objects` | *(optionnel)* détections DETR pour des métadonnées de requête **sans oracle** |
-| `04_embeddings_index` | embeddings image/texte (CLIP, DINOv2, SBERT ; SigLIP à venir), index FAISS exact + HNSW |
+| `04_embeddings_index` | embeddings image/texte (CLIP, SigLIP, DINOv2, SBERT), index FAISS exact + HNSW |
 | `05_eda` | toute l'exploration statistique de l'énoncé §4.3 (11 figures, dont couleur et forme + `stats.json` + `EDA_REPORT.md`) |
 | `06_select_config` | choix de la meilleure config de prétraitement sur **val** (CIDEr, CV 10 plis, IC95, Wilcoxon) |
-| `07_qc_leakage` | ~40 contrôles dont l'audit de fuite et un test de fumée du retrieval |
+| `07_qc_leakage` | 40 contrôles dont l'audit de fuite et un test de fumée du retrieval |
 | `08_freeze` | manifest SHA-256, lecture seule, archive partageable + vérification d'intégrité |
 | `09_demo_retrieval` | démo : requête → top-5 images/captions, garde-fou anti-fuite, baseline CIDEr |
 
 Chaque notebook : explication (docstring) → une cellule par fonction → cellule « Lancer l'étape » → cellules « Résultats » (tableaux/figures).
+
+## Exécution vérifiée de SigLIP et release
+
+The SigLIP-only extraction was run with
+`.\.venv\Scripts\python.exe tools\run_siglip_only.py`. That runner executes the
+definition/setup cells from `04_embeddings_index.ipynb`, then calls the
+notebook's `main()` once with `--encoders siglip-b16 --skip-sbert`. It writes
+the encoder outputs and index report, so it is **not** a dry-run command.
+
+QC was run with
+`.\.venv\Scripts\python.exe tools\run_qc_only.py`; the runner extracts the QC
+notebook's required cells and invokes its `main()`. The frozen report records
+40 passing checks, no failures, and no warnings; the full check details are in
+[`reports/leakage_audit.md`](reports/leakage_audit.md).
+
+Freeze was run with
+`.\.venv\Scripts\python.exe tools\run_freeze_only.py`, followed by
+`.\.venv\Scripts\python.exe tools\run_freeze_only.py --verify`. The manifest
+hashes the release files and freeze marks files under `artifacts/` read-only.
+**Do not run an artifact-writing step against this frozen directory.** Build a
+new release in a separate working copy when changing data or embeddings.
 
 ## Choix de conception (ce qui rend cette release défendable)
 
@@ -63,7 +106,7 @@ tables/kb_captions.jsonl                      caption_raw + caption_clean + n_to
 tables/eval_refs_{val,test}.jsonl             références brutes (évaluation uniquement)
 tables/metadata.jsonl                         objets, tailles, couleur par objet, relations, contexte, jour/nuit
 embeddings/<enc>/{kb,val,test}_img.npy        float32 L2-normalisés ; ids_*.npy = ordre des lignes ; kb_txt.npy (CLIP/SigLIP)
-index/<enc>_flatip.faiss, _hnsw.faiss, _txt_flatip.faiss, index_report.json
+index/<enc>_flatip.faiss, _hnsw.faiss, _txt_flatip.faiss (CLIP/SigLIP), index_report.json
 eda/ , qc/ , audit/ , manifest.json
 ```
 
@@ -71,7 +114,7 @@ eda/ , qc/ , audit/ , manifest.json
 
 ```python
 from rag_data import Release
-R = Release("artifacts", encoder="clip-b32")
+R = Release()  # primary encoder from config.yaml: siglip-b16
 Q = R.image_embeddings("test"); ids = R.ids("test")
 scores, kb_ids = R.search_images(Q, k=5, query_ids=ids)       # top-5 images KB (cosinus)
 caps = R.kb_captions_of(kb_ids[0, 0])                         # captions brutes de la 1re image retrouvée
@@ -80,18 +123,28 @@ refs = R.eval_refs("test")                                    # {image_id: [5 ca
 
 Documentation exigée par l'énoncé (type d'index, dimension, métrique, taille, temps d'indexation) : `index/index_report.json`.
 
-## Points à confirmer avec la prof (l'énoncé est incohérent)
+## Décisions de split
 
-- **Taille du test : 100 images** (§4.1 et §4.2 du sujet, val2017). Le §4.4.2-4.4.3 mentionne 1 000, mais nous avons retenu 100 images. Réglable via `sizes.test` dans `config.yaml`.
+- **Taille du test : 100 images** (§4.1 et §4.2 du sujet, val2017). Le §4.4.2-4.4.3 mentionne 1 000 ; 100 a été confirmé par la professeure et documenté dans `reports/split_confirmation.json`.
 - **Validation : 100 images tirées de train2017** (§4.1) mais le résumé §4.4.2 les compte à part → on les prend dans train2017, disjointes de la KB.
 - **Images à 6-7 captions** : on garde les 5 premières par `caption_id`.
 - **Images sans annotation d'objet** (~1 %) exclues (pas de métadonnées possibles) — documenté dans `splits_meta.json`.
-- **Oracle objets** : OK d'utiliser les annotations COCO pour les requêtes, ou impose-t-elle un détecteur (DETR/YOLO) ?
 
 ## Limites connues
 
-- SigLIP sera ajouté plus tard pour l'ablation 5 (CLIP vs SigLIP vs DINOv2) ; la release actuelle contient CLIP ViT-B/32 et DINOv2-small. Les modèles CLIP, DINOv2, SBERT et DETR ont été exécutés sur les vraies données COCO.
+- Les métadonnées d'objets val/test reposent sur les annotations COCO ground truth (oracle) ; employer `03b_detect_objects` pour des requêtes réalistes sans oracle.
+- SigLIP, CLIP et DINOv2 sont des encodeurs image ; CLIP et SigLIP disposent aussi d'une tour texte dans cette release. SBERT est fourni comme embeddings de captions.
 - Les embeddings GPU peuvent différer de ~1e-6 selon matériel/version de torch : le manifest garantit l'identité des fichiers **partagés**, pas leur recalcul bit-à-bit.
 - Relations spatiales = géométrie des boîtes (pas une vraie scene-graph) ; attributs texte = lexique couleur/taille/matière/état.
-- `instances_train2017.json` pèse ~450 Mo → ~3 Go de RAM au chargement.
-- Après `08_freeze` les fichiers sont en lecture seule ; `tools/run_notebooks.py` les déverrouille avant de relancer (à la main : `chmod -R u+w artifacts`).
+- Les versions runtime historiques diffèrent : `artifacts/manifest.json` indique Python 3.13.7 pour g1-v1.1; le manifeste v1.0 conserve Python 3.11.9. La version Python 3.13.3 citée séparément pour SigLIP n'est pas cohérente avec le manifeste courant et reste à confirmer.
+- Après `08_freeze`, les fichiers d'`artifacts/` sont en lecture seule. Ne les déverrouillez pas pour modifier cette release ; préparez une nouvelle copie/version.
+
+## Rapports et documentation
+
+- [`docs/DATASET_CARD.md`](docs/DATASET_CARD.md): schémas, embeddings, index, chargement, anti-fuite.
+- [`docs/preprocessing.md`](docs/preprocessing.md): image, captions, métadonnées, processors.
+- [`reports/leakage_audit.md`](reports/leakage_audit.md): toutes les vérifications QC et les correspondances texte.
+- [`reports/test_stratification.md`](reports/test_stratification.md) and
+  [`reports/tables/test_strata.csv`](reports/tables/test_strata.csv): procédure
+  de tirage et comptes observés.
+- `reports/tables/` and `reports/figures/`: encoder-comparison results.
