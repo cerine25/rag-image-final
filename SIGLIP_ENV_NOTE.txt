@@ -1,0 +1,2 @@
+﻿SigLIP run environment (Sarah, 2026-10-31)
+Python 3.13.3, torch 2.15.0+cpu, transformers 5.22.1, faiss 1.15.1, numpy 2.5.4
