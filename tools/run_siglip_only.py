@@ -4,6 +4,10 @@ import json
 import pathlib
 import time
 
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+os.chdir(ROOT)
+
 # تعيين وضع الأوففلاين لضمان عدم حدوث أي محاولات اتصال عشوائية بالهب
 os.environ["HF_HUB_OFFLINE"] = "1"
 
@@ -12,8 +16,7 @@ import torch, transformers, faiss, numpy
 print(f"Versions -> torch: {torch.__version__}, transformers: {transformers.__version__}, faiss: {faiss.__version__}, numpy: {numpy.__version__}")
 print(f"START_TIMESTAMP: {time.strftime('%Y-%m-%d %H:%M:%S')}")
 
-root = pathlib.Path.cwd()
-nb_path = root / "04_embeddings_index.ipynb"
+nb_path = ROOT / "04_embeddings_index.ipynb"
 nb = json.loads(nb_path.read_text(encoding="utf-8-sig"))
 
 # الخلايا المطلوبة حسب ترتيب 0-based: 2, 4, 6, 10, 12, 14, 16, 18
