@@ -17,3 +17,5 @@ data/images/
 !artifacts/eda/*.png
 
 logs/
+
+!reports/figures/*.png
