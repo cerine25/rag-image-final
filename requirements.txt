@@ -1,5 +1,5 @@
-# User-supplied SigLIP provenance: Python 3.13.3 / torch 2.15.0+cpu / transformers 5.22.1.
-# The frozen artifacts/manifest.json records Python 3.13.7 for g1-v1.1; verify this discrepancy before citing 3.13.3.
+# SigLIP release provenance from artifacts/manifest.json (env.python): Python 3.13.7 / torch 2.15.0+cpu / transformers 5.22.1.
+# Python 3.13.7 is the verified runtime for the frozen g1-v1.1 release.
 # v1.0 CLIP and DINOv2 provenance from artifacts/manifest_v1.0_backup.json:
 # Python 3.11.9 / torch 2.12.0+cpu / transformers 4.57.6.
 # Pins below use exact versions installed in the current .venv (Python 3.13.7).
