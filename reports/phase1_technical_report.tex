@@ -178,7 +178,7 @@ generation, CLIP, DINOv2, SigLIP, Sentence-BERT, FAISS, data leakage.
 13. Limitations and conclusion ~ \\
 References
 
-\section{1. Introduction and Problem
+\section{Introduction and Problem
 Statement}\label{introduction-and-problem-statement}
 
 The objective of this project is to study retrieval-based methods for
@@ -212,7 +212,7 @@ uses an associated caption, while an image-to-text configuration
 retrieves a KB caption vector directly. Both can serve as precursor
 evidence for later retrieval-augmented generation.
 
-\section{2. Dataset Description}\label{dataset-description}
+\section{Dataset Description}\label{dataset-description}
 
 The project uses MS COCO 2017. COCO provides images with object-instance
 annotations and five or more human-authored captions associated with
@@ -265,10 +265,10 @@ in
 The 100-image design is therefore the implemented Phase 1
 interpretation, not an extrapolation from other specification sections.
 
-\section{3. Dataset Splitting and
+\section{Dataset Splitting and
 Stratification}\label{dataset-splitting-and-stratification}
 
-\subsection{3.1 Sampling order and
+\subsection{Sampling order and
 eligibility}\label{sampling-order-and-eligibility}
 
 The sampling sequence is test first, validation second, and KB last.
@@ -286,7 +286,7 @@ train2017 exclusions; in val2017 it records 48 unannotated images and 12
 undersized images. None of the excluded images is represented by a split
 record.
 
-\subsection{3.2 Stratification
+\subsection{Stratification
 algorithm}\label{stratification-algorithm}
 
 Validation and test are stratified according to scene complexity, image
@@ -346,9 +346,9 @@ which is above the configured floor of 60; this distinction is
 intentional, because the KB should reflect retrieval prevalence rather
 than the equally represented evaluation quotas.
 
-\section{4. Exploratory Data Analysis}\label{exploratory-data-analysis}
+\section{Exploratory Data Analysis}\label{exploratory-data-analysis}
 
-\subsection{4.1 Dataset-scale and annotation
+\subsection{Dataset-scale and annotation
 profile}\label{dataset-scale-and-annotation-profile}
 
 The repository's EDA report summarizes 10,200 images, 51,000
@@ -413,7 +413,7 @@ between KB and test complexity, with \(\chi^2=18.3304\) and
 selection bias; the repository explicitly notes that the expected
 difference arises from the intentionally balanced test sample.
 
-\subsection{4.2 Spatial relations and
+\subsection{Spatial relations and
 layout}\label{spatial-relations-and-layout}
 
 Figure~\ref{fig:spatial-relations} presents geometric relation
@@ -434,7 +434,7 @@ symmetry between directional relation pairs is geometric by construction.}
 \label{fig:spatial-relations}
 \end{figure}
 
-\subsection{4.3 Captions and lexical
+\subsection{Captions and lexical
 statistics}\label{captions-and-lexical-statistics}
 
 Mean caption length is stable across splits: 10.483 KB tokens, 10.488
@@ -475,7 +475,7 @@ distribution.
 \label{fig:pos-distribution}
 \end{figure}
 
-\subsection{4.4 Co-occurrence and image-text
+\subsection{Co-occurrence and image-text
 association}\label{co-occurrence-and-image-text-association}
 
 The repository analyses frequent class co-occurrence and the association
@@ -505,7 +505,7 @@ relationship between annotation count and caption length.
 \label{fig:objects-caption}
 \end{figure}
 
-\subsection{4.5 Split
+\subsection{Split
 representativeness}\label{split-representativeness}
 
 The Jensen-Shannon divergence of class distributions is 0.0311 for KB
@@ -567,10 +567,10 @@ captions.}
 \label{fig:caption-attributes}
 \end{figure}
 
-\section{5. Image and Caption
+\section{Image and Caption
 Preprocessing}\label{image-and-caption-preprocessing}
 
-\subsection{5.1 Image normalization}\label{image-normalization}
+\subsection{Image normalization}\label{image-normalization}
 
 The normalization notebook verifies each image and applies EXIF
 orientation correction only when required. Pixel correction was recorded
@@ -594,7 +594,7 @@ estimate, and a source SHA-256. It also stores the original and
 normalized dimensions, source colour mode, EXIF state, resize state,
 difference hash, and output path in `images.csv`.
 
-\subsection{5.2 Model-specific
+\subsection{Model-specific
 preprocessing}\label{model-specific-preprocessing}
 
 Stored RGB files are not rewritten by each model. CLIP and SigLIP use
@@ -612,7 +612,7 @@ truncation and padding. These limits are preprocessing choices and are
 not evidence about the quality of either language model as a standalone
 generator.
 
-\subsection{5.3 Caption cleaning}\label{caption-cleaning}
+\subsection{Caption cleaning}\label{caption-cleaning}
 
 For each KB image, captions are sorted by source COCO caption ID and the
 first five are selected. A raw string is preserved in `caption\_raw`,
@@ -626,7 +626,7 @@ Evaluation files contain `caption\_raw` only and are not used to build
 the KB. The separation prevents cleaning or indexing choices in an
 evaluation reference from becoming KB data.
 
-\section{6. Metadata Extraction}\label{metadata-extraction}
+\section{Metadata Extraction}\label{metadata-extraction}
 
 Each split is joined to COCO instance annotations and caption records.
 Crowd annotations are ignored. For every non-crowd object, the pipeline
@@ -665,10 +665,10 @@ constitute an oracle for evaluating query metadata. This limitation is
 recorded explicitly and must be considered when interpreting downstream
 metadata-based results.
 
-\section{7. Data Quality Assessment and Anti-Leakage
+\section{Data Quality Assessment and Anti-Leakage
 Measures}\label{data-quality-assessment-and-anti-leakage-measures}
 
-\subsection{7.1 Image audit and repair}\label{image-audit-and-repair}
+\subsection{Image audit and repair}\label{image-audit-and-repair}
 
 The frozen image audit reports 10,200 readable images, all labelled
 `ok`. It records no missing or invalid images, no exact source-image
@@ -685,7 +685,7 @@ does not claim a one-to-one replacement mapping beyond these two dropped
 and added sets. Subsequent frozen checks found no exact duplicates and
 no qualifying near-duplicates.
 
-\subsection{7.2 Cross-split identity
+\subsection{Cross-split identity
 controls}\label{cross-split-identity-controls}
 
 Split files are pairwise disjoint and their saved IDs match SHA-256
@@ -723,7 +723,7 @@ Retrieval smoke tests & Passed for validation and test \\
 Table 4 should be read together with the detailed repository audit. The
 frozen report contains 40 checks, no failures, and no warnings.
 
-\subsection{7.3 Caption-string overlap}\label{caption-string-overlap}
+\subsection{Caption-string overlap}\label{caption-string-overlap}
 
 The QC normalized evaluation captions and KB captions with the same
 cleaning function. It found normalized string matches on 5 of 500
@@ -739,7 +739,7 @@ record leaked across splits. The audit explicitly reports these
 occurrences so that repetitive generic captions do not conceal their
 presence.
 
-\section{8. Image and Text Embeddings}\label{image-and-text-embeddings}
+\section{Image and Text Embeddings}\label{image-and-text-embeddings}
 
 The release provides four distinct embedding products. CLIP ViT-B/32 and
 SigLIP base patch16/224 have joint image-text representations,
@@ -785,10 +785,10 @@ similarity to be computed as
 The consequence is that a Euclidean inner-product index on normalized
 vectors implements cosine retrieval.
 
-\section{9. Knowledge Base and FAISS Index
+\section{Knowledge Base and FAISS Index
 Construction}\label{knowledge-base-and-faiss-index-construction}
 
-\subsection{9.1 Exact image and text
+\subsection{Exact image and text
 indexes}\label{exact-image-and-text-indexes}
 
 Each image encoder has a 10,000-vector KB index built as FAISS
@@ -827,7 +827,7 @@ The CLIP and SigLIP caption indexes are 512- and 768-dimensional
 does not record separate text-index build times or MB values, so no
 value is inferred for those fields.
 
-\subsection{9.2 Approximate HNSW search}\label{approximate-hnsw-search}
+\subsection{Approximate HNSW search}\label{approximate-hnsw-search}
 
 HNSW variants use \(M=32\), construction search depth 200, and search
 depth 64. On the frozen CPU run, CLIP self-retrieval recall@10 is 1.000,
@@ -843,7 +843,7 @@ properties of the frozen build, not a fair full-system
 caption-generation latency because encoding, post-processing, and
 language generation are outside the measurement.
 
-\subsection{9.3 Retrieval API}\label{retrieval-api}
+\subsection{Retrieval API}\label{retrieval-api}
 
 The public `Release` class loads the configured encoder, performs image
 and caption retrieval, and maps returned KB IDs to raw captions. Flat
@@ -853,10 +853,10 @@ its own image is returned. For the image-to-text mode, query vectors are
 searched against the 50,000 caption vectors and aligned parent-image IDs
 are returned.
 
-\section{10. Encoder Comparison and Validation-Based
+\section{Encoder Comparison and Validation-Based
 Selection}\label{encoder-comparison-and-validation-based-selection}
 
-\subsection{10.1 Retrieval
+\subsection{Retrieval
 configurations}\label{retrieval-configurations}
 
 The comparison script implements five configurations: - CLIP
@@ -877,7 +877,7 @@ with the query image's classes. CIDEr is calculated against the five
 evaluation reference captions using the repository's cleaned references.
 A deterministic random-caption baseline is generated with seed 42.
 
-\subsection{10.2 Validation selection
+\subsection{Validation selection
 metric}\label{validation-selection-metric}
 
 CIDEr is the primary selection metric. Its mean was calculated over the
@@ -901,10 +901,10 @@ data were retained in {[}the reported final
 comparison{]}(\#table-8-test-results) and were not included in
 configuration selection.
 
-\section{11. Experimental Results and Statistical
+\section{Experimental Results and Statistical
 Analysis}\label{experimental-results-and-statistical-analysis}
 
-\subsection{11.1 Validation results}\label{validation-results}
+\subsection{Validation results}\label{validation-results}
 
 {[}Table 7{]}(\#table-7-validation) gives the validation metrics
 recorded in the comparison artifact and repository CSV.
@@ -974,7 +974,7 @@ The SigLIP image-to-text 10-fold cross-validation standard deviation is
 variability must be considered in interpreting the hundred-query
 validation sample, even though the mean difference is not significant.
 
-\subsection{11.2 Final test reporting}\label{final-test-reporting}
+\subsection{Final test reporting}\label{final-test-reporting}
 
 Table~\ref{tab:test-results} presents report-only test values.
 These results are not used to select a configuration.
@@ -1021,7 +1021,7 @@ configurations.}
 \label{fig:encoder-comparison}
 \end{figure}
 
-\subsection{11.3 Interpretation}\label{interpretation}
+\subsection{Interpretation}\label{interpretation}
 
 Several conclusions are statistically and descriptively supported, with
 qualifications. SigLIP image-to-text is the validation winner and final
@@ -1040,10 +1040,10 @@ artifacts, and a nearest-neighbour caption evaluation protocol. Positive
 test consistency is supportive but not sufficient for broad
 generalization.
 
-\section{12. Reproducibility and Dataset
+\section{Reproducibility and Dataset
 Freezing}\label{reproducibility-and-dataset-freezing}
 
-\subsection{12.1 Configuration and
+\subsection{Configuration and
 execution}\label{configuration-and-execution}
 
 The master configuration records seed 42, release version g1-v1.1, split
@@ -1063,7 +1063,7 @@ PyTorch 2.15.0 CPU, Transformers 5.22.1, and Sentence-Transformers
 tools, sentencepiece, protobuf, imagehash, Jupyter packages, and
 supporting dependencies.
 
-\subsection{12.2 Manifest and read-only
+\subsection{Manifest and read-only
 release}\label{manifest-and-read-only-release}
 
 The manifest identifies release g1-v1.1, seed 42, primary encoder
@@ -1086,7 +1086,7 @@ Transformers 4.57.6. One documentation note for SigLIP says Python
 treats the manifest value as the frozen runtime and records the
 discrepancy as a known documentation limitation.
 
-\subsection{12.3 Dataset freezing}\label{dataset-freezing}
+\subsection{Dataset freezing}\label{dataset-freezing}
 
 The freeze separates raw input integrity from generated artifact
 integrity. Split files include SHA-256 hashes of ID lists, while the
@@ -1095,10 +1095,10 @@ hashes rather than only file names or counts. Any changes to images,
 embeddings, indexes, splits, or QC artifacts require rebuilding a new
 release rather than modifying the frozen directory.
 
-\section{13. Limitations and
+\section{Limitations and
 Conclusion}\label{limitations-and-conclusion}
 
-\subsection{13.1 Limitations}\label{limitations}
+\subsection{Limitations}\label{limitations}
 
 First, Phase 1 does not implement a caption generator. CIDEr and
 nearest-neighbour caption baselines measure whether the shared retrieval
@@ -1154,7 +1154,7 @@ manifest remains the safer frozen release authority, but documentation
 consumers should be aware that the note says Python 3.13.3 whereas the
 manifest says 3.13.7.
 
-\subsection{13.2 Conclusion}\label{conclusion}
+\subsection{Conclusion}\label{conclusion}
 
 Phase 1 establishes a coherent, auditable foundation for later RAG-based
 caption generation. Its principal implemented results are a 10,200-image
