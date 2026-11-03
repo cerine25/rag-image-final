@@ -33,6 +33,8 @@
 \usepackage{xcolor}
 \usepackage{longtable,booktabs,array}
 \usepackage{calc}
+\usepackage{caption}
+\captionsetup{justification=centering}
 \usepackage{etoolbox}
 
 \makeatletter
@@ -110,9 +112,7 @@
     Sarah GHERBI\\
     Nour El Houda AKHDARI
 
-    \vfill
-
-    Release g1-v1.1
+    
 
 \end{titlepage}
 
@@ -134,29 +134,15 @@
 
 % Continue your existing abstract and report here.
 
-Phase 1 establishes a frozen, shared data foundation for
-comparative retrieval-augmented image-captioning research on MS COCO
-2017. The implemented release contains 10,000 knowledge-base (KB) images
-with 50,000 captions, 100 validation images with 500 reference captions,
-and 100 test images with 500 reference captions. The pipeline constructs
-normalized images, captions, object and relational metadata, image and
-text embeddings, exact and approximate FAISS indexes, exploratory
-statistics, quality-control evidence, and a release manifest.
-Anti-leakage controls combine disjoint split construction, content-level
-audit checks, duplicate repair, near-duplicate screening, and an
-ID-level retrieval guard.
-Four retrieval configurations were evaluated in the first Phase 1
-design, and the SigLIP extension added a fifth configuration. Validation
-nearest-neighbour CIDEr identified SigLIP image-to-text retrieval
-(0.7223) as the best implemented configuration; SigLIP image-to-image
-obtained 0.6735, followed by CLIP image-to-text (0.5584), DINOv2
-image-to-image (0.5541), and CLIP image-to-image (0.5286). SigLIP
-image-to-image did not differ significantly from SigLIP image-to-text
-(Wilcoxon \(p=0.3023\)), whereas the CLIP image-to-text, DINOv2, and
-CLIP image-to-image comparisons were significant under the repository's
-four-comparison Bonferroni threshold of 0.0125. The test split remained
-report-only: SigLIP image-to-text obtained CIDEr 0.7064, also the
-highest test value, but was not used to choose the encoder.
+## Abstract
+
+Automatic image captioning is an important task in computer vision and natural language processing. However, vision-language models may omit objects, describe objects that are not present, or fail to accurately represent visual attributes and relationships. Retrieval-Augmented Generation (RAG) offers a potential solution by providing relevant visual and textual information to support caption generation.
+
+This project aims to investigate how different RAG techniques influence the quality, relevance, and visual grounding of generated image captions using the MS COCO 2017 dataset. The main motivation is to determine whether incorporating retrieved evidence can improve caption accuracy, reduce hallucinations, and provide a better balance between generation quality and computational cost.
+
+The first phase focuses on building a reproducible data preparation and retrieval framework. It includes a knowledge base of 10,000 images and 50,000 captions, alongside separate validation and test sets of 100 images each. The pipeline covers image and caption preprocessing, metadata extraction, embedding generation, FAISS indexing, exploratory data analysis, and anti-leakage validation. Five retrieval configurations based on CLIP, SigLIP, and DINOv2 were evaluated using CIDEr scores on the validation set. SigLIP image-to-text achieved the highest validation CIDEr score of 0.7223 and was selected as the best-performing configuration.
+
+At this stage, the evaluation focuses on retrieval performance rather than generated captions.
 
 \textbf{Keywords:} MS COCO, image captioning, retrieval-augmented
 generation, CLIP, DINOv2, SigLIP, Sentence-BERT, FAISS, data leakage.
@@ -192,16 +178,7 @@ the final caption generator. It therefore prepares a common, verified
 corpus and the retrieval infrastructure that later groups can use
 consistently.
 
-Phase 1 addresses three technical risks. First, a shared corpus is
-needed so that later experiments compare retrieval and generation
-methods rather than different datasets. Second, evaluation leakage can
-invalidate an apparently strong result if an evaluation image, a
-near-copy, or its textual reference is present in the knowledge base.
-Third, encoder selection requires a documented validation procedure and
-must not be influenced by the final test set. The repository
-consequently separates data preparation, validation, and final
-reporting; its retrieval API exposes evaluation references only through
-evaluation-only files.
+Phase 1 builds a clean, shared image-caption dataset, prevents data leakage, selects the best encoder using validation data, and establishes a retrieval baseline that finds similar images or captions without generating new captions.
 
 The scientific deliverable is not a claim that Phase 1 itself generates
 captions. Instead, it supplies a retrieval baseline using
@@ -216,13 +193,15 @@ evidence for later retrieval-augmented generation.
 
 The project uses MS COCO 2017. COCO provides images with object-instance
 annotations and five or more human-authored captions associated with
-many images. Release g1-v1.1 is restricted to the implemented Phase 1
+many images. This report is restricted to the implemented Phase 1
 sizes documented in Table~\ref{tab:release-composition}. The
 KB contains 10,000 images and 50,000 retained captions, whereas
 validation and test each contain 100 images and 500 raw
 reference-caption rows.
 
+\begin{center}
 \textbf{Table 1. Release composition.}
+\end{center}
 \label{tab:release-composition}
 
 \begin{table}[htbp]
@@ -240,30 +219,16 @@ Test & COCO val2017 & 100 & 500 references \\
 \end{tabular}
 \end{table}
 
-Table 1 directly restates the frozen split metadata, EDA counts, and
-evaluation files. The KB and validation originate from non-overlapping
-selections of COCO train2017, while the test selection originates from
-COCO val2017. This composition avoids an unnecessary download of the
-full image archive: only the approximately 10,200 images belonging to a
-frozen split are designated for acquisition.
+Table 1 summarizes the dataset composition. The KB and validation
+sets come from separate selections of COCO train2017, while the test
+set comes from COCO val2017.
 
-The repository records two forms of captions. The KB has `caption\_raw`,
-`caption\_clean`, and `n\_tokens`; the evaluation splits retain raw
-references in separate JSONL files. Each KB image has exactly five
-captions after selection. Thus the target release preserves a fixed
-reference-cardinality structure even when a COCO image has more than
-five source captions.
+Duplicate removal is important because repeated images can cause data
+leakage, bias evaluation results, and reduce retrieval diversity.
+It also avoids unnecessary storage and embedding computation.
+This is particularly important for SigLIP and FAISS, where duplicate
+images could occupy multiple positions in the retrieval results.
 
-\subsection{Specification ambiguity}\label{specification-ambiguity}
-
-The project specification was internally inconsistent about the test
-size: one section specified 100 test images, while another described
-1,000. The repository resolves the ambiguity by confirming 100 images
-with the course professor on 28 October 2026 and recording that decision
-in
-{[}reports/split\_confirmation.json{]}(reports/split\_confirmation.json).
-The 100-image design is therefore the implemented Phase 1
-interpretation, not an extrapolation from other specification sections.
 
 \section{Dataset Splitting and
 Stratification}\label{dataset-splitting-and-stratification}
@@ -271,27 +236,23 @@ Stratification}\label{dataset-splitting-and-stratification}
 \subsection{Sampling order and
 eligibility}\label{sampling-order-and-eligibility}
 
-The sampling sequence is test first, validation second, and KB last.
-Test IDs are selected from eligible COCO val2017 images, validation IDs
-from eligible train2017 images, and KB IDs from train2017 after
-excluding validation IDs. Eligibility requires at least the configured
-number of object annotations, at least one caption subset, and a shorter
-side of at least 200 pixels. The global seed is 42; the implementation
-derives 43 for the test sample, 44 for validation, and 45 for the KB.
+Sampling follows this order: test, validation, then KB. Test images
+come from COCO val2017, while validation and KB images come from
+train2017. Validation IDs are excluded from KB selection.
 
-COCO images without object annotations are excluded because the
-pipeline's Phase 1 metadata function requires instance data. The split
-metadata records 1,021 such exclusions from train2017 and 225 undersized
-train2017 exclusions; in val2017 it records 48 unannotated images and 12
-undersized images. None of the excluded images is represented by a split
-record.
+Images must meet the minimum object annotation count, contain at least
+one caption, and have a shorter side of at least 200 pixels. Sampling
+uses a fixed global seed of 42, with separate seeds for each split.
+
+Images without object annotations or below the required size are
+excluded because they do not meet the pipeline requirements.
 
 \subsection{Stratification
 algorithm}\label{stratification-algorithm}
 
-Validation and test are stratified according to scene complexity, image
-context, interaction level, and class coverage. Complexity is derived
-from the count of non-crowd COCO object annotations:
+Validation and test are stratified by scene complexity, image context,
+object interactions, and class coverage. Complexity is based on the
+number of non-crowd object annotations:
 
 \[
 \text{simple}=1\text{-}2,\quad
@@ -300,24 +261,23 @@ from the count of non-crowd COCO object annotations:
 \text{crowded}\geq10.
 \]
 
-Before filling the complexity quotas, a greedy class-cover step selects
-up to half of the requested sample to cover COCO categories. At each
-iteration it prioritizes the rarest needed class and then an image
-covering the greatest number of other needed classes, with deterministic
-seeded tie-breaking. The complexity targets are 25\%, 30\%, 30\%, and
-15\%, respectively. Integer rounding preserves the target total.
-Overfilled categories are rebalanced, while residual images are assigned
-to medium complexity.
+First, a greedy selection step prioritizes images containing rare COCO
+categories and covering the largest number of remaining categories.
+Seeded tie-breaking ensures reproducible selection. The complexity
+targets are 25\% simple, 30\% medium, 30\% complex, and 15\% crowded.
+Rounding preserves the requested sample size. Overfilled groups are
+rebalanced, and remaining images are assigned to medium complexity.
 
-An image is labelled as containing an interaction if it has a person and
-another class, at least two person annotations, or an animal
-supercategory together with another supercategory. The requested minimum
-is 30\% of each evaluation sample. Candidate selection operates within
-complexity classes and follows a round-robin context rotation among
-indoor, outdoor, and mixed. It prioritizes interaction candidates while
-the global interaction minimum remains unmet.
+An image is considered to contain an interaction if it has a person and
+another class, at least two people, or an animal together with another
+supercategory. At least 30\% of each evaluation sample must contain
+interactions. Selection is performed within complexity groups, rotating
+between indoor, outdoor, and mixed contexts. Interaction images are
+prioritized until the 30\% target is reached.
 
+\begin{center}
 \textbf{Table 2. Observed stratification of validation and test.}
+\end{center}
 
 \begin{table}[htbp]
 \centering
@@ -351,16 +311,16 @@ than the equally represented evaluation quotas.
 \subsection{Dataset-scale and annotation
 profile}\label{dataset-scale-and-annotation-profile}
 
-The repository's EDA report summarizes 10,200 images, 51,000
-captions/references, 80 object categories in all splits, and object
-statistics for each split. The KB contains 80,498 object instances,
-based on the reproduced mean of 8.0498 objects per image. Across splits,
-the mean object count is 8.05 for KB, 7.74 for validation, and 6.77 for
-test, as shown in {[}Table 3{]}(\#table-3-object-summary). The
-distributions are right-skewed: medians are 5, 5, and 4 respectively,
-while maxima reach 67 in KB, 65 in validation, and 62 in test.
+The EDA summarizes the 10,200 images, 51,000 captions, and 80 object
+categories across the dataset. The KB contains 80,498 object instances.
+The average number of objects per image is 8.05 for KB, 7.74 for
+validation, and 6.77 for test. The median is 5 for KB and validation,
+and 4 for test. The maximum number of objects in a single image is
+67, 65, and 62, respectively, as shown in Table 3.
 
+\begin{center}
 \textbf{Table 3. Object-content summary.}
+\end{center}
 
 \begin{table}[htbp]
 \centering
@@ -391,11 +351,9 @@ bottle, cup, bowl, dining table, traffic light, and sheep.}
 \label{fig:top50-classes}
 \end{figure}
 
-As the figure indicates, person is by far the most frequent category.
-Its frequency motivates the project's interaction-definition emphasis,
-while the smaller image-level class frequencies affect class-coverage
-and co-occurrence analysis. Figure~\ref{fig:scene-complexity} shows
-the scene-complexity distribution generated by the pipeline.
+Person is the most frequent category in the KB, followed by classes
+such as car, chair, book, and bottle. These statistics help describe
+the dataset and identify common object categories.
 
 \begin{figure}[htbp]
 \centering
@@ -407,11 +365,11 @@ crowded), whereas validation and test follow the implemented
 \label{fig:scene-complexity}
 \end{figure}
 
-The stratification explains the significant chi-square comparison
-between KB and test complexity, with \(\chi^2=18.3304\) and
-\(p=0.000376\). This is not presented as evidence of unwanted
-selection bias; the repository explicitly notes that the expected
-difference arises from the intentionally balanced test sample.
+The difference between KB and test scene complexity is statistically
+significant (\(\chi^2=18.3304\), \(p=0.000376\)). This difference is
+expected because the KB keeps its natural distribution, while the
+test set was deliberately balanced using the predefined
+stratification targets.
 
 \subsection{Spatial relations and
 layout}\label{spatial-relations-and-layout}
@@ -572,59 +530,34 @@ Preprocessing}\label{image-and-caption-preprocessing}
 
 \subsection{Image normalization}\label{image-normalization}
 
-The normalization notebook verifies each image and applies EXIF
-orientation correction only when required. Pixel correction was recorded
-for no images in the frozen audit. The stored pipeline converts 24
-grayscale images to RGB; the audit records 10,176 RGB source files and
-24 luminance-only files, all now represented as RGB. Thus model
-preprocessing begins from consistent RGB inputs rather than source modes
-that vary by COCO file.
+Each image is checked for validity and converted to RGB format.
+Images larger than 512 pixels on their longest side are resized while
+preserving their aspect ratio. Smaller images are not enlarged.
 
-Images with a side larger than 512 pixels are uniformly rescaled so that
-the maximum side equals 512. The scale preserves aspect ratio and rounds
-the resulting dimensions to at least one pixel. Pillow's Lanczos
-resampling is used, and the normalized image is stored as JPEG quality
-95 with subsampling disabled at
-`artifacts/images\_rgb/\textless split\textgreater/\textless12-digit-id\textgreater.jpg`.
-Smaller images are stored without forced enlargement.
-
-The audit derives a 64-by-64 bilinear sample and records brightness,
-contrast, colorfulness, sharpness, darkness, a named dominant-colour
-estimate, and a source SHA-256. It also stores the original and
-normalized dimensions, source colour mode, EXIF state, resize state,
-difference hash, and output path in `images.csv`.
+Images are saved as JPEG files with quality 95. The pipeline also
+records image dimensions, colour information, brightness, sharpness,
+and file hashes for quality control.
 
 \subsection{Model-specific
 preprocessing}\label{model-specific-preprocessing}
 
-Stored RGB files are not rewritten by each model. CLIP and SigLIP use
-each checkpoint's Hugging Face processor and text-image feature methods.
-DINOv2 uses an AutoImageProcessor and the CLS token
-\(\mathbf h_{\mathrm{CLS}}=H[:,0,:]\) as the image
-representation. The processor configuration is not included in the
-frozen release, so processor-specific crop dimensions cannot be
-independently reconstructed from the artifacts; documentation relies on
-the checkpoint processor used at embedding time.
+Each model uses its own preprocessing tools. CLIP and SigLIP use
+their Hugging Face processors to prepare images and text, while
+DINOv2 uses its image processor and CLS token to extract image
+features.
 
-CLIP input text is tokenized with a maximum length of 77 and truncation
-with dynamic padding. SigLIP uses a configured maximum length of 64 with
-truncation and padding. These limits are preprocessing choices and are
-not evidence about the quality of either language model as a standalone
-generator.
+CLIP uses a maximum text length of 77 tokens, while SigLIP uses
+64 tokens.
 
 \subsection{Caption cleaning}\label{caption-cleaning}
 
-For each KB image, captions are sorted by source COCO caption ID and the
-first five are selected. A raw string is preserved in `caption\_raw`,
-and a cleaned string is stored in `caption\_clean`. Cleaning (1) strips
-whitespace and converts to lowercase, (2) replaces characters outside
-word characters, whitespace, and apostrophes with spaces, (3) removes a
-quote when surrounded by spaces, and (4) collapses whitespace. Token
-counts are calculated from the cleaned form.
+For each KB image, the first five captions are selected and stored.
+The raw captions are preserved, while cleaned versions are converted
+to lowercase, stripped of unnecessary characters, and normalized
+for whitespace.
 
-Evaluation files contain `caption\_raw` only and are not used to build
-the KB. The separation prevents cleaning or indexing choices in an
-evaluation reference from becoming KB data.
+Evaluation captions remain separate from the KB to prevent evaluation
+references from being included in retrieval data
 
 \section{Metadata Extraction}\label{metadata-extraction}
 
@@ -670,36 +603,31 @@ Measures}\label{data-quality-assessment-and-anti-leakage-measures}
 
 \subsection{Image audit and repair}\label{image-audit-and-repair}
 
-The frozen image audit reports 10,200 readable images, all labelled
-`ok`. It records no missing or invalid images, no exact source-image
-duplicates, and zero near-duplicates in validation/test versus all other
-audited sets under the configured thresholds. Of 10,200 source files, 24
-were luminance mode and 10,176 were RGB; zero required EXIF orientation
-correction, while all 24 luminance images required conversion to RGB.
+The image audit confirms that all 10,200 images are readable and
+valid. It also checks image formats, exact duplicates, and
+near-duplicates.
 
-The deduplicated release required two repairs. KB image 186275 was
-identified as an exact SHA-256 copy of a validation/test image and KB
-image 463132 as a dHash near-duplicate within Hamming distance 4. The
-repair process removed those IDs and added 149053 and 474404. The audit
-does not claim a one-to-one replacement mapping beyond these two dropped
-and added sets. Subsequent frozen checks found no exact duplicates and
-no qualifying near-duplicates.
+Two duplicate images were identified in the KB: one exact duplicate
+and one near-duplicate. Both were removed and replaced with other
+images. The final audit found no remaining duplicates or qualifying
+near-duplicates under the configured thresholds.
 
 \subsection{Cross-split identity
 controls}\label{cross-split-identity-controls}
 
-Split files are pairwise disjoint and their saved IDs match SHA-256
-values recorded in `splits\_meta.json`. The release API refuses
-retrieval if a query image ID appears in the returned KB result set. In
-addition, the primary SigLIP cosine check found no validation or test
-image with cosine similarity at least 0.97 to a KB image, and the
-separate dHash check found no evaluation image within distance 4 of a KB
-image.
+The three splits contain separate image IDs, and their integrity is
+verified using SHA-256 hashes. The retrieval API also prevents a
+query image from being returned as its own result.
+
+Additional SigLIP similarity and difference-hash checks found no
+qualifying near-duplicates between the evaluation sets and the KB.
 
 Table~\ref{tab:qc} summarizes the QC programme rather than
 reproducing all 40 individual rows.
 
+\begin{center}
 \textbf{Table 4. Consolidated quality-control outcome.}
+\end{center}
 \label{tab:qc}
 
 \begin{table}[htbp]
@@ -741,14 +669,18 @@ presence.
 
 \section{Image and Text Embeddings}\label{image-and-text-embeddings}
 
-The release provides four distinct embedding products. CLIP ViT-B/32 and
-SigLIP base patch16/224 have joint image-text representations,
-DINOv2-small is used for image features, and Sentence-BERT
-all-MiniLM-L6-v2 supplies caption vectors. All embeddings are float32
-and L2-normalized. {[}Table 5{]}(\#table-5-embeddings) records the
-actual tensor shapes.
+The pipeline generates image and text embeddings using four models:
+CLIP, SigLIP, DINOv2, and Sentence-BERT. These embeddings represent
+images and captions as numerical vectors that can be compared using
+similarity measures.
 
+All embeddings are stored as normalized float32 vectors. Table 5
+summarizes the dimensions and number of vectors generated by each
+model.
+
+\begin{center}
 \textbf{Table 5. Embedding products and frozen shapes.}
+\end{center}
 
 \begin{table}[htbp]
 \centering
@@ -791,15 +723,20 @@ Construction}\label{knowledge-base-and-faiss-index-construction}
 \subsection{Exact image and text
 indexes}\label{exact-image-and-text-indexes}
 
-Each image encoder has a 10,000-vector KB index built as FAISS
-`IndexFlatIP`. CLIP and SigLIP also have flat text indexes. All
-implemented image indexes use inner product on normalized vectors, which
-is equivalent to cosine similarity under the saved normalization.
+FAISS is used to build similarity-search indexes for the KB.
+The image indexes contain 10,000 vectors each, while the CLIP and
+SigLIP text indexes contain 50,000 caption vectors each.
 
-Table~\ref{tab:indexes} records the image indexes documented
-by the repository, including sizes and build times.
+The indexes use IndexFlatIP, which performs exact inner-product
+search. Since the vectors are normalized, this is equivalent to
+cosine similarity. 
 
+Table~\ref{tab:indexes} summarizes the index configurations
+and their build times.
+
+\begin{center}
 \textbf{Table 6. Image FAISS index configurations.}
+\end{center}
 \label{tab:indexes}
 
 \begin{table}[htbp]
@@ -829,19 +766,13 @@ value is inferred for those fields.
 
 \subsection{Approximate HNSW search}\label{approximate-hnsw-search}
 
-HNSW variants use \(M=32\), construction search depth 200, and search
-depth 64. On the frozen CPU run, CLIP self-retrieval recall@10 is 1.000,
-DINOv2 recall@10 is 0.997, and SigLIP recall@10 is 0.999. SigLIP's
-recorded HNSW recall@10 of 99.9\% corresponds to 99.99\% HNSW
-self-retrieval in the run note and slightly different rounding
-descriptions in repository prose. The artifact-level numeric value is
-used in Table~\ref{tab:indexes}.
+HNSW indexes provide faster approximate similarity search.
+They use M=32, efConstruction=200, and efSearch=64.
 
-For SigLIP, median FAISS-style latency in the index report is 0.737
-ms/query for flat search and 0.082 ms/query for HNSW search. These are
-properties of the frozen build, not a fair full-system
-caption-generation latency because encoding, post-processing, and
-language generation are outside the measurement.
+Recall@10 is 1.000 for CLIP, 0.997 for DINOv2, and 0.999 for
+SigLIP, showing that approximate search closely matches exact
+search. For SigLIP, median search latency decreases from 0.737 ms
+with flat search to 0.082 ms with HNSW.
 
 \subsection{Retrieval API}\label{retrieval-api}
 
@@ -859,37 +790,29 @@ Selection}\label{encoder-comparison-and-validation-based-selection}
 \subsection{Retrieval
 configurations}\label{retrieval-configurations}
 
-The comparison script implements five configurations: - CLIP
-image-to-image; - CLIP image-to-text; - DINOv2 image-to-image; - SigLIP
-image-to-image; - SigLIP image-to-text.
+Five retrieval configurations are compared using CLIP, DINOv2,
+and SigLIP.
 
-For image-to-image retrieval, a query image vector searches the
-corresponding 10,000 KB image vectors, and the first caption associated
-with each highest-ranked image is used as the prediction. For
-image-to-text retrieval, the query searches the 50,000 KB caption
-vectors directly and returns the highest-ranked caption. This is a
-nearest-neighbour caption proxy, not full retrieval-augmented text
-generation.
+In image-to-image retrieval, the query image is compared with KB
+images, and the caption of the most similar image is returned.
+In image-to-text retrieval, the query image is compared directly
+with KB caption embeddings to retrieve the most similar caption.
 
-The script assigns relevance at class level for recall and precision:
-each retrieved image or parent image's metadata classes are compared
-with the query image's classes. CIDEr is calculated against the five
-evaluation reference captions using the repository's cleaned references.
-A deterministic random-caption baseline is generated with seed 42.
+The configurations are evaluated using retrieval metrics and CIDEr.
+A random-caption baseline is also included for comparison.
 
 \subsection{Validation selection
 metric}\label{validation-selection-metric}
 
-CIDEr is the primary selection metric. Its mean was calculated over the
-100 validation queries, and candidate configurations were ranked by mean
-validation CIDEr. Jaccard class@1 was used as a tie-break criterion. The
-repository records mean CIDEr, 10-fold validation cross-validation mean
-and standard deviation, 95\% bootstrap confidence intervals for the
-current selection analysis, and pairwise Wilcoxon signed-rank values
-relative to the selected candidate.
+CIDEr is used as the main metric for selecting the best
+configuration. Each configuration is evaluated on the 100
+validation images, and the one with the highest mean CIDEr is
+selected. Jaccard class@1 is used as a tie-breaker.
 
-The final selected configuration is SigLIP image-to-text because it
-attained the highest validation CIDEr:
+SigLIP image-to-text achieves the highest validation CIDEr of
+0.7223 and is therefore selected. The test set is kept separate
+and is used only for final reporting.
+
 
 \[
 \text{selected} = \arg\max_c
@@ -897,8 +820,7 @@ attained the highest validation CIDEr:
 \]
 
 The selection was made before looking at the final test results. Test
-data were retained in {[}the reported final
-comparison{]}(\#table-8-test-results) and were not included in
+data were retained in Table 8 and were not included in
 configuration selection.
 
 \section{Experimental Results and Statistical
@@ -906,10 +828,12 @@ Analysis}\label{experimental-results-and-statistical-analysis}
 
 \subsection{Validation results}\label{validation-results}
 
-{[}Table 7{]}(\#table-7-validation) gives the validation metrics
+Table 7 gives the validation metrics
 recorded in the comparison artifact and repository CSV.
 
+\begin{center}
 \textbf{Table 7. Validation configuration comparison.}
+\end{center}
 
 \begin{table}[htbp]
 \centering
@@ -926,19 +850,18 @@ CLIP image-to-image & 0.98 & 1.00 / 1.00 & 0.98 / 0.972 / 0.951 & 0.9883 & 0.538
 \end{tabular}}
 \end{table}
 
-Table 7 shows that retrieval success and nearest-neighbour caption
-quality need not move in parallel. SigLIP image-to-image has recall@1
-and MRR equal to 1.0 but lower CIDEr than SigLIP image-to-text. SigLIP
-image-to-text has the highest mean CIDEr but recall@1 of 0.96. These
-distinctions support selection by the prespecified CIDEr metric instead
-of using retrieval recall alone.
+Table 7 shows that SigLIP image-to-text achieves the highest
+validation CIDEr score of 0.7223. However, SigLIP image-to-image
+achieves better recall@1 and MRR. This shows that retrieval
+accuracy and caption quality do not always produce the same ranking.
 
 The reported confidence intervals, mean differences, and Wilcoxon
-comparisons against SigLIP image-to-text are reproduced in {[}Table
-8{]}(\#table-8-val-statistics).
+comparisons against SigLIP image-to-text are reproduced in Table 8.
 
+\begin{center}
 \textbf{Table 8. Validation statistical comparison with SigLIP
 image-to-text.}
+\end{center}
 
 \begin{table}[htbp]
 \centering
@@ -955,31 +878,24 @@ CLIP image-to-image & 0.5286 & [0.4384, 0.6233] & 0.1937 & 0.00915 \\
 \end{tabular}
 \end{table}
 
-Table 8 supplies the evidence used for selection. The 95\% interval for
-SigLIP image-to-text overlaps those of several alternatives;
-nevertheless, its point estimate ranks first. SigLIP image-to-image has
-\(p=0.3023\) and is therefore not significantly worse. The repository's
-Bonferroni correction across four comparisons uses
-\(\alpha=0.05/4=0.0125\). Under that rule, the CLIP image-to-text,
-DINOv2 image-to-image, and CLIP image-to-image comparisons remain
-significant, whereas SigLIP image-to-image remains non-significant.
+Table 8 presents the statistical comparison between the selected
+configuration and the alternatives. SigLIP image-to-image is not
+significantly different from SigLIP image-to-text
+(\(p=0.3023\)). The other three configurations are significantly
+lower under the Bonferroni threshold of 0.0125.
 
-The repository also reports cross-validation mean values of 0.7223 for
-SigLIP text, 0.6735 for SigLIP image, 0.5584 for CLIP text, 0.5541 for
-DINOv2 image, and 0.5286 for CLIP image. These means are identical to
-the corresponding validation means to the displayed precision.
-
-The SigLIP image-to-text 10-fold cross-validation standard deviation is
-0.1913, compared with 0.1351 for SigLIP image-to-image. This sizeable
-variability must be considered in interpreting the hundred-query
-validation sample, even though the mean difference is not significant.
+Therefore, SigLIP image-to-text is selected based on its highest
+validation CIDEr, although its advantage over SigLIP image-to-image
+is not statistically significant.
 
 \subsection{Final test reporting}\label{final-test-reporting}
 
 Table~\ref{tab:test-results} presents report-only test values.
 These results are not used to select a configuration.
 
+\begin{center}
 \textbf{Table 9. Report-only test results.}
+\end{center}
 \label{tab:test-results}
 
 \begin{table}[htbp]
@@ -997,17 +913,12 @@ SigLIP image-to-text & 0.98 & 1.00 / 1.00 & 0.98 / 0.964 / 0.972 & 0.9883 & \tex
 \end{tabular}}
 \end{table}
 
-Table 9 confirms consistency between the validation selection and final
-reporting. SigLIP image-to-text remains best at test CIDEr 0.7064, a
-difference of 0.0564 from the second-best CLIP image-to-text
-configuration. Its test recall@1 is 0.98 and MRR is 0.9883. The
-random-caption baseline is 0.0420.
+Table 9 presents the final test results. SigLIP image-to-text
+achieves the highest CIDEr score of 0.7064, followed by CLIP
+image-to-text at 0.6501. The random-caption baseline scores 0.0420.
 
-The repository reports no test-set significance testing and no
-test-based model-selection correction. This is a deliberate
-methodological constraint. The test set is useful as an independent
-final check, but should not be used to revise the validation winner or
-to search for a new configuration.
+These results are used only for final reporting and do not influence
+the configuration selected using validation data.
 
 Figure~\ref{fig:encoder-comparison} visualizes validation
 CIDEr by configuration. The repository has one encoder-comparison chart,
@@ -1100,83 +1011,41 @@ Conclusion}\label{limitations-and-conclusion}
 
 \subsection{Limitations}\label{limitations}
 
-First, Phase 1 does not implement a caption generator. CIDEr and
-nearest-neighbour caption baselines measure whether the shared retrieval
-setup supplies useful candidate text. Language generation, prompt
-construction, grounding, fluency optimization, and user-facing caption
-quality remain future work.
+Phase 1 does not include a complete caption-generation model.
+It evaluates retrieval-based caption candidates instead.
 
-Second, the validation and test sets contain only 100 images. Although
-this permits focused stratification, statistical estimates have broad
-uncertainty and confidence intervals are sensitive to sampling. Ten-fold
-cross-validation standard deviations are recorded for comparison, but no
-encoder training was performed and the reported folds are not
-independent models.
+The validation and test sets contain only 100 images each, which
+limits the reliability and generalizability of the results.
 
-Third, test results are used only for final reporting. The repository
-also reports no correction for hypotheses tested post hoc after
-inspecting the test values, which reinforces the need not to select
-models on test.
+Validation and test metadata use COCO ground-truth annotations
+rather than predicted object detections. The geometric relationships
+and caption attributes are also based on predefined rules and
+cannot fully represent semantic relationships.
 
-Fourth, validation/test object metadata is sourced from COCO
-ground-truth annotations. A deployed system would use detector outputs,
-which are inherently noisy. The optional DETR path exists for more
-realistic experiments, but it is not the source of the frozen metadata
-used by the reported results.
-
-Fifth, the geometric relation model captures only pairwise bounding-box
-relations. It cannot represent true semantic dependencies, human intent,
-or contextual scene graphs. Likewise, caption attributes use fixed
-vocabulary lexicons and cannot cover unseen paraphrases or semantic
-composition.
-
-Sixth, text similarity checks can identify repeated generic captions
-that do not imply image identity. Exact-caption matches therefore
-require careful interpretation and are not automatically treated as
-leakage. Conversely, negative exact and near-duplicate checks are
-evidence for the tested thresholds, not proof against every possible
-visual, semantic, or annotation transformation.
-
-Seventh, cross-run embedding reproducibility has hardware and
-implementation dependencies. GPU outputs can differ slightly, and the
-frozen files rather than a claim of universal bitwise reproducibility
-provide the identity guarantee.
-
-Eighth, index reports and search benchmarks use different timing
-mechanisms. NumPy exact-search latency in the comparison script is
-explicitly not comparable to FAISS measurements. Index build times and
-query latency should therefore not be combined with caption-generation
-latency.
-
-Finally, the repository contains a provenance discrepancy between a
-separate SigLIP environment note and the manifest's Python version. The
-manifest remains the safer frozen release authority, but documentation
-consumers should be aware that the note says Python 3.13.3 whereas the
-manifest says 3.13.7.
+Finally, embedding reproducibility may vary across hardware and
+software environments. The frozen release guarantees file integrity,
+but not identical execution times or bitwise-identical regenerated
+embeddings.
 
 \subsection{Conclusion}\label{conclusion}
 
-Phase 1 establishes a coherent, auditable foundation for later RAG-based
-caption generation. Its principal implemented results are a 10,200-image
-frozen release, two hundred stratified evaluation images with five
-references each, normalized image and caption data, 80-class
-ground-truth metadata, multiple image/text embedding products, exact and
-approximate indexes, 11 EDA visualizations, 40 quality-control checks,
-and a content-based anti-leakage audit.
+Phase 1 successfully establishes a shared dataset and retrieval
+infrastructure for future image-captioning research.
 
-Within the implemented nearest-neighbour evaluation, validation selects
-SigLIP image-to-text by CIDEr. Its validation result is 0.7223, and its
-report-only test result is 0.7064. SigLIP image-to-image is numerically
-lower but not significantly worse on validation. The comparison also
-shows that final encoder choice is supported by validation evidence and
-remains consistent with the final test trend, while avoiding the
-methodological error of making a test-selected decision.
+The release contains 10,200 images, 51,000 captions, extracted
+metadata, image and text embeddings, FAISS indexes, and quality-control
+checks. It also includes five retrieval configurations evaluated
+using validation and test data.
 
-The release is complete for Phase 1's data and retrieval-preparation
-scope. Its limitations---especially evaluation size, metadata-oracle
-status, geometric relations, and the absence of a final language
-generator---provide explicit boundaries for subsequent Phase 2
-implementation and should remain part of any comparative report.
+SigLIP image-to-text achieves the highest validation CIDEr of
+0.7223 and the highest report-only test CIDEr of 0.7064. It is
+therefore selected as the best-performing configuration in this
+phase, although its validation advantage over SigLIP image-to-image
+is not statistically significant.
+
+The resulting dataset and retrieval baseline provide the foundation
+for Phase 2, which will focus on implementing the final
+caption-generation system.
 
 \section{References}\label{references}
 

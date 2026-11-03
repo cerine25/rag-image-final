@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.29)  1 NOV 2026 17:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.29)  2 NOV 2026 13:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -451,13 +451,35 @@ LaTeX Info: Redefining \addtolength on input line 87.
 \calc@Ccount=\count325
 \calc@Cskip=\skip64
 )
-(C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/parskip\parskip.sty
+(C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+
+(C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen191
+\captionmargin=\dimen192
+\caption@leftmargin=\dimen193
+\caption@rightmargin=\dimen194
+\caption@width=\dimen195
+\caption@indent=\dimen196
+\caption@parindent=\dimen197
+\caption@hangindent=\dimen198
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count326
+\c@continuedfloat=\count327
+Package caption Info: hyperref package is loaded.
+Package caption Info: longtable package is loaded.
+
+(C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/caption\ltcaption.sty
+Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
+)) (C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/parskip\parskip.sty
 Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
 )
 (C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/xurl\xurl.sty
 Package: xurl 2022/01/09 v 0.10 modify URL breaks
 )
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 70
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 72
 .
 
 (C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
@@ -466,24 +488,24 @@ File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 (phase1_technical_report.aux)
 \openout1 = `phase1_technical_report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -523,16 +545,16 @@ LaTeX Font Info:    ... okay on input line 70.
 (C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count326
-\scratchdimen=\dimen191
+\scratchcounter=\count328
+\scratchdimen=\dimen199
 \scratchbox=\box63
-\nofMPsegments=\count327
-\nofMParguments=\count328
+\nofMPsegments=\count329
+\nofMParguments=\count330
 \everyMPshowfont=\toks30
-\MPscratchCnt=\count329
-\MPscratchDim=\dimen192
-\MPnumerator=\count330
-\makeMPintoPDFobject=\count331
+\MPscratchCnt=\count331
+\MPscratchDim=\dimen256
+\MPnumerator=\count332
+\makeMPintoPDFobject=\count333
 \everyMPtoPDFconversion=\toks31
 )
 (C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
@@ -545,13 +567,13 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-LaTeX Info: Redefining \microtypecontext on input line 70.
-Package microtype Info: Applying patch `item' on input line 70.
-Package microtype Info: Applying patch `toc' on input line 70.
-Package microtype Info: Applying patch `eqnum' on input line 70.
-Package microtype Info: Applying patch `footnote' on input line 70.
-Package microtype Info: Applying patch `verbatim' on input line 70.
-LaTeX Info: Redefining \microtypesetup on input line 70.
+LaTeX Info: Redefining \microtypecontext on input line 72.
+Package microtype Info: Applying patch `item' on input line 72.
+Package microtype Info: Applying patch `toc' on input line 72.
+Package microtype Info: Applying patch `eqnum' on input line 72.
+Package microtype Info: Applying patch `footnote' on input line 72.
+Package microtype Info: Applying patch `verbatim' on input line 72.
+LaTeX Info: Redefining \microtypesetup on input line 72.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -567,18 +589,20 @@ Package microtype Info: No adjustment of character kerning.
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-Package hyperref Info: Link coloring OFF on input line 70.
+Package hyperref Info: Link coloring OFF on input line 72.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
 <figures/latex-figures/University-logo.jpg, id=3, 343.2825pt x 343.2825pt>
 File: figures/latex-figures/University-logo.jpg Graphic file (type jpg)
 <use figures/latex-figures/University-logo.jpg>
 Package pdftex.def Info: figures/latex-figures/University-logo.jpg  used on inp
-ut line 82.
+ut line 84.
 (pdftex.def)             Requested size: 71.12764pt x 71.12764pt.
 <figures/latex-figures/faculty-logo.png, id=4, 743.8992pt x 768.9528pt>
 File: figures/latex-figures/faculty-logo.png Graphic file (type png)
 <use figures/latex-figures/faculty-logo.png>
 Package pdftex.def Info: figures/latex-figures/faculty-logo.png  used on input 
-line 88.
+line 90.
 (pdftex.def)             Requested size: 68.80959pt x 71.12701pt.
 
 [1
@@ -642,36 +666,35 @@ been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.123 \newpage
-               [1] [2{C:/Users/admin/AppData/Local/Programs/MiKTeX/fonts/enc/dv
-ips/lm/lm-mathit.enc}{C:/Users/admin/AppData/Local/Programs/MiKTeX/fonts/enc/dv
-ips/lm/lm-rm.enc}]
-Underfull \hbox (badness 1033) in paragraph at lines 259--267
-\T1/lmr/m/n/10 (+20) The project spec-i-fi-ca-tion was in-ter-nally in-con-sis-
-tent about the test size: one sec-tion spec-i-fied 100
- []
+               [1]
+! You can't use `macro parameter character #' in vertical mode.
+l.137 #
+       # Abstract
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
 
+! You can't use `macro parameter character #' in vertical mode.
+l.137 ##
+         Abstract
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
 
-Underfull \hbox (badness 2229) in paragraph at lines 259--267
-\T1/lmr/m/n/10 (+20) test im-ages, while an-other de-scribed 1,000. The repos-i
--tory re-solves the am-bi-gu-ity by con-firm-
- []
-
-
-Underfull \hbox (badness 1092) in paragraph at lines 259--267
-\T1/lmr/m/n/10 (+20) ing 100 im-ages with the course pro-fes-sor on 28 Oc-to-be
-r 2026 and record-ing that de-ci-sion in [re-
- []
-
-[3{C:/Users/admin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.en
+[2] [3{C:/Users/admin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.en
+c}{C:/Users/admin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.en
+c}{C:/Users/admin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.en
 c}]
-<../artifacts/eda/01_top50_classes.png, id=121, 614.295pt x 578.16pt>
+<../artifacts/eda/01_top50_classes.png, id=120, 614.295pt x 578.16pt>
 File: ../artifacts/eda/01_top50_classes.png Graphic file (type png)
 <use ../artifacts/eda/01_top50_classes.png>
 Package pdftex.def Info: ../artifacts/eda/01_top50_classes.png  used on input l
-ine 386.
+ine 346.
 (pdftex.def)             Requested size: 411.14528pt x 386.95937pt.
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3
-90.
+50.
  (C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -679,89 +702,89 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-<../artifacts/eda/02_scene_complexity.png, id=123, 794.97pt x 289.08pt>
+<../artifacts/eda/02_scene_complexity.png, id=121, 794.97pt x 289.08pt>
 File: ../artifacts/eda/02_scene_complexity.png Graphic file (type png)
 <use ../artifacts/eda/02_scene_complexity.png>
 Package pdftex.def Info: ../artifacts/eda/02_scene_complexity.png  used on inpu
-t line 402.
+t line 360.
 (pdftex.def)             Requested size: 411.14528pt x 149.51083pt.
-
-[4] [5 <../artifacts/eda/01_top50_classes.png> <../artifacts/eda/02_scene_compl
-exity.png>]
-<../artifacts/eda/03_spatial_relations.png, id=139, 578.16pt x 274.626pt>
+<../artifacts/eda/03_spatial_relations.png, id=123, 578.16pt x 274.626pt>
 File: ../artifacts/eda/03_spatial_relations.png Graphic file (type png)
 <use ../artifacts/eda/03_spatial_relations.png>
 Package pdftex.def Info: ../artifacts/eda/03_spatial_relations.png  used on inp
-ut line 431.
+ut line 389.
 (pdftex.def)             Requested size: 411.14528pt x 195.29172pt.
-<../artifacts/eda/04_caption_length_zipf.png, id=141, 794.97pt x 289.08pt>
+
+[4] [5 <../artifacts/eda/01_top50_classes.png> <../artifacts/eda/02_scene_compl
+exity.png>]
+<../artifacts/eda/04_caption_length_zipf.png, id=142, 794.97pt x 289.08pt>
 File: ../artifacts/eda/04_caption_length_zipf.png Graphic file (type png)
 <use ../artifacts/eda/04_caption_length_zipf.png>
 Package pdftex.def Info: ../artifacts/eda/04_caption_length_zipf.png  used on i
-nput line 458.
+nput line 416.
 (pdftex.def)             Requested size: 411.14528pt x 149.51083pt.
-<../artifacts/eda/05_pos_distribution.png, id=143, 542.025pt x 274.626pt>
+<../artifacts/eda/05_pos_distribution.png, id=144, 542.025pt x 274.626pt>
 File: ../artifacts/eda/05_pos_distribution.png Graphic file (type png)
 <use ../artifacts/eda/05_pos_distribution.png>
 Package pdftex.def Info: ../artifacts/eda/05_pos_distribution.png  used on inpu
-t line 473.
+t line 431.
 (pdftex.def)             Requested size: 411.14528pt x 208.31982pt.
- [6 <../artifacts/eda/03_spatial_relations.png> <../artifacts/eda/04_caption_le
-ngth_zipf.png>]
-<../artifacts/eda/06_cooccurrence_top30.png, id=155, 650.43pt x 578.16pt>
+<../artifacts/eda/06_cooccurrence_top30.png, id=147, 650.43pt x 578.16pt>
 File: ../artifacts/eda/06_cooccurrence_top30.png Graphic file (type png)
 <use ../artifacts/eda/06_cooccurrence_top30.png>
 Package pdftex.def Info: ../artifacts/eda/06_cooccurrence_top30.png  used on in
-put line 496.
+put line 454.
 (pdftex.def)             Requested size: 411.14528pt x 365.46898pt.
-<../artifacts/eda/07_objects_vs_caption_length.png, id=156, 469.755pt x 325.215
+<../artifacts/eda/07_objects_vs_caption_length.png, id=148, 469.755pt x 325.215
 pt>
 File: ../artifacts/eda/07_objects_vs_caption_length.png Graphic file (type png)
 
 <use ../artifacts/eda/07_objects_vs_caption_length.png>
 Package pdftex.def Info: ../artifacts/eda/07_objects_vs_caption_length.png  use
-d on input line 503.
+d on input line 461.
 (pdftex.def)             Requested size: 411.14528pt x 284.63686pt.
-<../artifacts/eda/08_diversity_context_light_size.png, id=158, 939.51pt x 274.6
+ [6 <../artifacts/eda/03_spatial_relations.png> <../artifacts/eda/04_caption_le
+ngth_zipf.png>] [7 <../artifacts/eda/05_pos_distribution.png> <../artifacts/eda
+/06_cooccurrence_top30.png>]
+<../artifacts/eda/08_diversity_context_light_size.png, id=168, 939.51pt x 274.6
 26pt>
 File: ../artifacts/eda/08_diversity_context_light_size.png Graphic file (type p
 ng)
 <use ../artifacts/eda/08_diversity_context_light_size.png>
 Package pdftex.def Info: ../artifacts/eda/08_diversity_context_light_size.png  
-used on input line 527.
+used on input line 485.
 (pdftex.def)             Requested size: 411.14528pt x 120.1779pt.
-<../artifacts/eda/09_dominant_colors.png, id=161, 578.16pt x 260.172pt>
+<../artifacts/eda/09_dominant_colors.png, id=171, 578.16pt x 260.172pt>
 File: ../artifacts/eda/09_dominant_colors.png Graphic file (type png)
 <use ../artifacts/eda/09_dominant_colors.png>
 Package pdftex.def Info: ../artifacts/eda/09_dominant_colors.png  used on input
- line 541.
+ line 499.
 (pdftex.def)             Requested size: 411.14528pt x 185.0132pt.
-<../artifacts/eda/10_sample_grid.png, id=162, 867.24pt x 686.565pt>
+<../artifacts/eda/10_sample_grid.png, id=172, 867.24pt x 686.565pt>
 File: ../artifacts/eda/10_sample_grid.png Graphic file (type png)
 <use ../artifacts/eda/10_sample_grid.png>
 Package pdftex.def Info: ../artifacts/eda/10_sample_grid.png  used on input lin
-e 548.
+e 506.
 (pdftex.def)             Requested size: 483.70584pt x 382.93379pt.
-<../artifacts/eda/11_attributs_couleur_forme.png, id=164, 794.97pt x 289.08pt>
+<../artifacts/eda/11_attributs_couleur_forme.png, id=174, 794.97pt x 289.08pt>
 File: ../artifacts/eda/11_attributs_couleur_forme.png Graphic file (type png)
 <use ../artifacts/eda/11_attributs_couleur_forme.png>
 Package pdftex.def Info: ../artifacts/eda/11_attributs_couleur_forme.png  used 
-on input line 564.
+on input line 522.
 (pdftex.def)             Requested size: 411.14528pt x 149.51083pt.
- [7 <../artifacts/eda/05_pos_distribution.png>]
-[8 <../artifacts/eda/06_cooccurrence_top30.png>] [9 <../artifacts/eda/07_object
-s_vs_caption_length.png> <../artifacts/eda/08_diversity_context_light_size.png>
- <../artifacts/eda/09_dominant_colors.png>] [10 <../artifacts/eda/10_sample_gri
-d.png> <../artifacts/eda/11_attributs_couleur_forme.png>] [11] [12] [13]
-[14{C:/Users/admin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.e
-nc}]
-<figures/encoder_comparison_val.png, id=221, 787.9839pt x 389.5353pt>
+ [8 <../artifacts/eda/07_objects_vs_caption_length.png> <../artifacts/eda/08_di
+versity_context_light_size.png>]
+[9 <../artifacts/eda/09_dominant_colors.png> <../artifacts/eda/10_sample_grid.p
+ng>] [10 <../artifacts/eda/11_attributs_couleur_forme.png>] [11] [12] [13{C:/Us
+ers/admin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}]
+<figures/encoder_comparison_val.png, id=220, 787.9839pt x 389.5353pt>
 File: figures/encoder_comparison_val.png Graphic file (type png)
 <use figures/encoder_comparison_val.png>
 Package pdftex.def Info: figures/encoder_comparison_val.png  used on input line
- 1018.
+ 929.
 (pdftex.def)             Requested size: 411.14528pt x 203.249pt.
- [15] [16 <./figures/encoder_comparison_val.png>] [17] [18]
+
+[14] [15 <./figures/encoder_comparison_val.png>] [16]
 (phase1_technical_report.aux)
  ***********
 LaTeX2e <2025-11-01>
@@ -769,11 +792,11 @@ L3 programming layer <2025-11-06>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 14088 strings out of 467871
- 225565 string characters out of 5418375
- 686333 words of memory out of 5000000
- 42526 multiletter control sequences out of 15000+600000
- 690915 words of font info for 150 fonts, out of 8000000 for 9000
+ 15451 strings out of 467871
+ 252370 string characters out of 5418375
+ 707904 words of memory out of 5000000
+ 43882 multiletter control sequences out of 15000+600000
+ 690574 words of font info for 146 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,12n,93p,1022b,507s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
@@ -788,9 +811,9 @@ C:/Users/admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:
 /Users/admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:
 /Users/admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/
 Users/admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
-Output written on phase1_technical_report.pdf (19 pages, 5931708 bytes).
+Output written on phase1_technical_report.pdf (17 pages, 5921312 bytes).
 PDF statistics:
- 449 PDF objects out of 1000 (max. 8388607)
- 77 named destinations out of 1000 (max. 500000)
- 35743 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 443 PDF objects out of 1000 (max. 8388607)
+ 83 named destinations out of 1000 (max. 500000)
+ 35735 words of extra memory for PDF output out of 35830 (max. 10000000)
 
