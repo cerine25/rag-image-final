@@ -34,6 +34,7 @@
 \usepackage{longtable,booktabs,array}
 \usepackage{calc}
 \usepackage{caption}
+\usepackage{float}
 \captionsetup{justification=centering}
 \usepackage{etoolbox}
 
@@ -75,6 +76,7 @@
 
 \begin{titlepage}
     \centering
+    \hypersetup{pageanchor=false}
 
     % University logos
    \includegraphics[
@@ -93,28 +95,32 @@
 
     {\Large University of Algiers 1}\\[0.3cm]
     {\large Faculty of Sciences}\\[0.3cm]
-    {\large Department of Mathematics and Computer Science}
+    {\large Department of Computer Science}
 
     \vspace{2cm}
 
-    {\Huge\bfseries Phase 1 Technical Report}
+    {\Huge\bfseries A Comparative Study of RAG Techniques for Generating Image Captions}
 
     \vspace{0.8cm}
 
-    {\Large A Comparative Study of RAG Techniques for Generating Image Captions}
+    {\Large Phase 1 Technical Report}
 
-    \vspace{1.5cm}
+\vfill
 
-    {\large\textbf{Presented by:}}\\[0.5cm]
+{\large\textbf{Presented by:}}\\[0.5cm]
 
-    Maria SAADI\\
-    Cerine BENMEDGHAR\\
-    Sarah GHERBI\\
-    Nour El Houda AKHDARI
+Cerine BENMEDGHAR\\
+Nour El Houda AKHDARI\\
+Sarah GHERBI\\
+Maria SAADI\\
+    
 
     
 
 \end{titlepage}
+\hypersetup{pageanchor=true}
+\pagenumbering{arabic}
+\setcounter{page}{1}
 
 % ================= TABLE OF CONTENTS =================
 
@@ -124,17 +130,16 @@
 
 % ================= REPORT CONTENT =================
 
-\section{Phase 1 Technical Report}
+\section*{Phase 1 Technical Report}
 \label{phase-1-technical-report}
 
-\subsection{A Comparative Study of RAG Techniques for Generating Image Captions}
+\subsection*{A Comparative Study of RAG Techniques for Generating Image Captions}
 \label{a-comparative-study-of-rag-techniques-for-generating-image-captions}
 
 \subsection*{Abstract}
 
 % Continue your existing abstract and report here.
 
-## Abstract
 
 Automatic image captioning is an important task in computer vision and natural language processing. However, vision-language models may omit objects, describe objects that are not present, or fail to accurately represent visual attributes and relationships. Retrieval-Augmented Generation (RAG) offers a potential solution by providing relevant visual and textual information to support caption generation.
 
@@ -147,23 +152,11 @@ At this stage, the evaluation focuses on retrieval performance rather than gener
 \textbf{Keywords:} MS COCO, image captioning, retrieval-augmented
 generation, CLIP, DINOv2, SigLIP, Sentence-BERT, FAISS, data leakage.
 
-\subsection*{Contents}
 
-1. Introduction and problem statement ~ \\
-2. Dataset description ~ \\
-3. Dataset splitting and stratification ~ \\
-4. Exploratory data analysis ~ \\
-5. Image and caption preprocessing ~ \\
-6. Metadata extraction ~ \\
-7. Data quality assessment and anti-leakage measures ~ \\
-8. Image and text embeddings ~ \\
-9. Knowledge base and FAISS index construction ~ \\
-10. Encoder comparison and validation-based selection ~ \\
-11. Experimental results and statistical analysis ~ \\
-12. Reproducibility and dataset freezing ~ \\
-13. Limitations and conclusion ~ \\
-References
 
+\newpage
+
+\setcounter{section}{0}
 \section{Introduction and Problem
 Statement}\label{introduction-and-problem-statement}
 
@@ -189,9 +182,10 @@ uses an associated caption, while an image-to-text configuration
 retrieves a KB caption vector directly. Both can serve as precursor
 evidence for later retrieval-augmented generation.
 
+
 \section{Dataset Description}\label{dataset-description}
 
-The project uses MS COCO 2017. COCO provides images with object-instance
+The project uses MS COCO 2017 \cite{fleet_microsoft_2014}. COCO provides images with object-instance
 annotations and five or more human-authored captions associated with
 many images. This report is restricted to the implemented Phase 1
 sizes documented in Table~\ref{tab:release-composition}. The
@@ -199,13 +193,10 @@ KB contains 10,000 images and 50,000 retained captions, whereas
 validation and test each contain 100 images and 500 raw
 reference-caption rows.
 
-\begin{center}
-\textbf{Table 1. Release composition.}
-\end{center}
-\label{tab:release-composition}
-
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
+\caption{Release composition.}
+\label{tab:release-composition}
 \begin{tabular}{llrr}
 \toprule
 Split & Source & Images & Captions/references \\
@@ -525,6 +516,7 @@ captions.}
 \label{fig:caption-attributes}
 \end{figure}
 
+\newpage
 \section{Image and Caption
 Preprocessing}\label{image-and-caption-preprocessing}
 
@@ -670,7 +662,9 @@ presence.
 \section{Image and Text Embeddings}\label{image-and-text-embeddings}
 
 The pipeline generates image and text embeddings using four models:
-CLIP, SigLIP, DINOv2, and Sentence-BERT. These embeddings represent
+CLIP \cite{radford_learning_2021}, SigLIP \cite{zhai_sigmoid_2023},
+DINOv2 \cite{oquab_dinov2_2023}, and Sentence-BERT
+\cite{reimers_sentence-bert_2019}. These embeddings represent
 images and captions as numerical vectors that can be compared using
 similarity measures.
 
@@ -723,7 +717,7 @@ Construction}\label{knowledge-base-and-faiss-index-construction}
 \subsection{Exact image and text
 indexes}\label{exact-image-and-text-indexes}
 
-FAISS is used to build similarity-search indexes for the KB.
+FAISS \cite{johnson_billion-scale_2021} is used to build similarity-search indexes for the KB.
 The image indexes contain 10,000 vectors each, while the CLIP and
 SigLIP text indexes contain 50,000 caption vectors each.
 
@@ -784,6 +778,9 @@ its own image is returned. For the image-to-text mode, query vectors are
 searched against the 50,000 caption vectors and aligned parent-image IDs
 are returned.
 
+
+\newpage
+
 \section{Encoder Comparison and Validation-Based
 Selection}\label{encoder-comparison-and-validation-based-selection}
 
@@ -798,13 +795,13 @@ images, and the caption of the most similar image is returned.
 In image-to-text retrieval, the query image is compared directly
 with KB caption embeddings to retrieve the most similar caption.
 
-The configurations are evaluated using retrieval metrics and CIDEr.
+The configurations are evaluated using retrieval metrics and CIDEr \cite{vedantam_cider_2015}.
 A random-caption baseline is also included for comparison.
 
 \subsection{Validation selection
 metric}\label{validation-selection-metric}
 
-CIDEr is used as the main metric for selecting the best
+CIDEr \cite{vedantam_cider_2015} is used as the main metric for selecting the best
 configuration. Each configuration is evaluated on the 100
 validation images, and the one with the highest mean CIDEr is
 selected. Jaccard class@1 is used as a tie-breaker.
@@ -882,7 +879,7 @@ Table 8 presents the statistical comparison between the selected
 configuration and the alternatives. SigLIP image-to-image is not
 significantly different from SigLIP image-to-text
 (\(p=0.3023\)). The other three configurations are significantly
-lower under the Bonferroni threshold of 0.0125.
+lower under the Bonferroni threshold of 0.0125 \cite{cohen_statistical_2013}.
 
 Therefore, SigLIP image-to-text is selected based on its highest
 validation CIDEr, although its advantage over SigLIP image-to-image
@@ -1027,6 +1024,7 @@ software environments. The frozen release guarantees file integrity,
 but not identical execution times or bitwise-identical regenerated
 embeddings.
 
+\newpage
 \subsection{Conclusion}\label{conclusion}
 
 Phase 1 successfully establishes a shared dataset and retrieval
@@ -1047,38 +1045,8 @@ The resulting dataset and retrieval baseline provide the foundation
 for Phase 2, which will focus on implementing the final
 caption-generation system.
 
-\section{References}\label{references}
-
-{[}1{]} Lin, T.-Y., Maire, M., Belongie, S., Hays, J., Perona, P.,
-Ramanan, D., Dollár, P., and Zitnick, C. L. ``Microsoft COCO: Common
-Objects in Context.'' \emph{*European Conference on Computer Vision*},
-2014.
-
-{[}2{]} Vedantam, R., Lawrence Zitnick, C., and Parikh, D. ``CIDEr:
-Consensus-Based Image Description Evaluation.'' \emph{*IEEE Conference
-on Computer Vision and Pattern Recognition*}, 2015.
-
-{[}3{]} Radford, A., Kim, J. W., Hallacy, C., et al.~``Learning
-Transferable Visual Models from Natural Language Supervision.''
-\emph{*International Conference on Machine Learning*}, 2021.
-
-{[}4{]} Oquab, M., Darcet, T., Moutakanni, T., et al.~``DINOv2: Learning
-Robust Visual Features without Supervision.'' arXiv:2304.07193, 2023.
-
-{[}5{]} Zhai, X., Mustafa, B., Kolesnikov, A., and Beyer, L. ``Sigmoid
-Loss for Language Image Pre-Training.'' \emph{*International Conference
-on Computer Vision*}, 2023.
-
-{[}6{]} Reimers, N. and Gurevych, I. ``Sentence-BERT: Sentence
-Embeddings using Siamese BERT-Networks.'' \emph{*Proceedings of EMNLI*},
-2019.
-
-{[}7{]} Johnson, J., Douze, M., and Jégou, H. ``Billion-scale similarity
-search with GPUs.'' \emph{*IEEE Transactions on Big Data*}, 2019.
-
-{[}8{]} Cohen, J. \emph{*Statistical Power Analysis for the Behavioral
-Sciences*}. 2nd ed., Lawrence Erlbaum Associates, 1988. Used here only
-as methodological context; repository-specific significance decisions
-are reported from the recorded Wilcoxon values and Bonferroni threshold.
+\newpage
+\bibliographystyle{plain}
+\bibliography{report-phase1}
 
 \end{document}

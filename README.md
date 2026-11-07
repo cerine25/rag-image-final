@@ -174,6 +174,9 @@ the specification: `index/index_report.json`.
 
 ## Reports and documentation
 
+- [`STATISTICS_AND_MODELS_README.md`](STATISTICS_AND_MODELS_README.md): how every
+  EDA statistic/diagram is generated and whether it uses pretrained models,
+  source data, or project code.
 - [`docs/DATASET_CARD.md`](docs/DATASET_CARD.md): schemas, embeddings, indexes, loading, anti-leakage.
 - [`docs/preprocessing.md`](docs/preprocessing.md): image, captions, metadata, processors.
 - [`reports/leakage_audit.md`](reports/leakage_audit.md): all QC checks and text matches.

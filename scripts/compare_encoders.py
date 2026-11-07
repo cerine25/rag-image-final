@@ -330,7 +330,6 @@ def write_figure(rows: list[dict], path: Path) -> None:
     cider_bars = ax.bar(x - width / 2, [by_config[c]["cider"] for c in ordered], width, label="CIDEr")
     mrr_bars = ax.bar(x + width / 2, [by_config[c]["mrr"] for c in ordered], width, label="MRR")
     ax.set_ylabel("Score")
-    ax.set_title("Encoder comparison — 100 validation images")
     ax.set_xticks(x, labels)
     ax.set_ylim(0, 1)
     ax.legend()

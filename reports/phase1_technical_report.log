@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.29)  2 NOV 2026 13:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.29)  3 NOV 2026 20:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -473,13 +473,21 @@ Package caption Info: longtable package is loaded.
 
 (C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/caption\ltcaption.sty
 Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
-)) (C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/parskip\parskip.sty
+)) (C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count328
+\float@exts=\toks30
+\float@box=\box63
+\@float@everytoks=\toks31
+\@floatcapt=\box64
+)
+(C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/parskip\parskip.sty
 Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
 )
 (C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/xurl\xurl.sty
 Package: xurl 2022/01/09 v 0.10 modify URL breaks
 )
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 72
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 73
 .
 
 (C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
@@ -488,24 +496,24 @@ File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 (phase1_technical_report.aux)
 \openout1 = `phase1_technical_report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -545,17 +553,17 @@ LaTeX Font Info:    ... okay on input line 72.
 (C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count328
+\scratchcounter=\count329
 \scratchdimen=\dimen199
-\scratchbox=\box63
-\nofMPsegments=\count329
-\nofMParguments=\count330
-\everyMPshowfont=\toks30
-\MPscratchCnt=\count331
+\scratchbox=\box65
+\nofMPsegments=\count330
+\nofMParguments=\count331
+\everyMPshowfont=\toks32
+\MPscratchCnt=\count332
 \MPscratchDim=\dimen256
-\MPnumerator=\count332
-\makeMPintoPDFobject=\count333
-\everyMPtoPDFconversion=\toks31
+\MPnumerator=\count333
+\makeMPintoPDFobject=\count334
+\everyMPtoPDFconversion=\toks33
 )
 (C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
 ase.sty
@@ -567,13 +575,13 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-LaTeX Info: Redefining \microtypecontext on input line 72.
-Package microtype Info: Applying patch `item' on input line 72.
-Package microtype Info: Applying patch `toc' on input line 72.
-Package microtype Info: Applying patch `eqnum' on input line 72.
-Package microtype Info: Applying patch `footnote' on input line 72.
-Package microtype Info: Applying patch `verbatim' on input line 72.
-LaTeX Info: Redefining \microtypesetup on input line 72.
+LaTeX Info: Redefining \microtypecontext on input line 73.
+Package microtype Info: Applying patch `item' on input line 73.
+Package microtype Info: Applying patch `toc' on input line 73.
+Package microtype Info: Applying patch `eqnum' on input line 73.
+Package microtype Info: Applying patch `footnote' on input line 73.
+Package microtype Info: Applying patch `verbatim' on input line 73.
+LaTeX Info: Redefining \microtypesetup on input line 73.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -589,20 +597,22 @@ Package microtype Info: No adjustment of character kerning.
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-Package hyperref Info: Link coloring OFF on input line 72.
+Package hyperref Info: Link coloring OFF on input line 73.
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
+Package hyperref Info: Option `pageanchor' set `false' on input line 79.
 <figures/latex-figures/University-logo.jpg, id=3, 343.2825pt x 343.2825pt>
 File: figures/latex-figures/University-logo.jpg Graphic file (type jpg)
 <use figures/latex-figures/University-logo.jpg>
 Package pdftex.def Info: figures/latex-figures/University-logo.jpg  used on inp
-ut line 84.
+ut line 86.
 (pdftex.def)             Requested size: 71.12764pt x 71.12764pt.
 <figures/latex-figures/faculty-logo.png, id=4, 743.8992pt x 768.9528pt>
 File: figures/latex-figures/faculty-logo.png Graphic file (type png)
 <use figures/latex-figures/faculty-logo.png>
 Package pdftex.def Info: figures/latex-figures/faculty-logo.png  used on input 
-line 90.
+line 92.
 (pdftex.def)             Requested size: 68.80959pt x 71.12701pt.
 
 [1
@@ -610,38 +620,40 @@ line 90.
 {C:/Users/admin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/admi
 n/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc} <./figures/latex-
 figures/University-logo.jpg> <./figures/latex-figures/faculty-logo.png>]
+Package hyperref Info: Option `pageanchor' set `true' on input line 121.
+
 (phase1_technical_report.toc
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 2
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 4
 .
 
 (C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 2
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 4
 .
 
 (C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-2.
+4.
 
 (C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-2.
+4.
 
 (C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 2.
+(Font)              <10> on input line 4.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 2.
+(Font)              <7> on input line 4.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 2.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 2.
+(Font)              <5> on input line 4.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 4.
 
 (C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -649,7 +661,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 2.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 4.
 
 (C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -661,130 +673,109 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 \openout3 = `phase1_technical_report.toc'.
 
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.123 \newpage
-               [1]
-! You can't use `macro parameter character #' in vertical mode.
-l.137 #
-       # Abstract
-Sorry, but I'm not programmed to handle this case;
-I'll just pretend that you didn't ask for it.
-If you're in the wrong mode, you might be able to
-return to the right one by typing `I}' or `I$' or `I\par'.
-
-! You can't use `macro parameter character #' in vertical mode.
-l.137 ##
-         Abstract
-Sorry, but I'm not programmed to handle this case;
-I'll just pretend that you didn't ask for it.
-If you're in the wrong mode, you might be able to
-return to the right one by typing `I}' or `I$' or `I\par'.
-
-[2] [3{C:/Users/admin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.en
-c}{C:/Users/admin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.en
-c}{C:/Users/admin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.en
-c}]
-<../artifacts/eda/01_top50_classes.png, id=120, 614.295pt x 578.16pt>
+[1] [2] [3]
+<../artifacts/eda/01_top50_classes.png, id=114, 614.295pt x 578.16pt>
 File: ../artifacts/eda/01_top50_classes.png Graphic file (type png)
 <use ../artifacts/eda/01_top50_classes.png>
 Package pdftex.def Info: ../artifacts/eda/01_top50_classes.png  used on input l
-ine 346.
+ine 337.
 (pdftex.def)             Requested size: 411.14528pt x 386.95937pt.
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3
-50.
- (C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
+41.
+
+(C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-<../artifacts/eda/02_scene_complexity.png, id=121, 794.97pt x 289.08pt>
+<../artifacts/eda/02_scene_complexity.png, id=115, 794.97pt x 289.08pt>
 File: ../artifacts/eda/02_scene_complexity.png Graphic file (type png)
 <use ../artifacts/eda/02_scene_complexity.png>
 Package pdftex.def Info: ../artifacts/eda/02_scene_complexity.png  used on inpu
-t line 360.
+t line 351.
 (pdftex.def)             Requested size: 411.14528pt x 149.51083pt.
-<../artifacts/eda/03_spatial_relations.png, id=123, 578.16pt x 274.626pt>
+ [4{C:/Users/admin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{
+C:/Users/admin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{
+C:/Users/admin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]
+ [5 <../artifacts/eda/01_top50_classes.png> <../artifacts/eda/02_scene_complexi
+ty.png>]
+<../artifacts/eda/03_spatial_relations.png, id=137, 578.16pt x 274.626pt>
 File: ../artifacts/eda/03_spatial_relations.png Graphic file (type png)
 <use ../artifacts/eda/03_spatial_relations.png>
 Package pdftex.def Info: ../artifacts/eda/03_spatial_relations.png  used on inp
-ut line 389.
+ut line 380.
 (pdftex.def)             Requested size: 411.14528pt x 195.29172pt.
-
-[4] [5 <../artifacts/eda/01_top50_classes.png> <../artifacts/eda/02_scene_compl
-exity.png>]
-<../artifacts/eda/04_caption_length_zipf.png, id=142, 794.97pt x 289.08pt>
+<../artifacts/eda/04_caption_length_zipf.png, id=139, 794.97pt x 289.08pt>
 File: ../artifacts/eda/04_caption_length_zipf.png Graphic file (type png)
 <use ../artifacts/eda/04_caption_length_zipf.png>
 Package pdftex.def Info: ../artifacts/eda/04_caption_length_zipf.png  used on i
-nput line 416.
+nput line 407.
 (pdftex.def)             Requested size: 411.14528pt x 149.51083pt.
-<../artifacts/eda/05_pos_distribution.png, id=144, 542.025pt x 274.626pt>
+<../artifacts/eda/05_pos_distribution.png, id=141, 542.025pt x 274.626pt>
 File: ../artifacts/eda/05_pos_distribution.png Graphic file (type png)
 <use ../artifacts/eda/05_pos_distribution.png>
 Package pdftex.def Info: ../artifacts/eda/05_pos_distribution.png  used on inpu
-t line 431.
+t line 422.
 (pdftex.def)             Requested size: 411.14528pt x 208.31982pt.
-<../artifacts/eda/06_cooccurrence_top30.png, id=147, 650.43pt x 578.16pt>
+
+[6 <../artifacts/eda/03_spatial_relations.png> <../artifacts/eda/04_caption_len
+gth_zipf.png>]
+<../artifacts/eda/06_cooccurrence_top30.png, id=153, 650.43pt x 578.16pt>
 File: ../artifacts/eda/06_cooccurrence_top30.png Graphic file (type png)
 <use ../artifacts/eda/06_cooccurrence_top30.png>
 Package pdftex.def Info: ../artifacts/eda/06_cooccurrence_top30.png  used on in
-put line 454.
+put line 445.
 (pdftex.def)             Requested size: 411.14528pt x 365.46898pt.
-<../artifacts/eda/07_objects_vs_caption_length.png, id=148, 469.755pt x 325.215
+<../artifacts/eda/07_objects_vs_caption_length.png, id=154, 469.755pt x 325.215
 pt>
 File: ../artifacts/eda/07_objects_vs_caption_length.png Graphic file (type png)
 
 <use ../artifacts/eda/07_objects_vs_caption_length.png>
 Package pdftex.def Info: ../artifacts/eda/07_objects_vs_caption_length.png  use
-d on input line 461.
+d on input line 452.
 (pdftex.def)             Requested size: 411.14528pt x 284.63686pt.
- [6 <../artifacts/eda/03_spatial_relations.png> <../artifacts/eda/04_caption_le
-ngth_zipf.png>] [7 <../artifacts/eda/05_pos_distribution.png> <../artifacts/eda
-/06_cooccurrence_top30.png>]
-<../artifacts/eda/08_diversity_context_light_size.png, id=168, 939.51pt x 274.6
+<../artifacts/eda/08_diversity_context_light_size.png, id=156, 939.51pt x 274.6
 26pt>
 File: ../artifacts/eda/08_diversity_context_light_size.png Graphic file (type p
 ng)
 <use ../artifacts/eda/08_diversity_context_light_size.png>
 Package pdftex.def Info: ../artifacts/eda/08_diversity_context_light_size.png  
-used on input line 485.
+used on input line 476.
 (pdftex.def)             Requested size: 411.14528pt x 120.1779pt.
-<../artifacts/eda/09_dominant_colors.png, id=171, 578.16pt x 260.172pt>
+<../artifacts/eda/09_dominant_colors.png, id=159, 578.16pt x 260.172pt>
 File: ../artifacts/eda/09_dominant_colors.png Graphic file (type png)
 <use ../artifacts/eda/09_dominant_colors.png>
 Package pdftex.def Info: ../artifacts/eda/09_dominant_colors.png  used on input
- line 499.
+ line 490.
 (pdftex.def)             Requested size: 411.14528pt x 185.0132pt.
-<../artifacts/eda/10_sample_grid.png, id=172, 867.24pt x 686.565pt>
+<../artifacts/eda/10_sample_grid.png, id=160, 867.24pt x 686.565pt>
 File: ../artifacts/eda/10_sample_grid.png Graphic file (type png)
 <use ../artifacts/eda/10_sample_grid.png>
 Package pdftex.def Info: ../artifacts/eda/10_sample_grid.png  used on input lin
-e 506.
+e 497.
 (pdftex.def)             Requested size: 483.70584pt x 382.93379pt.
-<../artifacts/eda/11_attributs_couleur_forme.png, id=174, 794.97pt x 289.08pt>
+<../artifacts/eda/11_attributs_couleur_forme.png, id=162, 794.97pt x 289.08pt>
 File: ../artifacts/eda/11_attributs_couleur_forme.png Graphic file (type png)
 <use ../artifacts/eda/11_attributs_couleur_forme.png>
 Package pdftex.def Info: ../artifacts/eda/11_attributs_couleur_forme.png  used 
-on input line 522.
+on input line 513.
 (pdftex.def)             Requested size: 411.14528pt x 149.51083pt.
- [8 <../artifacts/eda/07_objects_vs_caption_length.png> <../artifacts/eda/08_di
-versity_context_light_size.png>]
-[9 <../artifacts/eda/09_dominant_colors.png> <../artifacts/eda/10_sample_grid.p
-ng>] [10 <../artifacts/eda/11_attributs_couleur_forme.png>] [11] [12] [13{C:/Us
-ers/admin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}]
-<figures/encoder_comparison_val.png, id=220, 787.9839pt x 389.5353pt>
+ [7 <../artifacts/eda/05_pos_distribution.png>] [8 <../artifacts/eda/06_cooccur
+rence_top30.png> <../artifacts/eda/07_objects_vs_caption_length.png>] [9 <../ar
+tifacts/eda/08_diversity_context_light_size.png> <../artifacts/eda/09_dominant_
+colors.png>] [10 <../artifacts/eda/10_sample_grid.png> <../artifacts/eda/11_att
+ributs_couleur_forme.png>] [11] [12] [13] [14{C:/Users/admin/AppData/Local/Prog
+rams/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}]
+<figures/encoder_comparison_val.png, id=236, 787.9839pt x 389.7762pt>
 File: figures/encoder_comparison_val.png Graphic file (type png)
 <use figures/encoder_comparison_val.png>
 Package pdftex.def Info: figures/encoder_comparison_val.png  used on input line
- 929.
-(pdftex.def)             Requested size: 411.14528pt x 203.249pt.
-
-[14] [15 <./figures/encoder_comparison_val.png>] [16]
+ 926.
+(pdftex.def)             Requested size: 411.14528pt x 203.3747pt.
+ [15 <./figures/encoder_comparison_val.png>] [16] [17] (phase1_technical_report
+.bbl) [18]
 (phase1_technical_report.aux)
  ***********
 LaTeX2e <2025-11-01>
@@ -792,13 +783,13 @@ L3 programming layer <2025-11-06>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 15451 strings out of 467871
- 252370 string characters out of 5418375
- 707904 words of memory out of 5000000
- 43882 multiletter control sequences out of 15000+600000
+ 15533 strings out of 467871
+ 254038 string characters out of 5418375
+ 709601 words of memory out of 5000000
+ 43948 multiletter control sequences out of 15000+600000
  690574 words of font info for 146 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,12n,93p,1022b,507s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,12n,93p,1022b,521s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
 b><C:/Users/admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pf
 b><C:/Users/admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pf
@@ -811,9 +802,9 @@ C:/Users/admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:
 /Users/admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:
 /Users/admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/
 Users/admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
-Output written on phase1_technical_report.pdf (17 pages, 5921312 bytes).
+Output written on phase1_technical_report.pdf (19 pages, 5857345 bytes).
 PDF statistics:
- 443 PDF objects out of 1000 (max. 8388607)
- 83 named destinations out of 1000 (max. 500000)
- 35735 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 458 PDF objects out of 1000 (max. 8388607)
+ 92 named destinations out of 1000 (max. 500000)
+ 35711 words of extra memory for PDF output out of 35830 (max. 10000000)
 
