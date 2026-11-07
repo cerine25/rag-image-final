@@ -1,0 +1,6 @@
+{
+  "coco_images_file": "C:\\Users\\admin\\rag-image-captioning-phase1\\data\\raw\\annotations\\instances_val2017.json",
+  "caption_file": "C:\\Users\\admin\\rag-image-captioning-phase1\\data\\raw\\annotations\\captions_val2017.json",
+  "reference_count": 5000,
+  "query_count": 1000
+}
