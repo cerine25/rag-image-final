@@ -19,3 +19,14 @@ data/images/
 logs/
 
 !reports/figures/*.png
+
+# LaTeX temp
+*.aux
+*.bbl
+*.blg
+*.log
+*.toc
+*.out
+texput.log
+__pycache__/
+.ipynb_checkpoints/
