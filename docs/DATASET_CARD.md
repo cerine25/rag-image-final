@@ -224,3 +224,6 @@ To select another available image encoder explicitly, pass for example
 - Frozen artifact files are read-only after release freeze. Treat any
   re-embedding or data change as a new release; do not run artifact-producing
   pipeline stages against this release in place.
+
+
+

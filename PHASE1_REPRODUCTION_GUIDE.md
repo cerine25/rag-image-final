@@ -126,9 +126,9 @@ data/raw
 artifacts
 ```
 
-**VERIFY:** The split test size is 100, as confirmed in `reports/split_confirmation.json`.
+**VERIFY:** The frozen release g1-v1.1 has a 100-image test (see `reports/split_confirmation.json`); the final 1,000-image test is in `experiments/test_1000_val2017/`.
 
-The repository was not able to resolve the 100-versus-1000 inconsistency independently; the project guide records professor confirmation on 28 October 2026. The implemented size is 100.
+The repository was not able to resolve the 100-versus-1000 inconsistency independently; the project guide records a group decision (no professor confirmation on record). The frozen release uses 100; the final evaluation uses 1,000.
 
 **Dependencies:** Environment setup.
 
@@ -1652,3 +1652,5 @@ Evaluation information entering training, selection, metadata, or retrieval. The
 ## Stratification
 
 Choosing samples so that their complexity, context, interaction, and class coverage reflect project-defined quotas rather than an entirely random distribution.
+
+

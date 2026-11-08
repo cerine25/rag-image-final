@@ -64,7 +64,7 @@ The repository records two forms of captions. The KB has `caption_raw`, `caption
 
 ## Specification ambiguity
 
-The project specification was internally inconsistent about the test size: one section specified 100 test images, while another described 1,000. The repository resolves the ambiguity by confirming 100 images with the course professor on 28 October 2026 and recording that decision in [reports/split_confirmation.json](reports/split_confirmation.json). The 100-image design is therefore the implemented Phase 1 interpretation, not an extrapolation from other specification sections.
+The project specification was internally inconsistent about the test size: one section specified 100 test images, while another described 1,000. The repository resolves the ambiguity by following the group decision to use 1,000 test images (spec section 4.4) and recording that decision in [reports/split_confirmation.json](reports/split_confirmation.json). The frozen release g1-v1.1 was built with a 100-image test (sections 4.1/4.2). The final evaluation test set is the 1,000-image val2017 set defined in experiments/test_1000_val2017/ (section 4.4). No professor confirmation is on record.
 
 # 3. Dataset Splitting and Stratification
 
@@ -502,3 +502,5 @@ The release is complete for Phase 1's data and retrieval-preparation scope. Its 
 [7] Johnson, J., Douze, M., and Jégou, H. “Billion-scale similarity search with GPUs.” *IEEE Transactions on Big Data*, 2019.
 
 [8] Cohen, J. *Statistical Power Analysis for the Behavioral Sciences*. 2nd ed., Lawrence Erlbaum Associates, 1988. Used here only as methodological context; repository-specific significance decisions are reported from the recorded Wilcoxon values and Bonferroni threshold.
+
+
