@@ -1,46 +1,43 @@
-﻿import json
+import json, re, sys
+from pathlib import Path
 
-def ids_from(obj):
-    if isinstance(obj, list):
-        out = set()
-        for x in obj:
-            out.add(str(x["image_id"]) if isinstance(x, dict) and "image_id" in x else str(x))
-        return out
-    if isinstance(obj, dict):
-        for key in ("image_ids", "ids", "test", "test_ids", "images"):
-            if key in obj:
-                return ids_from(obj[key])
-        return {str(k) for k in obj.keys()}
-    return set()
+ROOT = Path(__file__).resolve().parents[1]
+EXP = ROOT / "experiments" / "test_1000_val2017"
 
-new_raw = json.load(open("experiments/test_1000_val2017/splits/test_1000.json"))
-print("Cles du split 1000 :", list(new_raw.keys())[:10])
+def norm(s):
+    return " ".join(re.sub(r"[^a-z0-9 ]+", " ", str(s).lower()).split())
 
-new = ids_from(new_raw)
-kb = ids_from(json.load(open("artifacts/splits/kb.json")))
-val = ids_from(json.load(open("artifacts/splits/val.json")))
-old = ids_from(json.load(open("artifacts/splits/test.json")))
+def split_ids(p):
+    d = json.loads(Path(p).read_text(encoding="utf-8"))
+    return {int(x["image_id"]) for x in d["images"]}
 
-print("Taille test 1000  :", len(new))
-print("Taille KB         :", len(kb))
-print("Taille val        :", len(val))
-print("Taille ancien test:", len(old))
-print("test1000 inter KB     :", len(new & kb))
-print("test1000 inter val    :", len(new & val))
-print("test1000 inter ancien :", len(new & old))
+def read_jsonl(p):
+    return [json.loads(l) for l in Path(p).read_text(encoding="utf-8").splitlines() if l.strip()]
 
-kb_caps = set()
-for line in open("artifacts/tables/kb_captions.jsonl", encoding="utf-8"):
-    r = json.loads(line)
-    for k in ("caption", "raw_caption", "text"):
-        if k in r:
-            kb_caps.add(str(r[k]).strip().lower())
+new = split_ids(EXP / "splits" / "test_1000.json")
+kb = split_ids(ROOT / "artifacts/splits/kb.json")
+val = split_ids(ROOT / "artifacts/splits/val.json")
+old = split_ids(ROOT / "artifacts/splits/test.json")
 
-test_caps = set()
-for line in open("experiments/test_1000_val2017/tables/eval_refs_test_1000.jsonl", encoding="utf-8"):
-    r = json.loads(line)
-    refs = r.get("references") or r.get("captions") or r.get("refs") or []
-    for c in refs:
-        test_caps.add(str(c).strip().lower())
+kb_rows = read_jsonl(ROOT / "artifacts/tables/kb_captions.jsonl")
+ref_rows = read_jsonl(EXP / "tables" / "eval_refs_test_1000.jsonl")
+kb_caps = {norm(r["caption_raw"]) for r in kb_rows}
+test_rows = [(int(r["image_id"]), norm(r["caption_raw"])) for r in ref_rows]
+if not kb_caps or not test_rows:
+    sys.exit("FAIL: empty caption set")
 
-print("Captions test identiques a des captions KB :", len(test_caps & kb_caps))
+kb_caption_image_ids = {int(r["image_id"]) for r in kb_rows}
+matches = [(i, c) for i, c in test_rows if c in kb_caps]
+report = {
+    "n_test_images": len(new), "n_kb_images": len(kb), "n_val_images": len(val), "n_old_test_images": len(old),
+    "test_inter_kb": len(new & kb), "test_inter_val": len(new & val), "test_inter_old_test": len(new & old),
+    "test_inter_kb_caption_image_ids": len(new & kb_caption_image_ids),
+    "n_test_reference_rows": len(test_rows), "n_unique_kb_captions": len(kb_caps),
+    "normalized_caption_matches_rows": len(matches),
+    "normalized_caption_matches_images": len({i for i, _ in matches}),
+    "note": "Caption matches are generic text from DIFFERENT images (not same-image leakage). Same-image leakage = test_inter_kb_caption_image_ids.",
+}
+(ROOT / "reports" / "leak_check_test1000.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8", newline="\n")
+print(json.dumps(report, indent=2))
+bad = report["test_inter_kb"] or report["test_inter_val"] or report["test_inter_old_test"] or report["test_inter_kb_caption_image_ids"]
+sys.exit(1 if bad else 0)
