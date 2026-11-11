@@ -81,7 +81,7 @@ discrepancy is reported and discussed in the technical report
 
 ## Reproduction
 
-Python 3.11–3.13 is supported (the frozen release was built with 3.13.7).
+Python 3.12–3.13 is supported (the frozen release was built with 3.13.7).
 
 Linux / macOS / Google Colab:
 
@@ -107,4 +107,4 @@ See also `PHASE1_REPRODUCTION_GUIDE.md` and `docs/DATASET_CARD.md`.
 
 ## Contributors
 
-Sarah Gherbi, Nour (akhdari), Cerine
+Cerine Benmedghar, Nour El Houda Akhdari, Sarah Gherbi, Maria Saadi
