@@ -1,6 +1,6 @@
 # QC — official test set (1,000 images, COCO val2017), release g1-v1.2
 
-**PASS** — 31 checks: 28 PASS, 0 FAIL, 3 SKIP (SKIP = needs arrays that are not versioned in Git; rerun locally after generating embeddings).
+**PASS** — 43 checks: 43 PASS, 0 FAIL, 0 SKIP (SKIP = needs arrays that are not versioned in Git; rerun locally after generating embeddings).
 
 | # | Status | Check | Detail |
 |---:|---|---|---|
@@ -32,6 +32,18 @@
 | 26 | PASS | frozen file unchanged: reports/tables/encoder_comparison_test.csv | content identical (hash compared modulo LF/CRLF line endings) |
 | 27 | PASS | results cover 5 configurations x 1000 queries |  |
 | 28 | PASS | every configuration beats the random-caption baseline (CIDEr) | clip-b32/img2img=0.498; clip-b32/img2txt=0.575; dinov2-s/img2img=0.533; siglip-b16/img2img=0.532; siglip-b16/img2txt=0.464 |
-| 29 | SKIP | embeddings clip-b32/test_1000 | arrays not present locally (not versioned in Git) |
-| 30 | SKIP | embeddings siglip-b16/test_1000 | arrays not present locally (not versioned in Git) |
-| 31 | SKIP | embeddings dinov2-s/test_1000 | arrays not present locally (not versioned in Git) |
+| 29 | PASS | embeddings clip-b32/test_1000 shape/dtype | shape=(1000, 512) |
+| 30 | PASS | embeddings clip-b32/test_1000 finite and L2-normalised |  |
+| 31 | PASS | embeddings clip-b32/test_1000 IDs match split |  |
+| 32 | PASS | ANTI-LEAK clip-b32: no test image retrieved as itself in KB |  |
+| 33 | PASS | info clip-b32: test images with a KB near-duplicate (cos >= 0.97) | 1/1000 |
+| 34 | PASS | embeddings siglip-b16/test_1000 shape/dtype | shape=(1000, 768) |
+| 35 | PASS | embeddings siglip-b16/test_1000 finite and L2-normalised |  |
+| 36 | PASS | embeddings siglip-b16/test_1000 IDs match split |  |
+| 37 | PASS | ANTI-LEAK siglip-b16: no test image retrieved as itself in KB |  |
+| 38 | PASS | info siglip-b16: test images with a KB near-duplicate (cos >= 0.97) | 0/1000 |
+| 39 | PASS | embeddings dinov2-s/test_1000 shape/dtype | shape=(1000, 384) |
+| 40 | PASS | embeddings dinov2-s/test_1000 finite and L2-normalised |  |
+| 41 | PASS | embeddings dinov2-s/test_1000 IDs match split |  |
+| 42 | PASS | ANTI-LEAK dinov2-s: no test image retrieved as itself in KB |  |
+| 43 | PASS | info dinov2-s: test images with a KB near-duplicate (cos >= 0.97) | 0/1000 |

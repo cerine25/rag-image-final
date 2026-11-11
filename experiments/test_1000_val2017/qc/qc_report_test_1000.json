@@ -1,10 +1,10 @@
 {
   "release": "g1-v1.2",
   "dataset": "test_1000_val2017",
-  "n_checks": 31,
-  "pass": 28,
+  "n_checks": 43,
+  "pass": 43,
   "fail": 0,
-  "skip": 3,
+  "skip": 0,
   "checks": [
     {
       "check": "test split size = 1000",
@@ -147,19 +147,79 @@
       "detail": "clip-b32|img2img=0.498; clip-b32|img2txt=0.575; dinov2-s|img2img=0.533; siglip-b16|img2img=0.532; siglip-b16|img2txt=0.464"
     },
     {
-      "check": "embeddings clip-b32/test_1000",
-      "status": "SKIP",
-      "detail": "arrays not present locally (not versioned in Git)"
+      "check": "embeddings clip-b32/test_1000 shape/dtype",
+      "status": "PASS",
+      "detail": "shape=(1000, 512)"
     },
     {
-      "check": "embeddings siglip-b16/test_1000",
-      "status": "SKIP",
-      "detail": "arrays not present locally (not versioned in Git)"
+      "check": "embeddings clip-b32/test_1000 finite and L2-normalised",
+      "status": "PASS",
+      "detail": ""
     },
     {
-      "check": "embeddings dinov2-s/test_1000",
-      "status": "SKIP",
-      "detail": "arrays not present locally (not versioned in Git)"
+      "check": "embeddings clip-b32/test_1000 IDs match split",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "ANTI-LEAK clip-b32: no test image retrieved as itself in KB",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "info clip-b32: test images with a KB near-duplicate (cos >= 0.97)",
+      "status": "PASS",
+      "detail": "1/1000"
+    },
+    {
+      "check": "embeddings siglip-b16/test_1000 shape/dtype",
+      "status": "PASS",
+      "detail": "shape=(1000, 768)"
+    },
+    {
+      "check": "embeddings siglip-b16/test_1000 finite and L2-normalised",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "embeddings siglip-b16/test_1000 IDs match split",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "ANTI-LEAK siglip-b16: no test image retrieved as itself in KB",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "info siglip-b16: test images with a KB near-duplicate (cos >= 0.97)",
+      "status": "PASS",
+      "detail": "0/1000"
+    },
+    {
+      "check": "embeddings dinov2-s/test_1000 shape/dtype",
+      "status": "PASS",
+      "detail": "shape=(1000, 384)"
+    },
+    {
+      "check": "embeddings dinov2-s/test_1000 finite and L2-normalised",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "embeddings dinov2-s/test_1000 IDs match split",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "ANTI-LEAK dinov2-s: no test image retrieved as itself in KB",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "info dinov2-s: test images with a KB near-duplicate (cos >= 0.97)",
+      "status": "PASS",
+      "detail": "0/1000"
     }
   ]
 }
