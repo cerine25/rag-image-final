@@ -78,19 +78,6 @@
     \centering
     \hypersetup{pageanchor=false}
 
-    % University logos
-   \includegraphics[
-    width=0.25\textwidth,
-    height=2.5cm,
-    keepaspectratio
-]{figures/latex-figures/University-logo.jpg}
-\hfill
-\includegraphics[
-    width=0.25\textwidth,
-    height=2.5cm,
-    keepaspectratio
-]{figures/latex-figures/faculty-logo.png}
-
     \vspace{1cm}
 
     {\Large University of Algiers 1}\\[0.3cm]
@@ -620,7 +607,7 @@ query image from being returned as its own result.
 Additional SigLIP similarity and difference-hash checks found no
 qualifying near-duplicates between the evaluation sets and the KB.
 
-Table~\ref{tab:qc} summarizes the QC programme rather than
+Table 4 summarizes the QC programme rather than
 reproducing all 40 individual rows.
 
 \begin{center}
@@ -731,7 +718,7 @@ The indexes use IndexFlatIP, which performs exact inner-product
 search. Since the vectors are normalized, this is equivalent to
 cosine similarity. 
 
-Table~\ref{tab:indexes} summarizes the index configurations
+Table 6 summarizes the index configurations
 and their build times.
 
 \begin{center}
@@ -823,7 +810,7 @@ and is used only for final reporting.
 \]
 
 The selection was made before looking at the final test results. Test
-data were retained in Table 8 and were not included in
+data were retained in Table 9 and were not included in
 configuration selection.
 
 \section{Experimental Results and Statistical
@@ -893,7 +880,7 @@ is not statistically significant.
 
 \subsection{Final test reporting}\label{final-test-reporting}
 
-Table~\ref{tab:test-results} presents report-only test values.
+Table 9 presents report-only test values.
 These results are not used to select a configuration.
 
 \begin{center}
@@ -970,7 +957,7 @@ SigLIP image-to-text & 0.973 & 0.999 / 1.000 & 0.973 / 0.966 / 0.963 & 0.9847 & 
 \end{tabular}}
 \end{table}
 
-\textbf{The ranking agrees with validation and with the legacy test.}
+\textbf{The best configuration agrees with validation and with the legacy test.}
 SigLIP image-to-text, the validation winner (validation CIDEr 0.7223), has
 the highest CIDEr of the five configurations on the official test (0.6385),
 followed by CLIP image-to-text (0.5746). It also has the highest Recall@1
@@ -1093,8 +1080,8 @@ reported; the detector was neither trained nor fine-tuned.
 
 The validation and legacy test sets contain only 100 images each, which
 limits the reliability and generalizability of the results. The official
-1,000-image test is larger but only aggregate metrics are stored; its ranking
-of the encoders agrees with validation, and the provenance of the SigLIP text
+1,000-image test is larger but only aggregate metrics are stored; its best
+configuration (SigLIP image-to-text) is the same as on validation, and the provenance of the SigLIP text
 embeddings used for it is discussed in Section~\ref{official-test-results}.
 
 Validation and test metadata use COCO ground-truth annotations
