@@ -247,7 +247,7 @@ excluded because they do not meet the pipeline requirements.
 \subsection{Stratification
 algorithm}\label{stratification-algorithm}
 
-Validation and test are stratified by scene complexity, image context,
+Validation and the legacy 100-image test are stratified by scene complexity, image context,
 object interactions, and class coverage. Complexity is based on the
 number of non-crowd object annotations:
 
@@ -945,6 +945,12 @@ the validation split and the legacy test. Its quality-control report is
 As for the legacy test, these results are report-only: no configuration
 was selected or re-selected on them.
 
+The 1,000 images were drawn at random (seed 42) from 4,840 eligible
+\texttt{val2017} candidates; unlike the validation and legacy test splits,
+this sample is not stratified. Retrieval uses chunked exact NumPy
+inner-product search (chunks of 5,000 vectors), not FAISS. No statistical
+significance test is reported for this test set.
+
 \begin{center}
 \textbf{Table 10. Official test results (1,000 images, report-only).}
 \end{center}
@@ -955,27 +961,35 @@ was selected or re-selected on them.
 \toprule
 Configuration & Recall@1 & Recall@5/@10 & Precision@1/@5/@10 & MRR & CIDEr & Random CIDEr \\
 \midrule
-CLIP image-to-image & 0.943 & 0.993 / 0.996 & 0.943 / 0.930 / 0.921 & 0.9652 & 0.4978 & 0.0270 \\
-CLIP image-to-text & 0.952 & 0.992 / 0.996 & 0.952 / 0.949 / 0.947 & 0.9705 & \textbf{0.5746} & 0.0270 \\
-DINOv2 image-to-image & 0.965 & 0.994 / 0.996 & 0.965 / 0.954 / 0.950 & 0.9781 & 0.5333 & 0.0270 \\
+CLIP image-to-image & 0.943 & 0.993 / 0.996 & 0.943 / 0.930 / 0.921 & 0.9651 & 0.4984 & 0.0270 \\
+CLIP image-to-text & 0.952 & 0.992 / 0.996 & 0.952 / 0.949 / 0.947 & 0.9705 & 0.5746 & 0.0270 \\
+DINOv2 image-to-image & 0.965 & 0.994 / 0.996 & 0.965 / 0.954 / 0.950 & 0.9781 & 0.5309 & 0.0270 \\
 SigLIP image-to-image & 0.966 & 0.996 / 0.999 & 0.966 / 0.961 / 0.955 & 0.9804 & 0.5320 & 0.0270 \\
-SigLIP image-to-text & 0.891 & 0.996 / 0.998 & 0.891 / 0.866 / 0.848 & 0.9376 & 0.4645 & 0.0270 \\
+SigLIP image-to-text & 0.973 & 0.999 / 1.000 & 0.973 / 0.966 / 0.963 & 0.9847 & \textbf{0.6385} & 0.0270 \\
 \bottomrule
 \end{tabular}}
 \end{table}
 
-\textbf{The ranking differs from validation and from the legacy test.}
+\textbf{The ranking agrees with validation and with the legacy test.}
 SigLIP image-to-text, the validation winner (validation CIDEr 0.7223), has
-the lowest CIDEr of the five configurations on the official test (0.4645),
-whereas CLIP image-to-text is highest (0.5746). SigLIP image-to-text also has
-the lowest Recall@1 (0.891) and MRR (0.9376), while the two image-to-image
-configurations of SigLIP and DINOv2 have the highest Recall@1 (0.965--0.966).
-All configurations remain far above the random-caption baseline (0.0270).
+the highest CIDEr of the five configurations on the official test (0.6385),
+followed by CLIP image-to-text (0.5746). It also has the highest Recall@1
+(0.973) and MRR (0.9847). All configurations remain far above the
+random-caption baseline (0.0270).
+
+\textbf{Provenance of these figures.} Table 10 uses SigLIP text embeddings
+computed with \texttt{padding="max\_length"} (64 tokens), as in notebook 04.
+An earlier version of this table (SigLIP image-to-text: Recall@1 0.891, MRR
+0.9376, CIDEr 0.4645, lowest of the five) used text embeddings recomputed with
+\texttt{padding=True}; we measured that this setting reproduces exactly those
+earlier figures (mean cosine similarity between the two sets of knowledge-base
+text embeddings: 0.4842). Which of the two sets matches the SHA256 recorded in
+the manifest is not established. The small changes for CLIP and DINOv2
+image-to-image are of unestablished cause.
 
 Several caveats apply. The validation set has only 100 images and the
-10-fold standard deviation of SigLIP image-to-text was large (0.1913), so a
-validation winner that does not carry over to a ten times larger test is
-plausible. Only aggregate metrics are stored for the 1,000-image test, so no
+10-fold standard deviation of SigLIP image-to-text was large (0.1913).
+Only aggregate metrics are stored for the 1,000-image test, so no
 significance test is reported; differences of a few hundredths of CIDEr
 (e.g.\ DINOv2 versus SigLIP image-to-image) must not be read as an ordering.
 The primary encoder of release g1-v1.1 (\texttt{siglip-b16}) is not changed
@@ -986,9 +1000,9 @@ and CLIP and DINOv2 embeddings are provided for the same images.
 \subsection{Interpretation}\label{interpretation}
 
 Several conclusions are statistically and descriptively supported, with
-qualifications. SigLIP image-to-text is the validation winner and the
-leader on the legacy 100-image test, but not on the official 1,000-image
-test (Section~\ref{official-test-results}). SigLIP image-to-image is not statistically distinguishable
+qualifications. SigLIP image-to-text is the validation winner and also the
+leader on the legacy 100-image test and on the official 1,000-image test
+(Section~\ref{official-test-results}). SigLIP image-to-image is not statistically distinguishable
 from the winner on validation data, so the empirical evidence does not
 justify treating the 0.0487 validation CIDEr difference as established.
 CLIP image-to-text, DINOv2 image-to-image, and CLIP image-to-image are
@@ -1001,9 +1015,8 @@ SigLIP across all retrieval settings. The sample has only 100 validation
 images, 100 legacy test images (and 1,000 official test images without
 per-image scores or significance tests), one run per configuration in the
 frozen artifacts, and a nearest-neighbour caption evaluation protocol.
-Consistency on the legacy test is supportive but not sufficient for broad
-generalization, and the larger official test does not reproduce the
-validation ranking.
+Consistency on the legacy and official tests is supportive but not sufficient
+for broad generalization.
 
 \section{Reproducibility and Dataset
 Freezing}\label{reproducibility-and-dataset-freezing}
@@ -1068,10 +1081,21 @@ Conclusion}\label{limitations-and-conclusion}
 Phase 1 does not include a complete caption-generation model.
 It evaluates retrieval-based caption candidates instead.
 
+A pretrained DETR detector (\texttt{facebook/detr-resnet-50}, confidence
+threshold 0.7) was also run directly on image pixels for 200 evaluation
+images (100 validation and 100 legacy test images), producing 1,568 predicted
+detections with scores and normalized boxes in
+\texttt{artifacts/tables/detections\_detr.jsonl}. It was not run on the
+10,000-image knowledge base or on the official 1,000-image test, and its
+predictions are not used by the retrieval experiments, which rely on COCO
+ground-truth metadata. No detection-accuracy evaluation (IoU, mAP) is
+reported; the detector was neither trained nor fine-tuned.
+
 The validation and legacy test sets contain only 100 images each, which
 limits the reliability and generalizability of the results. The official
-1,000-image test is larger but only aggregate metrics are stored, and
-its ranking of the encoders differs from validation.
+1,000-image test is larger but only aggregate metrics are stored; its ranking
+of the encoders agrees with validation, and the provenance of the SigLIP text
+embeddings used for it is discussed in Section~\ref{official-test-results}.
 
 Validation and test metadata use COCO ground-truth annotations
 rather than predicted object detections. The geometric relationships
@@ -1098,9 +1122,10 @@ SigLIP image-to-text achieves the highest validation CIDEr of
 0.7223 and the highest legacy-test CIDEr of 0.7064, and is therefore the
 configuration selected by the validation protocol, although its validation
 advantage over SigLIP image-to-image is not statistically significant. On
-the official 1,000-image test, however, CLIP image-to-text has the highest
-CIDEr (0.5746) and SigLIP image-to-text the lowest (0.4645); this
-discrepancy is reported rather than used to re-select the encoder.
+the official 1,000-image test, SigLIP image-to-text also has the highest
+CIDEr (0.6385), followed by CLIP image-to-text (0.5746); the encoder selected
+on validation was not re-selected on the test (see
+Section~\ref{official-test-results} for the provenance of these figures).
 
 The resulting dataset and retrieval baseline provide the foundation
 for Phase 2, which will focus on implementing the final
