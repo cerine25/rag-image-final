@@ -1,4 +1,4 @@
-# Exploration des données (EDA) — release `g1-v1.1`
+# Exploration des données (EDA) — release `g1-v1.0`
 
 Généré automatiquement par `05_eda.py` — tous les chiffres viennent de `stats.json`.
 
