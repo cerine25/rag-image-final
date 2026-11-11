@@ -2,6 +2,10 @@
 # Python 3.13.7 is the verified runtime for the frozen g1-v1.1 release.
 # v1.0 CLIP and DINOv2 provenance from artifacts/manifest_v1.0_backup.json:
 # Python 3.11.9 / torch 2.12.0+cpu / transformers 4.57.6.
+# Install (CPU build of torch, any OS):
+#   pip install --extra-index-url https://download.pytorch.org/whl/cpu -r requirements.txt
+# The "+cpu" local-version suffix was removed from the torch pin because plain pip cannot
+# resolve it; the CPU wheel is selected through --extra-index-url instead.
 # Pins below use exact versions installed in the current .venv (Python 3.13.7).
 
 numpy==2.5.4
@@ -14,7 +18,7 @@ faiss-cpu==1.15.1
 pycocoevalcap==1.2
 pycocotools==2.0.11
 nltk==3.10.4
-torch==2.15.0+cpu
+torch==2.15.0
 transformers==5.22.1
 sentence-transformers==6.2.0
 sentencepiece==0.2.2

@@ -126,9 +126,9 @@ data/raw
 artifacts
 ```
 
-**VERIFY:** The frozen release g1-v1.1 has a 100-image test (see `reports/split_confirmation.json`); the final 1,000-image test is in `experiments/test_1000_val2017/`.
+**VERIFY:** The frozen release g1-v1.1 (`artifacts/`) has a 100-image *legacy* test (see `reports/split_confirmation.json`); the **official** 1,000-image test is in `experiments/test_1000_val2017/`.
 
-The repository was not able to resolve the 100-versus-1000 inconsistency independently; the project guide records a group decision (no professor confirmation on record). The frozen release uses 100; the final evaluation uses 1,000.
+The project specification is inconsistent (100 test images in sections 4.1/4.2, 1,000 in section 4.4). The instructor indicated verbally that the test set must contain 1,000 images (no written confirmation on record). The official evaluation uses the 1,000-image test; the 100-image test is kept unchanged as a legacy set. Reproduce the official test with `python scripts/run_test_1000.py` and check it with `python scripts/qc_test_1000.py`.
 
 **Dependencies:** Environment setup.
 

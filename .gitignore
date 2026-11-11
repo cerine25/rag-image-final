@@ -26,3 +26,4 @@ logs/
 *.toc
 *.out
 texput.log
+release_assets/
