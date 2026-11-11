@@ -2,7 +2,7 @@
 
 ## A Comparative Study of RAG Techniques for Generating Image Captions
 
-**Release:** g1-v1.1  
+**Release:** g1-v1.2 (frozen artifacts: g1-v1.1; official test set: 1,000 images)  
 **Prepared for:** Phase 1 handoff and shared-data use  
 **Report owner:** Sarah
 
@@ -12,7 +12,7 @@
 
 Phase 1 establishes a frozen, shared data foundation for comparative retrieval-augmented image-captioning research on MS COCO 2017. The implemented release contains 10,000 knowledge-base (KB) images with 50,000 captions, 100 validation images with 500 reference captions, and 100 test images with 500 reference captions. The pipeline constructs normalized images, captions, object and relational metadata, image and text embeddings, exact and approximate FAISS indexes, exploratory statistics, quality-control evidence, and a release manifest. Anti-leakage controls combine disjoint split construction, content-level audit checks, duplicate repair, near-duplicate screening, and an ID-level retrieval guard.
 
-Four retrieval configurations were evaluated in the first Phase 1 design, and the SigLIP extension added a fifth configuration. Validation nearest-neighbour CIDEr identified SigLIP image-to-text retrieval (0.7223) as the best implemented configuration; SigLIP image-to-image obtained 0.6735, followed by CLIP image-to-text (0.5584), DINOv2 image-to-image (0.5541), and CLIP image-to-image (0.5286). SigLIP image-to-image did not differ significantly from SigLIP image-to-text (Wilcoxon \(p=0.3023\)), whereas the CLIP image-to-text, DINOv2, and CLIP image-to-image comparisons were significant under the repository's four-comparison Bonferroni threshold of 0.0125. The test split remained report-only: SigLIP image-to-text obtained CIDEr 0.7064, also the highest test value, but was not used to choose the encoder.
+Four retrieval configurations were evaluated in the first Phase 1 design, and the SigLIP extension added a fifth configuration. Validation nearest-neighbour CIDEr identified SigLIP image-to-text retrieval (0.7223) as the best implemented configuration; SigLIP image-to-image obtained 0.6735, followed by CLIP image-to-text (0.5584), DINOv2 image-to-image (0.5541), and CLIP image-to-image (0.5286). SigLIP image-to-image did not differ significantly from SigLIP image-to-text (Wilcoxon \(p=0.3023\)), whereas the CLIP image-to-text, DINOv2, and CLIP image-to-image comparisons were significant under the repository's four-comparison Bonferroni threshold of 0.0125. The test splits remained report-only. On the legacy 100-image test, SigLIP image-to-text obtained CIDEr 0.7064, also the highest value. The official final test set, however, is a 1,000-image COCO val2017 sample (disjoint from the KB, the validation split and the legacy test); there the ranking changes: CLIP image-to-text is highest (CIDEr 0.5746) and SigLIP image-to-text is lowest (0.4645), a discrepancy that is reported but was not used to re-select the encoder. The 100-image test of the frozen release g1-v1.1 is kept unchanged as a legacy set.
 
 **Keywords:** MS COCO, image captioning, retrieval-augmented generation, CLIP, DINOv2, SigLIP, Sentence-BERT, FAISS, data leakage.
 
@@ -64,7 +64,7 @@ The repository records two forms of captions. The KB has `caption_raw`, `caption
 
 ## Specification ambiguity
 
-The project specification was internally inconsistent about the test size: one section specified 100 test images, while another described 1,000. The repository resolves the ambiguity by following the group decision to use 1,000 test images (spec section 4.4) and recording that decision in [reports/split_confirmation.json](reports/split_confirmation.json). The frozen release g1-v1.1 was built with a 100-image test (sections 4.1/4.2). The final evaluation test set is the 1,000-image val2017 set defined in experiments/test_1000_val2017/ (section 4.4). No professor confirmation is on record.
+The project specification is internally inconsistent about the test size: sections 4.1/4.2 specify 100 test images, while sections 4.4.2/4.4.3 describe 1,000. The instructor indicated verbally that the test set must contain **1,000 images** (no written confirmation is on record), so the official evaluation set is the 1,000-image val2017 sample defined in `experiments/test_1000_val2017/` and the decision is recorded in [reports/split_confirmation.json](reports/split_confirmation.json). The frozen release g1-v1.1 was built with a 100-image test (sections 4.1/4.2); that legacy test is kept unchanged (hashes in `experiments/test_1000_val2017/manifests/verification.json`) and is reported as a secondary, small-sample check. Where this report says "test" without qualification in Sections 2–11.2, it refers to the legacy 100-image test; Section 11.3 reports the official 1,000-image test.
 
 # 3. Dataset Splitting and Stratification
 
@@ -405,7 +405,7 @@ The SigLIP image-to-text 10-fold cross-validation standard deviation is 0.1913, 
 
 ## 11.2 Final test reporting
 
-[Table 9](#table-9-test-results) presents report-only test values. These results are not used to select a configuration.
+[Table 9](#table-9-test-results) presents report-only values for the legacy 100-image test (the official 1,000-image test is in Section 11.3). These results are not used to select a configuration.
 
 <a id="table-9-test-results"></a>
 **Table 9. Report-only test results.**
@@ -418,7 +418,7 @@ The SigLIP image-to-text 10-fold cross-validation standard deviation is 0.1913, 
 | SigLIP image-to-image | 0.95 | 0.99 / 1.00 | 0.95 / 0.956 / 0.953 | 0.9717 | 0.6216 | 0.0420 |
 | SigLIP image-to-text | 0.98 | 1.00 / 1.00 | 0.98 / 0.964 / 0.972 | 0.9883 | **0.7064** | 0.0420 |
 
-Table 9 confirms consistency between the validation selection and final reporting. SigLIP image-to-text remains best at test CIDEr 0.7064, a difference of 0.0564 from the second-best CLIP image-to-text configuration. Its test recall@1 is 0.98 and MRR is 0.9883. The random-caption baseline is 0.0420.
+On the legacy 100-image test, Table 9 is consistent with the validation selection; on the larger official test the ranking changes (Section 11.3). SigLIP image-to-text remains best at test CIDEr 0.7064, a difference of 0.0564 from the second-best CLIP image-to-text configuration. Its test recall@1 is 0.98 and MRR is 0.9883. The random-caption baseline is 0.0420.
 
 The repository reports no test-set significance testing and no test-based model-selection correction. This is a deliberate methodological constraint. The test set is useful as an independent final check, but should not be used to revise the validation winner or to search for a new configuration.
 
@@ -429,11 +429,35 @@ The repository reports no test-set significance testing and no test-based model-
 
 *Figure 12. Validation CIDEr comparison for the five implemented retrieval configurations.*
 
-## 11.3 Interpretation
+## 11.3 Official test results (1,000 images)
 
-Several conclusions are statistically and descriptively supported, with qualifications. SigLIP image-to-text is the validation winner and final test leader. SigLIP image-to-image is not statistically distinguishable from the winner on validation data, so the empirical evidence does not justify treating the 0.0487 validation CIDEr difference as established. CLIP image-to-text, DINOv2 image-to-image, and CLIP image-to-image are each significantly below SigLIP image-to-text under the repository's Bonferroni threshold. A random caption baseline remains substantially lower.
+[Table 10](#table-10-official-test) reports the five retrieval configurations on the official 1,000-image test (COCO val2017; source: `experiments/test_1000_val2017/results/encoder_comparison_test_1000.csv`). The test is disjoint from the KB, validation and legacy test, and its QC report is `experiments/test_1000_val2017/qc/qc_report_test_1000.md`. As for the legacy test, these results are **report-only**: no configuration was selected or re-selected on them.
 
-No claim is made that the comparison establishes general superiority of SigLIP across all retrieval settings. The sample has only 100 validation images, 100 final test images, one run per configuration in the frozen artifacts, and a nearest-neighbour caption evaluation protocol. Positive test consistency is supportive but not sufficient for broad generalization.
+<a id="table-10-official-test"></a>
+**Table 10. Official test results (1,000 images, report-only).**
+
+| Configuration | Recall@1 | Recall@5/@10 | Precision@1/@5/@10 | MRR | CIDEr | Random CIDEr |
+|---|---:|---:|---:|---:|---:|---:|
+| CLIP image-to-image | 0.943 | 0.993 / 0.996 | 0.943 / 0.930 / 0.921 | 0.9652 | 0.4978 | 0.0270 |
+| CLIP image-to-text | 0.952 | 0.992 / 0.996 | 0.952 / 0.949 / 0.947 | 0.9705 | **0.5746** | 0.0270 |
+| DINOv2 image-to-image | 0.965 | 0.994 / 0.996 | 0.965 / 0.954 / 0.950 | 0.9781 | 0.5333 | 0.0270 |
+| SigLIP image-to-image | 0.966 | 0.996 / 0.999 | 0.966 / 0.961 / 0.955 | 0.9804 | 0.5320 | 0.0270 |
+| SigLIP image-to-text | 0.891 | 0.996 / 0.998 | 0.891 / 0.866 / 0.848 | 0.9376 | 0.4645 | 0.0270 |
+
+**The ranking differs from validation and from the legacy test.** SigLIP image-to-text, the validation winner (validation CIDEr 0.7223), has the *lowest* CIDEr of the five configurations on the official test (0.4645), whereas CLIP image-to-text is highest (0.5746). SigLIP image-to-text also has the lowest Recall@1 (0.891) and MRR (0.9376), while SigLIP and DINOv2 image-to-image have the highest Recall@1 (0.965–0.966). All five configurations remain far above the random-caption baseline (0.0270).
+
+Interpretation and caveats:
+
+- The validation set has only 100 images and the SigLIP image-to-text 10-fold standard deviation was large (0.1913, Section 11.1), so a validation winner that does not carry over to a 10x larger test is plausible; this report does not claim otherwise.
+- The repository stores aggregate metrics only, not per-image scores for the 1,000-image test, so **no significance test is reported** for the differences in Table 10. Differences of a few hundredths of CIDEr (e.g. DINOv2 vs SigLIP image-to-image) must not be interpreted as ordering.
+- The frozen primary encoder of release g1-v1.1 (`siglip-b16`) was selected by the validation protocol and is not changed after seeing test results (that would be test-set selection). Users of the release should be aware of Table 10 and choose their encoder for their own technique through their own validation protocol; CLIP and DINOv2 embeddings are provided for the same images.
+- Retrieval relevance here uses the project's strict Jaccard-based criterion and CIDEr is computed on the nearest-neighbour caption only; no generative model is involved in Phase 1.
+
+## 11.4 Interpretation
+
+Several conclusions are statistically and descriptively supported, with qualifications. SigLIP image-to-text is the validation winner and the leader on the legacy 100-image test, but not on the official 1,000-image test (Section 11.3). SigLIP image-to-image is not statistically distinguishable from the winner on validation data, so the empirical evidence does not justify treating the 0.0487 validation CIDEr difference as established. CLIP image-to-text, DINOv2 image-to-image, and CLIP image-to-image are each significantly below SigLIP image-to-text under the repository's Bonferroni threshold. A random caption baseline remains substantially lower.
+
+No claim is made that the comparison establishes general superiority of SigLIP across all retrieval settings. The sample has only 100 validation images, 100 legacy test images (and 1,000 official test images without per-image scores or significance tests), one run per configuration in the frozen artifacts, and a nearest-neighbour caption evaluation protocol. Consistency on the legacy test is supportive but not sufficient for broad generalization, and the larger official test does not reproduce the validation ranking.
 
 # 12. Reproducibility and Dataset Freezing
 
@@ -461,7 +485,7 @@ The freeze separates raw input integrity from generated artifact integrity. Spli
 
 First, Phase 1 does not implement a caption generator. CIDEr and nearest-neighbour caption baselines measure whether the shared retrieval setup supplies useful candidate text. Language generation, prompt construction, grounding, fluency optimization, and user-facing caption quality remain future work.
 
-Second, the validation and test sets contain only 100 images. Although this permits focused stratification, statistical estimates have broad uncertainty and confidence intervals are sensitive to sampling. Ten-fold cross-validation standard deviations are recorded for comparison, but no encoder training was performed and the reported folds are not independent models.
+Second, the validation and legacy test sets contain only 100 images (the official test has 1,000 images but only aggregate metrics are stored). Although this permits focused stratification, statistical estimates have broad uncertainty and confidence intervals are sensitive to sampling. Ten-fold cross-validation standard deviations are recorded for comparison, but no encoder training was performed and the reported folds are not independent models.
 
 Third, test results are used only for final reporting. The repository also reports no correction for hypotheses tested post hoc after inspecting the test values, which reinforces the need not to select models on test.
 

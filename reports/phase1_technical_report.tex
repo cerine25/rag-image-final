@@ -191,11 +191,17 @@ many images. This report is restricted to the implemented Phase 1
 sizes documented in Table~\ref{tab:release-composition}. The
 KB contains 10,000 images and 50,000 retained captions, whereas
 validation and test each contain 100 images and 500 raw
-reference-caption rows.
+reference-caption rows. The project specification is inconsistent about the
+test size (100 images in sections 4.1/4.2, 1,000 in section 4.4); the
+instructor indicated verbally that the test set must contain 1,000 images
+(no written confirmation is on record). The official evaluation set is
+therefore a 1,000-image COCO val2017 sample (Section~\ref{official-test-results}),
+and the 100-image test of release g1-v1.1 is kept unchanged as a legacy set.
+In Sections 2--11.1, ``test'' denotes this legacy 100-image test unless stated otherwise.
 
 \begin{table}[H]
 \centering
-\caption{Release composition.}
+\caption{Release composition (frozen release g1-v1.1; the official 1,000-image test is described in Section~\ref{official-test-results}).}
 \label{tab:release-composition}
 \begin{tabular}{llrr}
 \toprule
@@ -910,9 +916,10 @@ SigLIP image-to-text & 0.98 & 1.00 / 1.00 & 0.98 / 0.964 / 0.972 & 0.9883 & \tex
 \end{tabular}}
 \end{table}
 
-Table 9 presents the final test results. SigLIP image-to-text
-achieves the highest CIDEr score of 0.7064, followed by CLIP
+Table 9 presents the results on the legacy 100-image test. SigLIP
+image-to-text achieves the highest CIDEr score of 0.7064, followed by CLIP
 image-to-text at 0.6501. The random-caption baseline scores 0.0420.
+The official 1,000-image test is reported in Section~\ref{official-test-results}.
 
 These results are used only for final reporting and do not influence
 the configuration selected using validation data.
@@ -929,11 +936,59 @@ configurations.}
 \label{fig:encoder-comparison}
 \end{figure}
 
+\subsection{Official test results (1,000 images)}\label{official-test-results}
+
+Table 10 reports the five configurations on the
+official 1,000-image test (COCO val2017), which is disjoint from the KB,
+the validation split and the legacy test. Its quality-control report is
+\texttt{qc\_report\_test\_1000.md} (folder \texttt{experiments/test\_1000\_val2017/qc}).
+As for the legacy test, these results are report-only: no configuration
+was selected or re-selected on them.
+
+\begin{center}
+\textbf{Table 10. Official test results (1,000 images, report-only).}
+\end{center}
+
+\begin{table}[htbp]
+\centering
+\resizebox{\textwidth}{!}{\begin{tabular}{lrrrrrr}
+\toprule
+Configuration & Recall@1 & Recall@5/@10 & Precision@1/@5/@10 & MRR & CIDEr & Random CIDEr \\
+\midrule
+CLIP image-to-image & 0.943 & 0.993 / 0.996 & 0.943 / 0.930 / 0.921 & 0.9652 & 0.4978 & 0.0270 \\
+CLIP image-to-text & 0.952 & 0.992 / 0.996 & 0.952 / 0.949 / 0.947 & 0.9705 & \textbf{0.5746} & 0.0270 \\
+DINOv2 image-to-image & 0.965 & 0.994 / 0.996 & 0.965 / 0.954 / 0.950 & 0.9781 & 0.5333 & 0.0270 \\
+SigLIP image-to-image & 0.966 & 0.996 / 0.999 & 0.966 / 0.961 / 0.955 & 0.9804 & 0.5320 & 0.0270 \\
+SigLIP image-to-text & 0.891 & 0.996 / 0.998 & 0.891 / 0.866 / 0.848 & 0.9376 & 0.4645 & 0.0270 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\textbf{The ranking differs from validation and from the legacy test.}
+SigLIP image-to-text, the validation winner (validation CIDEr 0.7223), has
+the lowest CIDEr of the five configurations on the official test (0.4645),
+whereas CLIP image-to-text is highest (0.5746). SigLIP image-to-text also has
+the lowest Recall@1 (0.891) and MRR (0.9376), while the two image-to-image
+configurations of SigLIP and DINOv2 have the highest Recall@1 (0.965--0.966).
+All configurations remain far above the random-caption baseline (0.0270).
+
+Several caveats apply. The validation set has only 100 images and the
+10-fold standard deviation of SigLIP image-to-text was large (0.1913), so a
+validation winner that does not carry over to a ten times larger test is
+plausible. Only aggregate metrics are stored for the 1,000-image test, so no
+significance test is reported; differences of a few hundredths of CIDEr
+(e.g.\ DINOv2 versus SigLIP image-to-image) must not be read as an ordering.
+The primary encoder of release g1-v1.1 (\texttt{siglip-b16}) is not changed
+after seeing test results, since that would be test-set selection; users of the
+release should choose their encoder through their own validation protocol,
+and CLIP and DINOv2 embeddings are provided for the same images.
+
 \subsection{Interpretation}\label{interpretation}
 
 Several conclusions are statistically and descriptively supported, with
-qualifications. SigLIP image-to-text is the validation winner and final
-test leader. SigLIP image-to-image is not statistically distinguishable
+qualifications. SigLIP image-to-text is the validation winner and the
+leader on the legacy 100-image test, but not on the official 1,000-image
+test (Section~\ref{official-test-results}). SigLIP image-to-image is not statistically distinguishable
 from the winner on validation data, so the empirical evidence does not
 justify treating the 0.0487 validation CIDEr difference as established.
 CLIP image-to-text, DINOv2 image-to-image, and CLIP image-to-image are
@@ -943,10 +998,12 @@ lower.
 
 No claim is made that the comparison establishes general superiority of
 SigLIP across all retrieval settings. The sample has only 100 validation
-images, 100 final test images, one run per configuration in the frozen
-artifacts, and a nearest-neighbour caption evaluation protocol. Positive
-test consistency is supportive but not sufficient for broad
-generalization.
+images, 100 legacy test images (and 1,000 official test images without
+per-image scores or significance tests), one run per configuration in the
+frozen artifacts, and a nearest-neighbour caption evaluation protocol.
+Consistency on the legacy test is supportive but not sufficient for broad
+generalization, and the larger official test does not reproduce the
+validation ranking.
 
 \section{Reproducibility and Dataset
 Freezing}\label{reproducibility-and-dataset-freezing}
@@ -1011,8 +1068,10 @@ Conclusion}\label{limitations-and-conclusion}
 Phase 1 does not include a complete caption-generation model.
 It evaluates retrieval-based caption candidates instead.
 
-The validation and test sets contain only 100 images each, which
-limits the reliability and generalizability of the results.
+The validation and legacy test sets contain only 100 images each, which
+limits the reliability and generalizability of the results. The official
+1,000-image test is larger but only aggregate metrics are stored, and
+its ranking of the encoders differs from validation.
 
 Validation and test metadata use COCO ground-truth annotations
 rather than predicted object detections. The geometric relationships
@@ -1036,10 +1095,12 @@ checks. It also includes five retrieval configurations evaluated
 using validation and test data.
 
 SigLIP image-to-text achieves the highest validation CIDEr of
-0.7223 and the highest report-only test CIDEr of 0.7064. It is
-therefore selected as the best-performing configuration in this
-phase, although its validation advantage over SigLIP image-to-image
-is not statistically significant.
+0.7223 and the highest legacy-test CIDEr of 0.7064, and is therefore the
+configuration selected by the validation protocol, although its validation
+advantage over SigLIP image-to-image is not statistically significant. On
+the official 1,000-image test, however, CLIP image-to-text has the highest
+CIDEr (0.5746) and SigLIP image-to-text the lowest (0.4645); this
+discrepancy is reported rather than used to re-select the encoder.
 
 The resulting dataset and retrieval baseline provide the foundation
 for Phase 2, which will focus on implementing the final
