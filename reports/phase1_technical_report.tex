@@ -132,7 +132,7 @@ Automatic image captioning is an important task in computer vision and natural l
 
 This project aims to investigate how different RAG techniques influence the quality, relevance, and visual grounding of generated image captions using the MS COCO 2017 dataset. The main motivation is to determine whether incorporating retrieved evidence can improve caption accuracy, reduce hallucinations, and provide a better balance between generation quality and computational cost.
 
-The first phase focuses on building a reproducible data preparation and retrieval framework. It includes a knowledge base of 10,000 images and 50,000 captions, alongside separate validation and test sets of 100 images each. The pipeline covers image and caption preprocessing, metadata extraction, embedding generation, FAISS indexing, exploratory data analysis, and anti-leakage validation. Five retrieval configurations based on CLIP, SigLIP, and DINOv2 were evaluated using CIDEr scores on the validation set. SigLIP image-to-text achieved the highest validation CIDEr score of 0.7223 and was selected as the best-performing configuration.
+The first phase focuses on building a reproducible data preparation and retrieval framework. It includes a knowledge base of 10,000 images and 50,000 captions, alongside a 100-image validation set and a separate 100-image legacy test set; the official evaluation uses 1,000 images. The pipeline covers image and caption preprocessing, metadata extraction, embedding generation, FAISS indexing, exploratory data analysis, and anti-leakage validation. Five retrieval configurations based on CLIP, SigLIP, and DINOv2 were evaluated using CIDEr scores on the validation set. SigLIP image-to-text achieved the highest validation CIDEr score of 0.7223 and was selected as the best-performing configuration.
 
 At this stage, the evaluation focuses on retrieval performance rather than generated captions.
 
@@ -701,8 +701,7 @@ similarity to be computed as
 \qquad \|\mathbf{x}\|_{2}=\|\mathbf{y}\|_{2}=1.
 \end{equation*}
 
-The consequence is that a Euclidean inner-product index on normalized
-vectors implements cosine retrieval.
+An inner-product index operating on L2-normalized vectors implements cosine-similarity retrieval.
 
 \section{Knowledge Base and FAISS Index
 Construction}\label{knowledge-base-and-faiss-index-construction}
@@ -872,7 +871,7 @@ Table 8 presents the statistical comparison between the selected
 configuration and the alternatives. SigLIP image-to-image is not
 significantly different from SigLIP image-to-text
 (\(p=0.3023\)). The other three configurations are significantly
-lower under the Bonferroni threshold of 0.0125 \cite{cohen_statistical_2013}.
+lower under the Bonferroni-adjusted significance threshold (0.05/4 = 0.0125) \cite{cohen_statistical_2013}.
 
 Therefore, SigLIP image-to-text is selected based on its highest
 validation CIDEr, although its advantage over SigLIP image-to-image
@@ -974,11 +973,15 @@ text embeddings: 0.4842). Which of the two sets matches the SHA256 recorded in
 the manifest is not established. The small changes for CLIP and DINOv2
 image-to-image are of unestablished cause.
 
-Several caveats apply. The validation set has only 100 images and the
-10-fold standard deviation of SigLIP image-to-text was large (0.1913).
-Only aggregate metrics are stored for the 1,000-image test, so no
-significance test is reported; differences of a few hundredths of CIDEr
-(e.g.\ DINOv2 versus SigLIP image-to-image) must not be read as an ordering.
+Several caveats apply. The validation set contains only 100 images. The
+reported standard deviation (0.1913) is the standard deviation of the
+mean CIDEr scores across ten non-overlapping subsets of ten validation
+images; it is a descriptive measure of variability, not a cross-validation
+estimate. The 95\% confidence intervals are percentile bootstrap intervals
+computed from 2,000 resamples with replacement. The paired Wilcoxon comparisons are exploratory because the reference configuration was selected on the same validation set; the Bonferroni correction does not remove this selection bias. Only aggregate metrics are
+stored for the 1,000-image test, so no significance test is reported;
+differences of a few hundredths of CIDEr (e.g.\ DINOv2 versus SigLIP
+image-to-image) must not be interpreted as a reliable ordering.
 The primary encoder of release g1-v1.1 (\texttt{siglip-b16}) is not changed
 after seeing test results, since that would be test-set selection; users of the
 release should choose their encoder through their own validation protocol,
