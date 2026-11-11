@@ -30,3 +30,12 @@ large binary files that are not versioned in Git.
 
 Embeddings are L2-normalised float32. Notes on the encoder choice on the official test
 are in `README.md` and in section 11.3 of `reports/phase1_technical_report.pdf`.
+
+## Known deviations (reproducibility)
+
+- Embeddings and indexes restored from the original working copy (rag_preproc) were compared with the frozen manifest (read-only check, verify_manifest.py). CLIP, DINOv2 and SBERT embeddings and the CLIP/DINOv2 indexes match (22 embedding files ok, 6 index files ok). The 4 SigLIP embedding files (kb_img, kb_txt, val_img, test_img) and the 3 SigLIP indexes (flat, hnsw, txt_flat) do NOT match the manifest; the cause is unknown (SIGLIP_ENV_NOTE.txt mentions Python 3.13.3 versus 3.13.7 in the manifest, which is not proven to be the cause). On the first 20 rows, SigLIP kb_txt matches a recomputation with padding="max_length" (64 tokens), as in notebook 04. The manifest and index_report.json were not modified; bit-for-bit SigLIP reproducibility is therefore not guaranteed.
+- Official 1,000-image test re-evaluation (scripts/evaluate_test_1000.py) with locally computed test embeddings: CIDEr is identical for CLIP img->txt (0.5746) and SigLIP img->img (0.5320), and within 0.0023 for CLIP img->img (0.4978 vs 0.4984) and DINOv2 img->img (0.5333 vs 0.5309). SigLIP img->txt differs: 0.6385 (Recall@1 0.973, MRR 0.9847) versus 0.4645 (Recall@1 0.891, MRR 0.9376) in the committed results. The cause is not established. The committed results and the encoder selected on validation (siglip-b16) were left unchanged.
+- 11 of the 10,200 normalised RGB images (all in the knowledge base, narrow images 207-316 x 640 px) differ from the manifest although the raw files are identical (sha256_raw). The cause is unknown.
+- artifacts/eda was restored to the g1-v1.1 state (commit 15cb295 had regenerated it afterwards); its version label therefore reads g1-v1.0 in EDA_REPORT.md.
+- The official 1,000-image test was confirmed orally by the instructor only (no written confirmation).
+- Windows PowerShell: use Expand-Archive and Get-FileHash -Algorithm SHA256 instead of unzip and sha256sum.
