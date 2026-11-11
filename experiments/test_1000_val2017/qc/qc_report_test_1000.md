@@ -31,7 +31,7 @@
 | 25 | PASS | frozen file unchanged: artifacts/splits/kb.json | content identical (hash compared modulo LF/CRLF line endings) |
 | 26 | PASS | frozen file unchanged: reports/tables/encoder_comparison_test.csv | content identical (hash compared modulo LF/CRLF line endings) |
 | 27 | PASS | results cover 5 configurations x 1000 queries |  |
-| 28 | PASS | every configuration beats the random-caption baseline (CIDEr) | clip-b32/img2img=0.498; clip-b32/img2txt=0.575; dinov2-s/img2img=0.533; siglip-b16/img2img=0.532; siglip-b16/img2txt=0.464 |
+| 28 | PASS | every configuration beats the random-caption baseline (CIDEr) | clip-b32/img2img=0.498; clip-b32/img2txt=0.575; dinov2-s/img2img=0.531; siglip-b16/img2img=0.532; siglip-b16/img2txt=0.639 |
 | 29 | PASS | embeddings clip-b32/test_1000 shape/dtype | shape=(1000, 512) |
 | 30 | PASS | embeddings clip-b32/test_1000 finite and L2-normalised |  |
 | 31 | PASS | embeddings clip-b32/test_1000 IDs match split |  |

@@ -144,7 +144,7 @@
     {
       "check": "every configuration beats the random-caption baseline (CIDEr)",
       "status": "PASS",
-      "detail": "clip-b32|img2img=0.498; clip-b32|img2txt=0.575; dinov2-s|img2img=0.533; siglip-b16|img2img=0.532; siglip-b16|img2txt=0.464"
+      "detail": "clip-b32|img2img=0.498; clip-b32|img2txt=0.575; dinov2-s|img2img=0.531; siglip-b16|img2img=0.532; siglip-b16|img2txt=0.639"
     },
     {
       "check": "embeddings clip-b32/test_1000 shape/dtype",

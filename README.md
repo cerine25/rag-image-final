@@ -53,18 +53,14 @@ Nearest-neighbour caption retrieval, CIDEr against the 5 references
 
 | Configuration | Recall@1 | MRR | CIDEr |
 |---|---:|---:|---:|
-| CLIP image-to-text | 0.952 | 0.970 | **0.575** |
+| CLIP image-to-text | 0.952 | 0.970 | 0.575 |
 | CLIP image-to-image | 0.943 | 0.965 | 0.498 |
-| DINOv2 image-to-image | 0.965 | 0.978 | 0.533 |
+| DINOv2 image-to-image | 0.965 | 0.978 | 0.531 |
 | SigLIP image-to-image | 0.966 | 0.980 | 0.532 |
-| SigLIP image-to-text | 0.891 | 0.938 | 0.464 |
+| SigLIP image-to-text | 0.973 | 0.985 | **0.639** |
 | Random-caption baseline | | | 0.027 |
 
-Note: SigLIP image-to-text was the validation winner (100 images, CIDEr 0.722) but
-is the lowest of the five on the larger 1,000-image test. The configuration was
-**not** re-selected on the test set (that would be test-set tuning); the
-discrepancy is reported and discussed in the technical report
-(`reports/phase1_technical_report.pdf`, section "Final test reporting").
+Note: SigLIP image-to-text was the validation winner (100 images, CIDEr 0.722) and is also the best of the five on the 1,000-image test (CIDEr 0.639). These figures use SigLIP text embeddings computed with `padding="max_length"` (64 tokens), as in notebook 04. An earlier version of this table (SigLIP image-to-text CIDEr 0.464, Recall@1 0.891, MRR 0.938, lowest of the five; CLIP image-to-text highest) came from SigLIP text embeddings recomputed with `scripts/recover_kb_embeddings.py`, which uses `padding=True`; we measured that this setting reproduces exactly those earlier figures. Which of the two text-embedding sets matches the SHA256 recorded in `artifacts/manifest.json` is not established. CLIP image-to-image (0.4984 vs 0.4978 earlier) and DINOv2 image-to-image (0.5309 vs 0.5333) also changed slightly; the cause of these small differences is not established. The technical report PDF (`reports/phase1_technical_report.pdf`, section "Final test reporting") predates this correction, still shows the earlier figures, and must be recompiled. The encoder was selected on validation and was not re-selected on the test set. Details: `RELEASE_NOTES.md`.
 
 ## Repository structure
 

@@ -15,11 +15,11 @@
     "recall@5": 0.993,
     "precision@5": 0.93,
     "recall@10": 0.996,
-    "precision@10": 0.9208999999999999,
-    "mrr": 0.96515,
-    "cider": 0.49778713500468613,
+    "precision@10": 0.921,
+    "mrr": 0.9650666666666667,
+    "cider": 0.49838904861514904,
     "random_caption_cider_seed42": 0.027039404666024877,
-    "latency_ms_per_query_median_5_repeats": 0.8971270999754779
+    "latency_ms_per_query_median_5_repeats": 1.299863600000208
   },
   {
     "dataset": "test_1000",
@@ -41,7 +41,7 @@
     "mrr": 0.9704539682539682,
     "cider": 0.5746447733682728,
     "random_caption_cider_seed42": 0.027039404666024877,
-    "latency_ms_per_query_median_5_repeats": 4.550189700035844
+    "latency_ms_per_query_median_5_repeats": 6.141134600000441
   },
   {
     "dataset": "test_1000",
@@ -57,13 +57,13 @@
     "recall@1": 0.965,
     "precision@1": 0.965,
     "recall@5": 0.994,
-    "precision@5": 0.9542,
+    "precision@5": 0.9544,
     "recall@10": 0.996,
-    "precision@10": 0.9496,
+    "precision@10": 0.9495,
     "mrr": 0.9781444444444445,
-    "cider": 0.5332504474340769,
+    "cider": 0.5309491911201747,
     "random_caption_cider_seed42": 0.027039404666024877,
-    "latency_ms_per_query_median_5_repeats": 0.8796785000013188
+    "latency_ms_per_query_median_5_repeats": 1.1263743999998042
   },
   {
     "dataset": "test_1000",
@@ -85,7 +85,7 @@
     "mrr": 0.9803666666666667,
     "cider": 0.531951591835322,
     "random_caption_cider_seed42": 0.027039404666024877,
-    "latency_ms_per_query_median_5_repeats": 0.9331654999987222
+    "latency_ms_per_query_median_5_repeats": 1.2887236999995366
   },
   {
     "dataset": "test_1000",
@@ -98,15 +98,15 @@
     "n_queries": 1000,
     "queries_without_objects": 0,
     "relevance_queries": 1000,
-    "recall@1": 0.891,
-    "precision@1": 0.891,
-    "recall@5": 0.996,
-    "precision@5": 0.866,
-    "recall@10": 0.998,
-    "precision@10": 0.8482000000000001,
-    "mrr": 0.9375666666666667,
-    "cider": 0.46445572356464165,
+    "recall@1": 0.973,
+    "precision@1": 0.973,
+    "recall@5": 0.999,
+    "precision@5": 0.9663999999999998,
+    "recall@10": 1.0,
+    "precision@10": 0.9632000000000001,
+    "mrr": 0.9847261904761905,
+    "cider": 0.6385329007525897,
     "random_caption_cider_seed42": 0.027039404666024877,
-    "latency_ms_per_query_median_5_repeats": 4.683404200011864
+    "latency_ms_per_query_median_5_repeats": 6.852748300000712
   }
 ]
